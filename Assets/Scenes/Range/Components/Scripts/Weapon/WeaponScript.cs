@@ -1,5 +1,5 @@
 using System.Collections;
-using Scenes.Range.Components.Scripts.Input;
+using Scenes.Range.Components.Scripts.Controllers.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

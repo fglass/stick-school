@@ -2,7 +2,7 @@
 using Scenes.Range.Components.Scripts.Target;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Projectile
+namespace Scenes.Range.Components.Scripts.Weapon.Projectile
 {
 	public class Projectile : MonoBehaviour {
 

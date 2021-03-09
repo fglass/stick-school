@@ -11063,7 +11063,7 @@ MonoBehaviour:
   input: {fileID: 537064308}
   arms: {fileID: 4225692008254310}
   armPosition: {x: 0, y: 0, z: 0}
-  aimSensitivity: 1
+  aimSensitivity: 1.15
   rotationSmoothness: 0.05
 --- !u!136 &136351757417321786
 CapsuleCollider:

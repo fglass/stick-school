@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Projectile
+namespace Scenes.Range.Components.Scripts.Weapon.Projectile
 {
-	public class MetalImpactScript : MonoBehaviour {
+	public class MetalImpact : MonoBehaviour {
 
 		[SerializeField] private AudioSource audioSource;
 		[SerializeField] private AudioClip[] impactSounds;
