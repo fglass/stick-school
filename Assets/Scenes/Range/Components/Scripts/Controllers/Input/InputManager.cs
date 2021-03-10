@@ -9,6 +9,7 @@ namespace Scenes.Range.Components.Scripts.Controllers.Input
         private static readonly string CameraAction = InputActions.Player.Camera.name;
         private static readonly string FireAction = InputActions.Player.Fire.name;
         private static readonly string AdsAction = InputActions.Player.Ads.name;
+        private static readonly string ControllerControlScheme = InputActions.ControllerControlSchemeScheme.name;
 
         public static Vector2 GetRotationDelta(this PlayerInput input)
         {
@@ -23,6 +24,11 @@ namespace Scenes.Range.Components.Scripts.Controllers.Input
         public static bool IsAds(this PlayerInput input)
         {
             return input.actions[AdsAction].IsPressed();
+        }
+
+        public static bool IsUsingController(this PlayerInput input)
+        {
+            return input.currentControlScheme.Equals(ControllerControlScheme);
         }
     }
 }

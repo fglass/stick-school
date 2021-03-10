@@ -37,7 +37,7 @@
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad Control Scheme",
+                    "groups": "Controller Control Scheme",
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -59,7 +59,7 @@
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad Control Scheme",
+                    "groups": "Controller Control Scheme",
                     "action": "Ads",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -92,7 +92,7 @@
                     "path": "<Gamepad>/rightStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad Control Scheme",
+                    "groups": "Controller Control Scheme",
                     "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -103,7 +103,7 @@
                     "path": "<Gamepad>/rightStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad Control Scheme",
+                    "groups": "Controller Control Scheme",
                     "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -114,7 +114,7 @@
                     "path": "<Gamepad>/rightStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad Control Scheme",
+                    "groups": "Controller Control Scheme",
                     "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -125,7 +125,7 @@
                     "path": "<Gamepad>/rightStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad Control Scheme",
+                    "groups": "Controller Control Scheme",
                     "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -146,8 +146,8 @@
     ],
     "controlSchemes": [
         {
-            "name": "Gamepad Control Scheme",
-            "bindingGroup": "Gamepad Control Scheme",
+            "name": "Controller Control Scheme",
+            "bindingGroup": "Controller Control Scheme",
             "devices": [
                 {
                     "devicePath": "<Gamepad>",

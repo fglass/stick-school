@@ -59,7 +59,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad Control Scheme"",
+                    ""groups"": ""Controller Control Scheme"",
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -81,7 +81,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad Control Scheme"",
+                    ""groups"": ""Controller Control Scheme"",
                     ""action"": ""Ads"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -114,7 +114,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad Control Scheme"",
+                    ""groups"": ""Controller Control Scheme"",
                     ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -125,7 +125,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad Control Scheme"",
+                    ""groups"": ""Controller Control Scheme"",
                     ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -136,7 +136,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad Control Scheme"",
+                    ""groups"": ""Controller Control Scheme"",
                     ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -147,7 +147,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad Control Scheme"",
+                    ""groups"": ""Controller Control Scheme"",
                     ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -168,8 +168,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": [
         {
-            ""name"": ""Gamepad Control Scheme"",
-            ""bindingGroup"": ""Gamepad Control Scheme"",
+            ""name"": ""Controller Control Scheme"",
+            ""bindingGroup"": ""Controller Control Scheme"",
             ""devices"": [
                 {
                     ""devicePath"": ""<Gamepad>"",
@@ -300,13 +300,13 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
-    private int m_GamepadControlSchemeSchemeIndex = -1;
-    public InputControlScheme GamepadControlSchemeScheme
+    private int m_ControllerControlSchemeSchemeIndex = -1;
+    public InputControlScheme ControllerControlSchemeScheme
     {
         get
         {
-            if (m_GamepadControlSchemeSchemeIndex == -1) m_GamepadControlSchemeSchemeIndex = asset.FindControlSchemeIndex("Gamepad Control Scheme");
-            return asset.controlSchemes[m_GamepadControlSchemeSchemeIndex];
+            if (m_ControllerControlSchemeSchemeIndex == -1) m_ControllerControlSchemeSchemeIndex = asset.FindControlSchemeIndex("Controller Control Scheme");
+            return asset.controlSchemes[m_ControllerControlSchemeSchemeIndex];
         }
     }
     private int m_MouseControlSchemeSchemeIndex = -1;

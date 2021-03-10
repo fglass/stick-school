@@ -9378,7 +9378,7 @@ GameObject:
   - component: {fileID: 82766376373920650}
   - component: {fileID: 114352006042335988}
   m_Layer: 8
-  m_Name: FPSController
+  m_Name: PlayerController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11060,11 +11060,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ebbf09afaa7a14fa049921e4516bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 4225692008254310}
   input: {fileID: 537064308}
-  arms: {fileID: 4225692008254310}
-  armPosition: {x: 0, y: 0, z: 0}
-  aimSensitivity: 1.15
-  rotationSmoothness: 0.05
+  sensitivity: 0.05
 --- !u!136 &136351757417321786
 CapsuleCollider:
   m_ObjectHideFlags: 0
