@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Scenes.Range.Components.Scripts.Target;
+using Scenes.Range.Components.Scripts.Game;
 using UnityEngine;
 
 namespace Scenes.Range.Components.Scripts.Weapon.Projectile

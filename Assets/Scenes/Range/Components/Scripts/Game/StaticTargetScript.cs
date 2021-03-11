@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Target
+namespace Scenes.Range.Components.Scripts.Game
 {
     public class StaticTargetScript : MonoBehaviour
     {
