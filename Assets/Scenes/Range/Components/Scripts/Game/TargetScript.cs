@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Scenes.Range.Components.Scripts.Game
 {
-    public class StaticTargetScript : MonoBehaviour
+    public class TargetScript : MonoBehaviour
     {
         public bool isHit;
         

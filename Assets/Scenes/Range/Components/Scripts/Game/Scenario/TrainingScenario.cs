@@ -13,7 +13,7 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
         
         public GameObject TargetPrefab { get; set; }
 
-        public void Update()
+        public void UpdateScenario()
         {
             RemoveDestroyedTargets();
             TrySpawnTargets();

@@ -28,7 +28,7 @@ namespace Scenes.Range.Components.Scripts.Weapon.Projectile
 			}
 			else if (tf.CompareTag(TargetTag)) 
 			{
-				tf.gameObject.GetComponent<StaticTargetScript>().isHit = true;
+				tf.gameObject.GetComponent<TargetScript>().isHit = true;
 			}
 		}
 		
