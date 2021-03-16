@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Scenes.Range.Components.Scripts.Game.Scenario
 {
@@ -19,6 +21,11 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
             TrySpawnTargets();
         }
 
+        public virtual void FixedUpdateScenario()
+        {
+            
+        }
+
         private void RemoveDestroyedTargets()
         {
             _activeTargets.RemoveAll(target => target == null);
@@ -34,5 +41,13 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
         }
 
         protected abstract GameObject SpawnTarget();
+        
+        protected Vector3 GetRandomSpawnPosition()
+        {
+            var position = CenterPosition;
+            position.x += Random.Range(-MaxX, MaxX) + 1;
+            position.y += Random.Range(-MaxY, MaxY) + 1;
+            return position;
+        }
     }
 }

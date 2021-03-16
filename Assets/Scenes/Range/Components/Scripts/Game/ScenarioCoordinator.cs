@@ -18,5 +18,10 @@ namespace Scenes.Range.Components.Scripts.Game
         {
             scenario.UpdateScenario();
         }
+
+        public void FixedUpdate()
+        {
+            scenario.FixedUpdateScenario();
+        }
     }
 }

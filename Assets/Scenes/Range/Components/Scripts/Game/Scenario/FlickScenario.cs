@@ -38,14 +38,6 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
             _spawnInCenter = true;
             return GetRandomSpawnPosition();
         }
-
-        private Vector3 GetRandomSpawnPosition()
-        {
-            var position = CenterPosition;
-            position.x += Random.Range(-MaxX, MaxX) + 1;
-            position.y += Random.Range(-MaxY, MaxY) + 1;
-            return position;
-        }
         
         private static IEnumerator DespawnRoutine(Object target) {
             var duration = Random.Range(MinDuration, MaxDuration);
