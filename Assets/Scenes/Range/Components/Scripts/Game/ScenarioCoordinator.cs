@@ -1,4 +1,3 @@
-using System;
 using Scenes.Range.Components.Scripts.Game.Scenario;
 using UnityEngine;
 

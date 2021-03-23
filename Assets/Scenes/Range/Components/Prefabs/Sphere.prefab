@@ -123,4 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60560d2ec4d0461f9eda0f932cd16ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: 5d8c611aaaa757c46a904d8950f6d2a3, type: 3}
   isHit: 0
