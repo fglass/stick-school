@@ -9,7 +9,6 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
         private const float MaxDirectionDurationS = 2f;
 
         private Rigidbody _rigidbody;
-        private bool _isSpawned;
         private float _directionTimer;
         
         public void Start()
@@ -21,13 +20,12 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
         {
             var target = Instantiate(TargetPrefab, GetRandomSpawnPosition(), Quaternion.identity);
             _rigidbody = target.GetComponent<Rigidbody>();
-            _isSpawned = true;
             return target;
         }
 
         public override void FixedUpdateScenario()
         {
-            if (!_isSpawned)
+            if (_rigidbody == null)
             {
                 return;
             }

@@ -9,14 +9,14 @@ namespace Scenes.Range.Components.Scripts.Weapon.Projectile
 		[SerializeField] private Transform metalImpactPrefab;
 		private const float DurationS = 8.0f;
 		private const string MetalTag = "Metal";
-		private const string TargetTag = "StaticTarget";		
+		private const string TargetTag = "Target";		
 
-		private void Start() 
+		public void Start() 
 		{
 			StartCoroutine(DespawnRoutine());
 		}
 
-		private void OnCollisionEnter(Collision collision) 
+		public void OnCollisionEnter(Collision collision) 
 		{
 			Destroy(gameObject);
 

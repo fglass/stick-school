@@ -1026,7 +1026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72fd425f086422d4ea84bb8836b8fd0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPrefab: {fileID: 1881336272469963674, guid: 6401fb8903fa5c0469e35efbd264591b,
+  targetPrefab: {fileID: 4445158436245017880, guid: 1099fe9633e7e494cab5cda167997df9,
     type: 3}
   scenario: {fileID: 292607903}
 --- !u!4 &292607902

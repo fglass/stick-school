@@ -5,7 +5,9 @@ namespace Scenes.Range.Components.Scripts.Game
     public class TargetScript : MonoBehaviour
     {
         private static readonly Vector3 PlayerPosition = new Vector3(0, 0, 0);
+        
         [SerializeField] private AudioClip hitSound;
+        [SerializeField] private GameObject shatteredPrefab;
         public bool isHit;
 
         private void Update()
@@ -13,8 +15,15 @@ namespace Scenes.Range.Components.Scripts.Game
             if (isHit)
             {
                 AudioSource.PlayClipAtPoint(hitSound, PlayerPosition);
+                SpawnShatteredObject();
                 Destroy(gameObject);
             }
+        }
+
+        private void SpawnShatteredObject()
+        {
+            var tf = transform;
+            Instantiate(shatteredPrefab, tf.position, tf.rotation);
         }
     }
 }
