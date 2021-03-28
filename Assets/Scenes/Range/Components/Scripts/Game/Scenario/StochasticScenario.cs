@@ -1,3 +1,4 @@
+using Scenes.Range.Components.Scripts.Game.Util;
 using UnityEngine;
 
 namespace Scenes.Range.Components.Scripts.Game.Scenario
@@ -11,7 +12,10 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
 
         protected override GameObject SpawnTarget()
         {
-            return Instantiate(TargetPrefab, GetRandomSpawnPosition(), Quaternion.identity);
+            var origin = new Vector2(CenterPosition.x, CenterPosition.y);
+            var point = StochasticSpawn.InBounds(origin, -MaxX, MaxX, -MaxY, MaxY);
+            var position = new Vector3(point.x, point.y, CenterPosition.z);
+            return Instantiate(TargetPrefab, position, Quaternion.identity);
         }
     }
 }

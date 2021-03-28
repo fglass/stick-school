@@ -1,13 +1,17 @@
 using System.Collections;
+using Scenes.Range.Components.Scripts.Game.Util;
 using UnityEngine;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace Scenes.Range.Components.Scripts.Game.Scenario
 {
+    #pragma warning disable 162
     public class FlickScenario : TrainingScenario
     {
+        private const bool DebugMode = false;
         private const float MinDuration = 0.5f;
-        private const float MaxDuration = 2f;
+        private const float MaxDuration = 1.5f;
         private bool _spawnInCenter = true;
 
         public void Start()
@@ -18,27 +22,39 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
         protected override GameObject SpawnTarget()
         {
             var target = Instantiate(TargetPrefab, GetSpawnPosition(), Quaternion.identity);
-
-            if (target.transform.position != CenterPosition)
+            
+            if (DebugMode)
+            {
+                target.GetComponent<MeshCollider>().enabled = false;
+            } else if (target.transform.position != CenterPosition)
             {
                 StartCoroutine(DespawnRoutine(target));
             }
-            
+
             return target;
+        }
+
+        public override void FixedUpdateScenario()
+        {
+            if (DebugMode)
+            {
+                SpawnTarget();
+            }
         }
 
         private Vector3 GetSpawnPosition()
         {
-            if (_spawnInCenter)
-            {
-                _spawnInCenter = false;
-                return CenterPosition;
-            }
-            
-            _spawnInCenter = true;
-            return GetRandomSpawnPosition();
+            var position = _spawnInCenter ? CenterPosition : GetRandomSpawnPosition();
+            _spawnInCenter = !_spawnInCenter;
+            return position;
         }
         
+        private Vector3 GetRandomSpawnPosition()
+        {
+            var origin = new Vector2(CenterPosition.x, CenterPosition.y);
+            var point = StochasticSpawn.InHollowRectangle(origin, MaxX, MaxY, 1f);
+            return new Vector3(point.x, point.y, CenterPosition.z);
+        }
         private static IEnumerator DespawnRoutine(Object target) {
             var duration = Random.Range(MinDuration, MaxDuration);
             yield return new WaitForSeconds(duration);
