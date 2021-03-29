@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Scenes.Range.Components.Scripts.Game;
+using Scenes.Range.Components.Scripts.Game.Target;
 using UnityEngine;
 
 namespace Scenes.Range.Components.Scripts.Weapon.Projectile
@@ -28,7 +29,7 @@ namespace Scenes.Range.Components.Scripts.Weapon.Projectile
 			}
 			else if (tf.CompareTag(TargetTag)) 
 			{
-				tf.gameObject.GetComponent<TargetScript>().isHit = true;
+				tf.gameObject.GetComponent<TargetBehaviour>().isHit = true;
 			}
 		}
 		

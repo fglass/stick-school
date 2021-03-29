@@ -1,7 +1,6 @@
-using Scenes.Range.Components.Scripts.Game.Scenario;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Game
+namespace Scenes.Range.Components.Scripts.Game.Scenario
 {
     public class ScenarioCoordinator : MonoBehaviour
     {

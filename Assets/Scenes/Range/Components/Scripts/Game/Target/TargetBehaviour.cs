@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Game
+namespace Scenes.Range.Components.Scripts.Game.Target
 {
-    public class TargetScript : MonoBehaviour
+    public class TargetBehaviour : MonoBehaviour
     {
         private static readonly Vector3 PlayerPosition = new Vector3(0, 0, 0);
         

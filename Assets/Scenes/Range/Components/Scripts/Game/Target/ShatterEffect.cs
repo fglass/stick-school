@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Game
+namespace Scenes.Range.Components.Scripts.Game.Target
 {
-    public class ShatterScript : MonoBehaviour
+    public class ShatterEffect : MonoBehaviour
     {
         private const float ShatterForce = 50;
         private const float OpacityDelta = 0.1f;

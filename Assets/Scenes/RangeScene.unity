@@ -1028,7 +1028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPrefab: {fileID: 4445158436245017880, guid: 1099fe9633e7e494cab5cda167997df9,
     type: 3}
-  scenario: {fileID: 292607903}
+  scenario: {fileID: 292607905}
 --- !u!4 &292607902
 Transform:
   m_ObjectHideFlags: 0

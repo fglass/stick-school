@@ -13,6 +13,7 @@ namespace Scenes.Range.Components.Scripts.Game.Util
 
         public static Vector2 InHollowRectangle(Vector2 origin, float width, float height, float thickness)
         {
+            // TODO: refactor
             var varyX = RandomBool();
             var x = varyX ? Random.Range(width - thickness, width) : Random.Range(0f, width);
             var y = varyX ? Random.Range(0f, height) : Random.Range(height - thickness, height);
