@@ -8,11 +8,18 @@ namespace Scenes.Range.Components.Scripts.Game.Target
         
         [SerializeField] private AudioClip hitSound;
         [SerializeField] private GameObject shatteredPrefab;
-        public bool isHit;
+        [SerializeField] private bool showTrail;
+        
+        public bool IsHit { get; set; }
 
+        public void Awake()
+        {
+            GetComponent<TrailRenderer>().enabled = showTrail;
+        }
+        
         private void Update()
         {
-            if (isHit)
+            if (IsHit)
             {
                 AudioSource.PlayClipAtPoint(hitSound, PlayerPosition);
                 SpawnShatteredObject();
