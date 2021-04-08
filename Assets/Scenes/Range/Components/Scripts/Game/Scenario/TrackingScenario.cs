@@ -6,6 +6,8 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
 {
     public class TrackingScenario : TrainingScenario
     {
+        [SerializeField] private bool useThreeDimensions;
+        
         public void Start()
         {
             MaxTargets = 1;
@@ -14,7 +16,11 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
         protected override GameObject SpawnTarget()
         {
             var target = Instantiate(TargetPrefab, GetSpawnPosition(), Quaternion.identity);
-            target.AddComponent<PathBehaviour>();
+            var behaviour = target.AddComponent<RandomWalkBehaviour>();
+            if (useThreeDimensions)
+            {
+                behaviour.UseThreeDimensions();
+            }
             return target;
         }
 
