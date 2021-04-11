@@ -1,5 +1,6 @@
 using System.Collections;
 using Scenes.Range.Components.Scripts.Controllers.Input;
+using Scenes.Range.Components.Scripts.Game.Target;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -34,7 +35,7 @@ namespace Scenes.Range.Components.Scripts.Weapon
         private bool _isAds;
         private bool _hasSoundPlayed;
 
-        private void Start()
+        public void Start()
         {
             _animator = GetComponent<Animator>();
             muzzleFlash.enabled = false;
@@ -42,7 +43,7 @@ namespace Scenes.Range.Components.Scripts.Weapon
             shootAudioSource.clip = shootSound;
         }
 
-        private void Update()
+        public void Update()
         {
             if (input.IsAds()) 
             {
@@ -57,6 +58,11 @@ namespace Scenes.Range.Components.Scripts.Weapon
             {
                 Fire();
             }
+        }
+
+        public void FixedUpdate()
+        {
+            CheckIfTargetHovered();
         }
 
         private void AimDownSight()
@@ -88,6 +94,28 @@ namespace Scenes.Range.Components.Scripts.Weapon
 
             DoMuzzleFlash();
             SpawnProjectile();
+        }
+
+        private void CheckIfTargetHovered()
+        {
+            var targetMask = 9; // TODO: const
+            var layerMask = 1 << targetMask;
+            
+            RaycastHit hit;
+            
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+            {
+                // TODO: Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+                var hoverBehaviour = hit.transform.gameObject.GetComponent<HoverBehaviour>();
+                if (hoverBehaviour != null)
+                {
+                    hoverBehaviour.IsHovered = true;
+                }
+            }
+            else
+            {
+                // TODO: Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+            }
         }
         
         private void DoMuzzleFlash()

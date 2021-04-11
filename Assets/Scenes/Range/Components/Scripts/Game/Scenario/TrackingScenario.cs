@@ -16,11 +16,15 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
         protected override GameObject SpawnTarget()
         {
             var target = Instantiate(TargetPrefab, GetSpawnPosition(), Quaternion.identity);
-            var behaviour = target.AddComponent<RandomWalkBehaviour>();
+
+            target.AddComponent<HoverBehaviour>();
+            var walkBehaviour = target.AddComponent<RandomWalkBehaviour>();
+            
             if (useThreeDimensions)
             {
-                behaviour.UseThreeDimensions();
+                walkBehaviour.UseThreeDimensions();
             }
+            
             return target;
         }
 

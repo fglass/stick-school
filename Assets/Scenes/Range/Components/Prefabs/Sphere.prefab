@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8385601801939877811}
   - component: {fileID: 6246314226173564542}
   - component: {fileID: 1877588606767675869}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Target
   m_Icon: {fileID: 0}
@@ -128,6 +128,8 @@ MonoBehaviour:
   hitSound: {fileID: 8300000, guid: 5d8c611aaaa757c46a904d8950f6d2a3, type: 3}
   shatteredPrefab: {fileID: 669601488770510698, guid: f60dac1a6b177694aa1e97374967efbb,
     type: 3}
+  defaultMaterial: {fileID: 2100000, guid: 4297f9938d73d734d9d329ba9c04a0c8, type: 2}
+  hoveredMaterial: {fileID: 2100000, guid: 64eaece03315c0e44a9dd17db411e7cf, type: 2}
   showTrail: 0
 --- !u!96 &1877588606767675869
 TrailRenderer:
@@ -148,7 +150,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4297f9938d73d734d9d329ba9c04a0c8, type: 2}
+  - {fileID: 2100000, guid: ed996bda8c867444f9953e090f37409b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -178,7 +180,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.36507988
+        value: 0.21613884
         inSlope: 0
         outSlope: 0
         tangentMode: 0

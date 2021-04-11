@@ -2394,7 +2394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 537064309}
   - component: {fileID: 537064308}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9532,7 +9532,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4225692008254310}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WeaponRoot
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -9549,7 +9549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4660888796433046}
   - component: {fileID: 20859264542836828}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -10035,7 +10035,7 @@ Transform:
   - {fileID: 4615454381523430}
   - {fileID: 4185470895204362}
   m_Father: {fileID: 4606825686514440}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4225692008254310
 Transform:
@@ -10048,6 +10048,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4660888796433046}
   - {fileID: 4729121664971682}
   - {fileID: 4888131938140684}
   m_Father: {fileID: 4523689763831188}
@@ -10275,7 +10276,6 @@ Transform:
   m_Children:
   - {fileID: 4394486850163790}
   - {fileID: 4023338518072610}
-  - {fileID: 4660888796433046}
   - {fileID: 4205878693336732}
   m_Father: {fileID: 4888131938140684}
   m_RootOrder: 0
@@ -10330,12 +10330,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640922860769168}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0.17866254, z: 1.0855755}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.08557546, z: -0.17866266}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4606825686514440}
-  m_RootOrder: 2
+  m_Father: {fileID: 4225692008254310}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4668617040872660
 Transform:
@@ -10395,7 +10395,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4225692008254310}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4730210823141348
 Transform:
@@ -10499,7 +10499,7 @@ Transform:
   - {fileID: 4606825686514440}
   - {fileID: 4588527057824154}
   m_Father: {fileID: 4225692008254310}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4911317752015790
 Transform:
@@ -10589,7 +10589,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 567
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -10637,7 +10637,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

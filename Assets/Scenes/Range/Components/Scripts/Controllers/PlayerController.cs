@@ -25,11 +25,11 @@ namespace Scenes.Range.Components.Scripts.Controllers
             _audioSource = GetComponent<AudioSource>();
             _audioSource.loop = true;
             
-            cameraTransform = AssignPlayerCamera();
+            cameraTransform = InitCamera();
             Cursor.lockState = CursorLockMode.Locked;
         }
 			
-        private Transform AssignPlayerCamera()
+        private Transform InitCamera()
         {
             var tf = transform;
 			cameraTransform.SetPositionAndRotation(tf.position, tf.rotation);
