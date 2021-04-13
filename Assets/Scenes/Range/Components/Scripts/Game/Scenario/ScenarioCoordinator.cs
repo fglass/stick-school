@@ -10,6 +10,7 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
         public void Start()
         {
             scenario.TargetPrefab = targetPrefab;
+            scenario.StartScenario();
         }
 
         public void Update()

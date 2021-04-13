@@ -1,16 +1,19 @@
 using Scenes.Range.Components.Scripts.Game.Target;
 using Scenes.Range.Components.Scripts.Game.Util;
+using Scenes.Range.Components.Scripts.Weapon;
 using UnityEngine;
 
 namespace Scenes.Range.Components.Scripts.Game.Scenario
 {
     public class TrackingScenario : TrainingScenario
     {
+        [SerializeField] private GameObject weapon;
         [SerializeField] private bool useThreeDimensions;
         
-        public void Start()
+        public override void StartScenario()
         {
             MaxTargets = 1;
+            weapon.GetComponent<WeaponScript>().CanFire = false;
         }
 
         protected override GameObject SpawnTarget()

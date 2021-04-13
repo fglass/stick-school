@@ -1,3 +1,4 @@
+// ReSharper disable HeuristicUnreachableCode
 using System.Collections;
 using Scenes.Range.Components.Scripts.Game.Util;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
         private const float MaxDuration = 1.5f;
         private bool _spawnInCenter = true;
 
-        public void Start()
+        public override void StartScenario()
         {
             MaxTargets = 1;
         }

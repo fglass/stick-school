@@ -29,11 +29,12 @@ namespace Scenes.Range.Components.Scripts.Weapon
         [SerializeField] private Transform casingSpawnPoint;
         [SerializeField] private Transform bulletSpawnPoint;
 
-        private Animator _animator;
         private static readonly int Aim = Animator.StringToHash("Aim");
-
+        private Animator _animator;
         private bool _isAds;
         private bool _hasSoundPlayed;
+
+        public bool CanFire { get; set; } = true;
 
         public void Start()
         {
@@ -54,7 +55,7 @@ namespace Scenes.Range.Components.Scripts.Weapon
                 ReleaseAim();
             }
             
-            if (input.IsFiring())
+            if (CanFire && input.IsFiring())
             {
                 Fire();
             }
