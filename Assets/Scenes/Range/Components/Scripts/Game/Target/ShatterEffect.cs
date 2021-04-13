@@ -12,7 +12,7 @@ namespace Scenes.Range.Components.Scripts.Game.Target
         private const float Duration = 0.2f;
         private IEnumerable<Material> _materials;
 
-        public void Start()
+        public void Awake()
         {
             Shatter();
             _materials = gameObject.GetComponentsInChildren<Renderer>().Select(fragment => fragment.material);
@@ -44,6 +44,14 @@ namespace Scenes.Range.Components.Scripts.Game.Target
             {
                 var colour = material.color;
                 colour.a -= OpacityDelta;
+                material.color = colour;
+            }
+        }
+        
+        public void SetColour(Color colour)
+        {
+            foreach (var material in _materials)
+            {
                 material.color = colour;
             }
         }

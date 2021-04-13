@@ -20,7 +20,7 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
         {
             var target = Instantiate(TargetPrefab, GetSpawnPosition(), Quaternion.identity);
 
-            target.AddComponent<HoverBehaviour>();
+            target.AddComponent<HealthBehaviour>();
             var walkBehaviour = target.AddComponent<RandomWalkBehaviour>();
             
             if (useThreeDimensions)

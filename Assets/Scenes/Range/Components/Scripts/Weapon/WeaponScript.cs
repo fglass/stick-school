@@ -107,10 +107,10 @@ namespace Scenes.Range.Components.Scripts.Weapon
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
             {
                 // TODO: Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-                var hoverBehaviour = hit.transform.gameObject.GetComponent<HoverBehaviour>();
-                if (hoverBehaviour != null)
+                var healthBehaviour = hit.transform.gameObject.GetComponent<HealthBehaviour>();
+                if (healthBehaviour != null)
                 {
-                    hoverBehaviour.IsHovered = true;
+                    healthBehaviour.IsHovered = true;
                 }
             }
             else

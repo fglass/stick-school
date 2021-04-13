@@ -8,11 +8,15 @@ namespace Scenes.Range.Components.Scripts.Game.Target
         [SerializeField] private AudioClip hitSound;
         [SerializeField] private GameObject shatteredPrefab;
         [SerializeField] private bool showTrail;
+        private Material _material;
+        private Color _initialColour;
 
         public bool IsHit { get; set; }
         
         public void Awake()
         {
+            _material = GetComponent<MeshRenderer>().material;
+            _initialColour = _material.color;
             GetComponent<TrailRenderer>().enabled = showTrail;
         }
         
@@ -34,7 +38,17 @@ namespace Scenes.Range.Components.Scripts.Game.Target
         private void SpawnShatteredObject()
         {
             var tf = transform;
-            Instantiate(shatteredPrefab, tf.position, tf.rotation);
+            var shatteredObject = Instantiate(shatteredPrefab, tf.position, tf.rotation);
+            TryUpdateColour(shatteredObject);
+        }
+
+        private void TryUpdateColour(GameObject shatteredObject)
+        {            
+            var targetColour = _material.color;
+            if (targetColour != _initialColour)
+            {
+                shatteredObject.GetComponent<ShatterEffect>().SetColour(targetColour);
+            }
         }
     }
 }
