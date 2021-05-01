@@ -4,10 +4,13 @@ namespace Scenes.Range.Components.Scripts.Game.Target
 {
     public class HealthBehaviour : MonoBehaviour
     {
+        private const string HoverSoundPath = "Audio/Impacts/ding";
+        private readonly Color _hoveredColour = new Color(0.04705881f, 0.6039216f, 0.1733971f);
+
         private TargetBehaviour _targetBehaviour;
+        private AudioSource _audioSource;
         private Material _material;
         private Color _defaultColour;
-        private readonly Color _hoveredColour = new Color(0.04705881f, 0.6039216f, 0.1733971f);
         private int _health = 75;
 
         public bool IsHovered { get; set; }
@@ -15,15 +18,30 @@ namespace Scenes.Range.Components.Scripts.Game.Target
         public void Awake()
         {
             _targetBehaviour = GetComponent<TargetBehaviour>();
+
+            _audioSource = GetComponent<AudioSource>();
+            _audioSource.clip = Resources.Load<AudioClip>(HoverSoundPath);
+            _audioSource.bypassReverbZones = true;
+            
             _material = GetComponent<MeshRenderer>().material;
             _defaultColour = _material.color;
         }
         
         public void FixedUpdate() // TODO: order guaranteed?
         {
+            TryPlaySound();
             TryDecrementHealth();
             TryChangeMaterialColour();
             CheckHealth();
+            IsHovered = false;
+        }
+
+        private void TryPlaySound()
+        {
+            if (IsHovered && !_audioSource.isPlaying)
+            {
+                _audioSource.Play();
+            }
         }
 
         private void TryDecrementHealth()
@@ -44,8 +62,6 @@ namespace Scenes.Range.Components.Scripts.Game.Target
             {
                 _material.color = _defaultColour;
             }
-            
-            IsHovered = false;
         }
 
         private void CheckHealth()
