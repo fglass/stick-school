@@ -38,7 +38,7 @@ namespace Scenes.Range.Components.Scripts.Game.Target
 
         private void TryPlaySound()
         {
-            if (IsHovered && !_audioSource.isPlaying)
+            if (IsHovered && !_audioSource.isPlaying )
             {
                 _audioSource.Play();
             }

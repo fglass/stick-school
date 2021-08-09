@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Scenes.Range.Components.Scripts.Projectile
+namespace Scenes.Range.Components.Scripts.Weapon.Projectile
 {
 	public class Casing : MonoBehaviour {
 

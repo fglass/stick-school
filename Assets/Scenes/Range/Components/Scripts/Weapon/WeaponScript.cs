@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Scenes.Range.Components.Scripts.Controllers.Input;
 using Scenes.Range.Components.Scripts.Game.Target;
@@ -15,21 +16,23 @@ namespace Scenes.Range.Components.Scripts.Weapon
         [SerializeField] private float bulletForce = 400;
 
         [SerializeField] private PlayerInput input;
-        [SerializeField] private Camera gunCamera;
+        [SerializeField] private Camera weaponCamera;
+        [SerializeField] private GameObject crosshair;
         [SerializeField] private Light muzzleFlash;
-        [SerializeField] private ParticleSystem muzzleParticles;
+        [SerializeField] private ParticleSystem muzzleParticleSystem;
+        
+        [SerializeField] private Transform projectilePrefab;
+        [SerializeField] private Transform casingPrefab;
+        [SerializeField] private Transform casingSpawn;
         
         [SerializeField] private AudioSource mainAudioSource;
         [SerializeField] private AudioSource shootAudioSource;
-        [SerializeField] private AudioClip aimSound;
-        [SerializeField] private AudioClip shootSound;
 
-        [SerializeField] private Transform bulletPrefab;
-        [SerializeField] private Transform casingPrefab;
-        [SerializeField] private Transform casingSpawnPoint;
-        [SerializeField] private Transform bulletSpawnPoint;
+        private const int TargetLayerMask = 1 << 9;
+        private const string AimFireAnimationId = "Aim Fire";
+        private const string FireAnimationId = "Fire";
+        private static readonly int AimAnimatorState = Animator.StringToHash("Aim");
 
-        private static readonly int Aim = Animator.StringToHash("Aim");
         private Animator _animator;
         private bool _isAds;
         private bool _hasSoundPlayed;
@@ -40,8 +43,6 @@ namespace Scenes.Range.Components.Scripts.Weapon
         {
             _animator = GetComponent<Animator>();
             muzzleFlash.enabled = false;
-            mainAudioSource.clip = aimSound;
-            shootAudioSource.clip = shootSound;
         }
 
         public void Update()
@@ -68,30 +69,38 @@ namespace Scenes.Range.Components.Scripts.Weapon
 
         private void AimDownSight()
         {
-            gunCamera.fieldOfView = Mathf.Lerp (gunCamera.fieldOfView, aimFov, fovSpeed * Time.deltaTime);
-            _animator.SetBool(Aim, true);
-            _isAds = true;
+            weaponCamera.fieldOfView = Mathf.Lerp (weaponCamera.fieldOfView, aimFov, fovSpeed * Time.deltaTime);
+        
+            if (Math.Abs(weaponCamera.fieldOfView - aimFov) < 1f)
+            {
+                crosshair.SetActive(false);
+            }
 
             if (!_hasSoundPlayed) 
             {
                 mainAudioSource.Play();
                 _hasSoundPlayed = true;
             }
+            
+            _animator.SetBool(AimAnimatorState, true);
+            _isAds = true;
         }
         
         private void ReleaseAim()
         {
-            gunCamera.fieldOfView = Mathf.Lerp(gunCamera.fieldOfView, defaultFov,fovSpeed * Time.deltaTime);
-            _animator.SetBool(Aim, false);
-            _isAds = false;
+            weaponCamera.fieldOfView = Mathf.Lerp(weaponCamera.fieldOfView, defaultFov,fovSpeed * Time.deltaTime);
+            crosshair.SetActive(true);
+            
+            _animator.SetBool(AimAnimatorState, false);
             _hasSoundPlayed = false;
+            _isAds = false;
         }
 
         private void Fire()
         {
-            _animator.Play("Fire", 0, 0f);
+            _animator.Play(_isAds ? AimFireAnimationId : FireAnimationId, 0, 0f);
             shootAudioSource.Play();
-            muzzleParticles.Emit(1);
+            muzzleParticleSystem.Emit(1);
 
             DoMuzzleFlash();
             SpawnProjectile();
@@ -99,14 +108,9 @@ namespace Scenes.Range.Components.Scripts.Weapon
 
         private void CheckIfTargetHovered()
         {
-            var targetMask = 9; // TODO: const
-            var layerMask = 1 << targetMask;
-            
-            RaycastHit hit;
-            
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, Mathf.Infinity, TargetLayerMask))
             {
-                // TODO: Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
                 var healthBehaviour = hit.transform.gameObject.GetComponent<HealthBehaviour>();
                 if (healthBehaviour != null)
                 {
@@ -115,15 +119,14 @@ namespace Scenes.Range.Components.Scripts.Weapon
             }
             else
             {
-                // TODO: Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
             }
         }
         
         private void DoMuzzleFlash()
         {
             StartCoroutine(MuzzleFlashLightRoutine());
-            _animator.Play(_isAds ? "Aim Fire" : "Fire", 0, 0f);
-            muzzleParticles.Emit (1);
+            muzzleParticleSystem.Emit (1);
         }
         
         private IEnumerator MuzzleFlashLightRoutine() 
@@ -135,11 +138,14 @@ namespace Scenes.Range.Components.Scripts.Weapon
 
         private void SpawnProjectile()
         {
-            var bulletTransform = bulletSpawnPoint.transform;
-            var bullet = Instantiate(bulletPrefab, bulletTransform.position, bulletTransform.rotation);
-            bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletForce;
+            var projectileTransform = transform;
+            var position = projectileTransform.TransformDirection(Vector3.forward);
+            position.y += 1.54f; // TODO: more robust solution
+            
+            var projectile = Instantiate(projectilePrefab, position, projectileTransform.rotation);
+            projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * bulletForce;
 
-            var casingTransform = casingSpawnPoint.transform;
+            var casingTransform = casingSpawn.transform;
             Instantiate(casingPrefab, casingTransform.position, casingTransform.rotation);
         }
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Scenes.Range.Components.Scripts.Weapon.Projectile
 {
-	public class MetalImpact : MonoBehaviour {
+	public class ProjectileImpact : MonoBehaviour {
 
 		[SerializeField] private AudioSource audioSource;
 		[SerializeField] private AudioClip[] impactSounds;
