@@ -29,6 +29,11 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
             
         }
 
+        public void EndScenario()
+        {
+            _activeTargets.ForEach(Destroy);
+        }
+
         private void RemoveDestroyedTargets()
         {
             _activeTargets.RemoveAll(target => target == null);

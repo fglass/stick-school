@@ -16,9 +16,9 @@ namespace Scenes.Range.Components.Scripts.Weapon
         [SerializeField] private float aimFov = 15.0f;
         [SerializeField] private float bulletForce = 400;
 
+        [SerializeField] private CanvasController canvasController;
         [SerializeField] private PlayerInput input;
         [SerializeField] private Camera weaponCamera;
-        [SerializeField] private CanvasController canvasController;
         [SerializeField] private Light muzzleFlash;
         [SerializeField] private ParticleSystem muzzleParticleSystem;
         

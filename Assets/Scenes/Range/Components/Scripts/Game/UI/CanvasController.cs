@@ -6,13 +6,15 @@ namespace Scenes.Range.Components.Scripts.Game.UI
 {
     public class CanvasController : MonoBehaviour
     {
-        private GameObject _crosshair;
         private TextMeshProUGUI _score;
+        private TextMeshProUGUI _timer;
+        private GameObject _crosshair;
 
         public void Start()
         {
-            _crosshair = transform.Find("Crosshair").gameObject;
             _score = transform.Find("Score").GetComponent<TextMeshProUGUI>();
+            _timer = transform.Find("Timer").GetComponent<TextMeshProUGUI>();
+            _crosshair = transform.Find("Crosshair").gameObject;
         }
 
         public void OnEnable()
@@ -28,18 +30,22 @@ namespace Scenes.Range.Components.Scripts.Game.UI
         private void IncrementScore()
         {
             var score = int.Parse(_score.text);
-            var newScore = score + 1;
-            SetScore(newScore);
+            SetScore(++score);
+        }
+        
+        public void SetScore(int score)
+        {
+            _score.text = score.ToString();
+        }
+        
+        public void SetTimer(int seconds)
+        {
+            _timer.text = $"{seconds / 60}:{seconds % 60:00}";
         }
 
         public void ToggleCrosshair(bool enable)
         {
             _crosshair.SetActive(enable);
-        }
-        
-        public void SetScore(int value)
-        {
-            _score.text = value.ToString();
         }
     }
 }
