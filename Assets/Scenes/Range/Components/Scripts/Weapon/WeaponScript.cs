@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Scenes.Range.Components.Scripts.Controllers.Input;
 using Scenes.Range.Components.Scripts.Game.Target;
+using Scenes.Range.Components.Scripts.Game.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,7 +18,7 @@ namespace Scenes.Range.Components.Scripts.Weapon
 
         [SerializeField] private PlayerInput input;
         [SerializeField] private Camera weaponCamera;
-        [SerializeField] private GameObject crosshair;
+        [SerializeField] private CanvasController canvasController;
         [SerializeField] private Light muzzleFlash;
         [SerializeField] private ParticleSystem muzzleParticleSystem;
         
@@ -73,7 +74,7 @@ namespace Scenes.Range.Components.Scripts.Weapon
         
             if (Math.Abs(weaponCamera.fieldOfView - aimFov) < 1f)
             {
-                crosshair.SetActive(false);
+                canvasController.ToggleCrosshair(false);
             }
 
             if (!_hasSoundPlayed) 
@@ -89,8 +90,8 @@ namespace Scenes.Range.Components.Scripts.Weapon
         private void ReleaseAim()
         {
             weaponCamera.fieldOfView = Mathf.Lerp(weaponCamera.fieldOfView, defaultFov,fovSpeed * Time.deltaTime);
-            crosshair.SetActive(true);
-            
+            canvasController.ToggleCrosshair(true);
+
             _animator.SetBool(AimAnimatorState, false);
             _hasSoundPlayed = false;
             _isAds = false;

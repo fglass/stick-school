@@ -1,3 +1,5 @@
+using System;
+using Scenes.Range.Components.Scripts.Game.Event;
 using UnityEngine;
 
 namespace Scenes.Range.Components.Scripts.Game.Target
@@ -30,6 +32,7 @@ namespace Scenes.Range.Components.Scripts.Game.Target
 
         private void OnHit()
         {
+            EventManager.OnHitTarget();
             AudioSource.PlayClipAtPoint(hitSound, PlayerPosition);
             SpawnShatteredObject();
             Destroy(gameObject);
