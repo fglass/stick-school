@@ -1,8 +1,8 @@
-﻿using Scenes.Range.Components.Scripts.Controllers.Input;
+﻿using Scenes.Range.Components.Scripts.Controller.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Scenes.Range.Components.Scripts.Controllers
+namespace Scenes.Range.Components.Scripts.Controller
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(CapsuleCollider))]

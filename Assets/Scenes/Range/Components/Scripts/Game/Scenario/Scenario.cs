@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Scenes.Range.Components.Scripts.Game.Scenario
 {
-    public abstract class TrainingScenario : MonoBehaviour
+    public abstract class Scenario : MonoBehaviour
     {
         protected const float MaxX = 6.75f;
         protected const float MaxY = 5f;

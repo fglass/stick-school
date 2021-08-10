@@ -1,5 +1,3 @@
-using System;
-using Scenes.Range.Components.Scripts.Game.Event;
 using UnityEngine;
 
 namespace Scenes.Range.Components.Scripts.Game.Target
@@ -17,9 +15,9 @@ namespace Scenes.Range.Components.Scripts.Game.Target
         
         public void Awake()
         {
+            GetComponent<TrailRenderer>().enabled = showTrail;
             _material = GetComponent<MeshRenderer>().material;
             _initialColour = _material.color;
-            GetComponent<TrailRenderer>().enabled = showTrail;
         }
         
         public void Update()
@@ -32,7 +30,6 @@ namespace Scenes.Range.Components.Scripts.Game.Target
 
         private void OnHit()
         {
-            EventManager.OnHitTarget();
             AudioSource.PlayClipAtPoint(hitSound, PlayerPosition);
             SpawnShatteredObject();
             Destroy(gameObject);

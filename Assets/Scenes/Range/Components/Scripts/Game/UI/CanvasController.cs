@@ -1,4 +1,3 @@
-using Scenes.Range.Components.Scripts.Game.Event;
 using TMPro;
 using UnityEngine;
 
@@ -6,41 +5,32 @@ namespace Scenes.Range.Components.Scripts.Game.UI
 {
     public class CanvasController : MonoBehaviour
     {
-        private TextMeshProUGUI _score;
-        private TextMeshProUGUI _timer;
+        private TextMeshProUGUI _scoreText;
+        private TextMeshProUGUI _timerText;
+        private TextMeshProUGUI _accuracyText;
         private GameObject _crosshair;
 
         public void Start()
         {
-            _score = transform.Find("Score").GetComponent<TextMeshProUGUI>();
-            _timer = transform.Find("Timer").GetComponent<TextMeshProUGUI>();
+            _scoreText = transform.Find("Score").GetComponent<TextMeshProUGUI>();
+            _timerText = transform.Find("Timer").GetComponent<TextMeshProUGUI>();
+            _accuracyText = transform.Find("Accuracy").GetComponent<TextMeshProUGUI>();
             _crosshair = transform.Find("Crosshair").gameObject;
         }
 
-        public void OnEnable()
-        {
-            EventManager.OnTargetHit += IncrementScore;
-        }
-
-        public void OnDisable()
-        {
-            EventManager.OnTargetHit -= IncrementScore;
-        }
-        
-        private void IncrementScore()
-        {
-            var score = int.Parse(_score.text);
-            SetScore(++score);
-        }
-        
         public void SetScore(int score)
         {
-            _score.text = score.ToString();
+            _scoreText.text = score.ToString();
         }
         
         public void SetTimer(int seconds)
         {
-            _timer.text = $"{seconds / 60}:{seconds % 60:00}";
+            _timerText.text = $"{seconds / 60}:{seconds % 60:00}";
+        }
+
+        public void SetAccuracy(int accuracy)
+        {
+            _accuracyText.text = $"{accuracy}%";
         }
 
         public void ToggleCrosshair(bool enable)

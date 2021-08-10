@@ -5,10 +5,10 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
-namespace Scenes.Range.Components.Scripts.Game.Scenario
+namespace Scenes.Range.Components.Scripts.Game.Scenario.Impl
 {
     #pragma warning disable 162
-    public class FlickScenario : TrainingScenario
+    public class FlickScenario : Scenario
     {
         private const bool DebugMode = false;
         private const float MinDuration = 0.5f;

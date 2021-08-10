@@ -3,9 +3,9 @@ using Scenes.Range.Components.Scripts.Game.Util;
 using Scenes.Range.Components.Scripts.Weapon;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Game.Scenario
+namespace Scenes.Range.Components.Scripts.Game.Scenario.Impl
 {
-    public class TrackingScenario : TrainingScenario
+    public class TrackingScenario : Scenario
     {
         [SerializeField] private GameObject weapon;
         [SerializeField] private bool useThreeDimensions;

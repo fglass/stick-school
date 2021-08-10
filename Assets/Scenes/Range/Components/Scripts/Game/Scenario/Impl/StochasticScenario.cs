@@ -1,9 +1,9 @@
 using Scenes.Range.Components.Scripts.Game.Util;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Game.Scenario
+namespace Scenes.Range.Components.Scripts.Game.Scenario.Impl
 {
-    public class StochasticScenario : TrainingScenario
+    public class StochasticScenario : Scenario
     {
         public override void StartScenario()
         {

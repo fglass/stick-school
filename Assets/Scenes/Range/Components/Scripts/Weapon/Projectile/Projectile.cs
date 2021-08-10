@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Scenes.Range.Components.Scripts.Game.Event;
 using Scenes.Range.Components.Scripts.Game.Target;
 using UnityEngine;
 
@@ -8,8 +9,8 @@ namespace Scenes.Range.Components.Scripts.Weapon.Projectile
 
 		[SerializeField] private Transform metalImpactPrefab;
 		private const float DurationS = 8.0f;
+		private const string TargetTag = "Target";
 		private const string MetalTag = "Metal";
-		private const string TargetTag = "Target";		
 
 		public void Start() 
 		{
@@ -19,16 +20,18 @@ namespace Scenes.Range.Components.Scripts.Weapon.Projectile
 		public void OnCollisionEnter(Collision collision) 
 		{
 			Destroy(gameObject);
-
+			
 			var tf = collision.transform;
-
-			if (tf.CompareTag(MetalTag)) 
-			{
-				InstantiateImpactPrefab(collision);
-			}
-			else if (tf.CompareTag(TargetTag)) 
+			
+			if (tf.CompareTag(TargetTag))
 			{
 				tf.gameObject.GetComponent<TargetBehaviour>().IsHit = true;
+				EventBus.PublishTargetHit();
+			}
+			else if (tf.CompareTag(MetalTag)) 
+			{
+				InstantiateImpactPrefab(collision);
+				EventBus.PublishTargetMiss();
 			}
 		}
 		
