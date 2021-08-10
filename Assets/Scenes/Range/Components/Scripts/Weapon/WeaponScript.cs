@@ -16,7 +16,7 @@ namespace Scenes.Range.Components.Scripts.Weapon
         [SerializeField] private float aimFov = 15.0f;
         [SerializeField] private float bulletForce = 400;
 
-        [SerializeField] private CanvasController canvasController;
+        [SerializeField] private Hud hud;
         [SerializeField] private PlayerInput input;
         [SerializeField] private Camera weaponCamera;
         [SerializeField] private Light muzzleFlash;
@@ -74,7 +74,7 @@ namespace Scenes.Range.Components.Scripts.Weapon
         
             if (Math.Abs(weaponCamera.fieldOfView - aimFov) < 1f)
             {
-                canvasController.ToggleCrosshair(false);
+                hud.ToggleCrosshair(false);
             }
 
             if (!_hasSoundPlayed) 
@@ -90,7 +90,7 @@ namespace Scenes.Range.Components.Scripts.Weapon
         private void ReleaseAim()
         {
             weaponCamera.fieldOfView = Mathf.Lerp(weaponCamera.fieldOfView, defaultFov,fovSpeed * Time.deltaTime);
-            canvasController.ToggleCrosshair(true);
+            hud.ToggleCrosshair(true);
 
             _animator.SetBool(AimAnimatorState, false);
             _hasSoundPlayed = false;

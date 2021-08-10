@@ -1,4 +1,5 @@
 ﻿using Scenes.Range.Components.Scripts.Controller.Input;
+using Scenes.Range.Components.Scripts.Game.Event;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,11 +14,28 @@ namespace Scenes.Range.Components.Scripts.Controller
         [SerializeField] private PlayerInput input;
         [SerializeField, Range(0, 20)] private float sensitivity = 0.05f;
 
+        private bool _playing;
         private Rigidbody _rigidbody;
         private AudioSource _audioSource;
         private float _verticalCameraAngle;
 
-        private void Start()
+        public void OnEnable()
+        {
+            EventBus.OnPlay += OnPlay;
+        }
+
+        public void OnDisable()
+        {
+            EventBus.OnPlay -= OnPlay;
+        }
+
+        private void OnPlay()
+        {
+            _playing = true;
+            transform.Find("WeaponRoot").Find("Weapon").gameObject.SetActive(true);
+        }
+
+        public void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
@@ -26,7 +44,6 @@ namespace Scenes.Range.Components.Scripts.Controller
             _audioSource.loop = true;
             
             cameraTransform = InitCamera();
-            Cursor.lockState = CursorLockMode.Locked;
         }
 			
         private Transform InitCamera()
@@ -38,7 +55,10 @@ namespace Scenes.Range.Components.Scripts.Controller
 
         private void Update()
         {
-            Rotate();
+            if (_playing)
+            {
+                Rotate();
+            }
         }
         
         private void Rotate()

@@ -3,19 +3,24 @@ using UnityEngine;
 
 namespace Scenes.Range.Components.Scripts.Game.UI
 {
-    public class CanvasController : MonoBehaviour
+    public class Hud : MonoBehaviour
     {
         private TextMeshProUGUI _scoreText;
         private TextMeshProUGUI _timerText;
         private TextMeshProUGUI _accuracyText;
         private GameObject _crosshair;
 
-        public void Start()
+        public void Awake()
         {
             _scoreText = transform.Find("Score").GetComponent<TextMeshProUGUI>();
             _timerText = transform.Find("Timer").GetComponent<TextMeshProUGUI>();
             _accuracyText = transform.Find("Accuracy").GetComponent<TextMeshProUGUI>();
             _crosshair = transform.Find("Crosshair").gameObject;
+        }
+
+        public void Show()
+        {
+            gameObject.SetActive(true);
         }
 
         public void SetScore(int score)

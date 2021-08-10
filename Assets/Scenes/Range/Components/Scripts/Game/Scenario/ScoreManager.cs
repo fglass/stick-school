@@ -3,16 +3,16 @@ using Scenes.Range.Components.Scripts.Game.UI;
 
 namespace Scenes.Range.Components.Scripts.Game.Scenario
 {
-    public class ScoreController
+    public class ScoreManager
     {
-        private readonly CanvasController _canvasController;
+        private readonly Hud _hud;
         private int _score;
         private int _hitShots;
         private int _missedShots;
         
-        public ScoreController(CanvasController canvasController)
+        public ScoreManager(Hud hud)
         {
-            _canvasController = canvasController;
+            _hud = hud;
             EventBus.OnTargetHit += OnTargetHit;
             EventBus.OnTargetMiss += OnTargetMiss;
         }
@@ -20,14 +20,14 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
         private void OnTargetHit()
         {
             _hitShots++;
-            _canvasController.SetAccuracy(CalculateAccuracy());
-            _canvasController.SetScore(++_score);
+            _hud.SetAccuracy(CalculateAccuracy());
+            _hud.SetScore(++_score);
         }
 
         private void OnTargetMiss()
         {
             _missedShots++;
-            _canvasController.SetAccuracy(CalculateAccuracy());
+            _hud.SetAccuracy(CalculateAccuracy());
         }
 
         private int CalculateAccuracy()
