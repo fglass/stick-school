@@ -41,6 +41,7 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
 
         private void OnStop()
         {
+            scenario.EndScenario();
             hud.Toggle(false);
             _scoreManager.Reset();
             _playing = false;
