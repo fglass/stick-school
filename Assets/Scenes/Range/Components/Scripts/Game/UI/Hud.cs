@@ -5,6 +5,7 @@ namespace Scenes.Range.Components.Scripts.Game.UI
 {
     public class Hud : MonoBehaviour
     {
+        private Transform _canvas;
         private TextMeshProUGUI _scoreText;
         private TextMeshProUGUI _timerText;
         private TextMeshProUGUI _accuracyText;
@@ -12,15 +13,16 @@ namespace Scenes.Range.Components.Scripts.Game.UI
 
         public void Awake()
         {
-            _scoreText = transform.Find("Score").GetComponent<TextMeshProUGUI>();
-            _timerText = transform.Find("Timer").GetComponent<TextMeshProUGUI>();
-            _accuracyText = transform.Find("Accuracy").GetComponent<TextMeshProUGUI>();
-            _crosshair = transform.Find("Crosshair").gameObject;
+            _canvas = transform.Find("HUD");
+            _scoreText = _canvas.Find("Score").GetComponent<TextMeshProUGUI>();
+            _timerText = _canvas.Find("Timer").GetComponent<TextMeshProUGUI>();
+            _accuracyText = _canvas.Find("Accuracy").GetComponent<TextMeshProUGUI>();
+            _crosshair = _canvas.Find("Crosshair").gameObject;
         }
 
-        public void Show()
+        public void Toggle(bool enable)
         {
-            gameObject.SetActive(true);
+            _canvas.gameObject.SetActive(enable);
         }
 
         public void SetScore(int score)

@@ -18,16 +18,18 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
         public void OnEnable()
         {
             EventBus.OnPlay += OnPlay;
+            EventBus.OnStop += OnStop;
         }
         
         public void OnDisable()
         {
             EventBus.OnPlay -= OnPlay;
+            EventBus.OnStop -= OnStop;
         }
 
         private void OnPlay()
         {
-            hud.Show();
+            hud.Toggle(true);
             _scoreManager = new ScoreManager(hud);
 
             scenario.TargetPrefab = targetPrefab;
@@ -35,6 +37,13 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
             
             _timer = DefaultDurationS;
             _playing = true;
+        }
+
+        private void OnStop()
+        {
+            hud.Toggle(false);
+            _scoreManager.Reset();
+            _playing = false;
         }
 
         public void Update()
@@ -49,7 +58,6 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
             if (_timer <= 0)
             {
                 scenario.EndScenario();
-                _scoreManager.Reset();
             }
             else
             {

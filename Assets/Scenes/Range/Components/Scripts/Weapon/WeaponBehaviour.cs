@@ -4,11 +4,10 @@ using Scenes.Range.Components.Scripts.Controller.Input;
 using Scenes.Range.Components.Scripts.Game.Target;
 using Scenes.Range.Components.Scripts.Game.UI;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Scenes.Range.Components.Scripts.Weapon
 {
-    public class WeaponScript : MonoBehaviour
+    public class WeaponBehaviour : MonoBehaviour
     {
         [SerializeField] private float lightDuration = 0.02f;
         [SerializeField] private float fovSpeed = 15.0f;
@@ -17,7 +16,6 @@ namespace Scenes.Range.Components.Scripts.Weapon
         [SerializeField] private float bulletForce = 400;
 
         [SerializeField] private Hud hud;
-        [SerializeField] private PlayerInput input;
         [SerializeField] private Camera weaponCamera;
         [SerializeField] private Light muzzleFlash;
         [SerializeField] private ParticleSystem muzzleParticleSystem;
@@ -48,7 +46,7 @@ namespace Scenes.Range.Components.Scripts.Weapon
 
         public void Update()
         {
-            if (input.IsAds()) 
+            if (InputManager.IsAds()) 
             {
                 AimDownSight();
             }
@@ -57,7 +55,7 @@ namespace Scenes.Range.Components.Scripts.Weapon
                 ReleaseAim();
             }
             
-            if (CanFire && input.IsFiring())
+            if (CanFire && InputManager.IsFiring())
             {
                 Fire();
             }

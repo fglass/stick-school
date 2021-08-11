@@ -13,7 +13,7 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario.Impl
         public override void StartScenario()
         {
             MaxTargets = 1;
-            weapon.GetComponent<WeaponScript>().CanFire = false;
+            weapon.GetComponent<WeaponBehaviour>().CanFire = false;
         }
 
         protected override GameObject SpawnTarget()

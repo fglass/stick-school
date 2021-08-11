@@ -5,30 +5,37 @@ namespace Scenes.Range.Components.Scripts.Controller.Input
 {
     public static class InputManager
     {
-        private static readonly PlayerInputActions InputActions = new PlayerInputActions();
-        private static readonly string CameraAction = InputActions.Player.Camera.name;
-        private static readonly string FireAction = InputActions.Player.Fire.name;
-        private static readonly string AdsAction = InputActions.Player.Ads.name;
-        private static readonly string ControllerControlScheme = InputActions.ControllerControlSchemeScheme.name;
+        private static readonly InputActions Actions = new InputActions();
 
-        public static Vector2 GetRotationDelta(this PlayerInput input)
+        static InputManager()
         {
-            return input.actions[CameraAction].ReadValue<Vector2>();
+            Actions.Gameplay.Enable();
+            Actions.UI.Enable();
         }
         
-        public static bool IsFiring(this PlayerInput input)
+        public static Vector2 GetRotationDelta()
         {
-            return input.actions[FireAction].WasPressedThisFrame();
+            return Actions.Gameplay.Camera.ReadValue<Vector2>();
         }
         
-        public static bool IsAds(this PlayerInput input)
+        public static bool IsFiring()
         {
-            return input.actions[AdsAction].IsPressed();
+            return Actions.Gameplay.Fire.WasPressedThisFrame();
+        }
+        
+        public static bool IsAds()
+        {
+            return Actions.Gameplay.Ads.IsPressed();
+        }
+        
+        public static bool IsMenuPressed()
+        {
+            return Actions.UI.Menu.WasPressedThisFrame();
         }
 
-        public static bool IsUsingController(this PlayerInput input)
+        public static bool IsUsingController()
         {
-            return input.currentControlScheme.Equals(ControllerControlScheme);
+            return Gamepad.all.Count > 0;
         }
     }
 }

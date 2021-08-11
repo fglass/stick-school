@@ -1,8 +1,8 @@
 {
-    "name": "PlayerInputActions",
+    "name": "InputActions",
     "maps": [
         {
-            "name": "Player",
+            "name": "Gameplay",
             "id": "7da2f617-ebe0-4da0-9180-560887efc6fc",
             "actions": [
                 {
@@ -138,6 +138,44 @@
                     "processors": "",
                     "groups": "Mouse Control Scheme",
                     "action": "Camera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "a68e1231-fae9-4561-a645-32b6092cdf80",
+            "actions": [
+                {
+                    "name": "Menu",
+                    "type": "Button",
+                    "id": "9c74025c-0012-4657-9f8a-554c1e31e204",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2edaefec-2a0f-4ab6-95be-d02ef55e8ab9",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller Control Scheme",
+                    "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "435aa386-34e6-4f93-bae3-92526d7022a2",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse Control Scheme",
+                    "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
