@@ -1,12 +1,13 @@
 using Scenes.Range.Components.Scripts.Game.Util;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Game.Scenario.Impl
+namespace Game.Scenario.Impl
 {
     public class StochasticScenario : Scenario
     {
         public override void StartScenario()
         {
+            Name = "Stochastic Scenario";
             MaxTargets = 5;
         }
 

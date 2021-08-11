@@ -1,4 +1,4 @@
-using Scenes.Range.Components.Scripts.Game.Event;
+using Game.Event;
 using UnityEngine;
 
 namespace Scenes.Range.Components.Scripts.Game.UI

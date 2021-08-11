@@ -1,8 +1,8 @@
+using Game.Event;
 using Scenes.Range.Components.Scripts.Controller.Input;
-using Scenes.Range.Components.Scripts.Game.Event;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Game.UI
+namespace Game.UI
 {
     public class PauseMenu : MonoBehaviour
     {
@@ -18,7 +18,7 @@ namespace Scenes.Range.Components.Scripts.Game.UI
 
         public void Update()
         {
-            if (!InputManager.IsMenuPressed())
+            if (!InputManager.IsMenuPressed() || IsMainMenuOpen)
             {
                 return;
             }
@@ -44,14 +44,11 @@ namespace Scenes.Range.Components.Scripts.Game.UI
         
         private void Pause()
         {
-            if (!IsMainMenuOpen)
-            {
-                _paused = true;
-                _pauseMenuCanvas.gameObject.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
-                Time.timeScale = 0f;
-                EventBus.PublishPause();
-            }
+            _paused = true;
+            _pauseMenuCanvas.gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0f;
+            EventBus.PublishPause();
         }
 
         public void OnMenu()

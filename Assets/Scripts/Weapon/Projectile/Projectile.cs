@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Scenes.Range.Components.Scripts.Game.Event;
+using Game.Event;
 using Scenes.Range.Components.Scripts.Game.Target;
 using UnityEngine;
 

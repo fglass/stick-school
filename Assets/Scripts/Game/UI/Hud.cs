@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Game.UI
+namespace Game.UI
 {
     public class Hud : MonoBehaviour
     {

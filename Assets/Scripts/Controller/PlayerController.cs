@@ -1,9 +1,9 @@
-﻿using Scenes.Range.Components.Scripts.Controller.Input;
-using Scenes.Range.Components.Scripts.Game.Event;
+﻿using Game.Event;
+using Scenes.Range.Components.Scripts.Controller.Input;
 using Scenes.Range.Components.Scripts.Weapon;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Controller
+namespace Controller
 {
     public class PlayerController : MonoBehaviour
     {

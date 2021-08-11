@@ -1,22 +1,24 @@
-using Scenes.Range.Components.Scripts.Game.Event;
-using Scenes.Range.Components.Scripts.Game.UI;
+using Game.Event;
+using Game.UI;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Game.Scenario
+namespace Game.Scenario
 {
     public class ScenarioManager : MonoBehaviour
     {
         [SerializeField] private Hud hud;
+        [SerializeField] private ResultsModal resultsModal;
         [SerializeField] private Scenario scenario;
         [SerializeField] private GameObject targetPrefab;
 
-        private const int DefaultDurationS = 30;
+        private const int DefaultDurationS = 15;
         private ScoreManager _scoreManager;
         private bool _playing;
         private float _timer;
 
         public void OnEnable()
         {
+            _scoreManager = new ScoreManager(hud, resultsModal);
             EventBus.OnPlay += OnPlay;
             EventBus.OnStop += OnStop;
         }
@@ -26,11 +28,11 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
             EventBus.OnPlay -= OnPlay;
             EventBus.OnStop -= OnStop;
         }
-
+        
         private void OnPlay()
         {
             hud.Toggle(true);
-            _scoreManager = new ScoreManager(hud);
+            _scoreManager.Reset();
 
             scenario.TargetPrefab = targetPrefab;
             scenario.StartScenario();
@@ -43,8 +45,13 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
         {
             scenario.EndScenario();
             hud.Toggle(false);
-            _scoreManager.Reset();
             _playing = false;
+        }
+
+        private void Finish()
+        {
+            OnStop();
+            _scoreManager.DisplayResults(scenario.Name);
         }
 
         public void Update()
@@ -58,7 +65,7 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
 
             if (_timer <= 0)
             {
-                scenario.EndScenario();
+                Finish();
             }
             else
             {

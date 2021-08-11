@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Game.Scenario
+namespace Game.Scenario
 {
     public abstract class Scenario : MonoBehaviour
     {
@@ -10,6 +10,8 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario
         protected int MaxTargets = 5;
         protected readonly Vector3 CenterPosition = new Vector3(0f, 4.75f, 17f);
         private readonly List<GameObject> _activeTargets = new List<GameObject>();
+
+        public string Name { get; set; }
 
         public GameObject TargetPrefab { get; set; }
 

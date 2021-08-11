@@ -1,5 +1,5 @@
 
-namespace Scenes.Range.Components.Scripts.Game.Event
+namespace Game.Event
 {
     public static class EventBus
     {

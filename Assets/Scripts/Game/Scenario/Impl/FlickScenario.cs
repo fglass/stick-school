@@ -1,11 +1,12 @@
 // ReSharper disable HeuristicUnreachableCode
+
 using System.Collections;
 using Scenes.Range.Components.Scripts.Game.Util;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
-namespace Scenes.Range.Components.Scripts.Game.Scenario.Impl
+namespace Game.Scenario.Impl
 {
     #pragma warning disable 162
     public class FlickScenario : Scenario
@@ -17,6 +18,7 @@ namespace Scenes.Range.Components.Scripts.Game.Scenario.Impl
 
         public override void StartScenario()
         {
+            Name = "Flick Scenario";
             MaxTargets = 1;
         }
 
