@@ -6,16 +6,16 @@ namespace Game.Scenario
     public class StatsManager
     {
         private readonly Hud _hud;
-        private readonly ResultsModal _resultsModal;
+        private readonly ResultsPanel _resultsPanel;
         
         private int _score;
         private int _hitShots;
         private int _missedShots;
         
-        public StatsManager(Hud hud, ResultsModal resultsModal)
+        public StatsManager(Hud hud, ResultsPanel resultsPanel)
         {
             _hud = hud;
-            _resultsModal = resultsModal;
+            _resultsPanel = resultsPanel;
             EventBus.OnTargetHit += OnTargetHit;
             EventBus.OnTargetMiss += OnTargetMiss;
         }
@@ -50,7 +50,7 @@ namespace Game.Scenario
 
         public void DisplayResults(string scenarioName) 
         {
-            _resultsModal.Display(scenarioName, _score, _hitShots, _missedShots, CalculateAccuracy()); // TODO: DTO
+            _resultsPanel.Display(scenarioName, _score, _hitShots, _missedShots, CalculateAccuracy()); // TODO: DTO
         }
 
         public void Reset()

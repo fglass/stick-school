@@ -18,7 +18,7 @@ namespace Game.Scenario.Impl
 
         public override void StartScenario()
         {
-            Name = "Flick Scenario";
+            Name = "Flick";
             MaxTargets = 1;
         }
 

@@ -8,23 +8,22 @@ namespace Controller
         [SerializeField] private Transform cameraTransform;
         [SerializeField, Range(0, 20)] private float sensitivity = 0.05f;
 
-        public void Start()
+        public void Awake()
         {
-            InitCamera();
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
-			
-        private void InitCamera()
+        
+        public void ResetCameras()
         {
-            var tf = transform;
-			cameraTransform.SetPositionAndRotation(tf.position, tf.rotation);
+            transform.rotation = Quaternion.identity;
+            cameraTransform.rotation = Quaternion.identity;
         }
 
-        private void Update()
+        public void Update()
         {
             Rotate();
         }
-        
+
         private void Rotate()
         {
             var inputDelta = GetInputRotationDelta();

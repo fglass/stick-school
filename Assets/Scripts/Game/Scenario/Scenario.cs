@@ -11,7 +11,7 @@ namespace Game.Scenario
         protected readonly Vector3 CenterPosition = new Vector3(0f, 4.75f, 17f);
         private readonly List<GameObject> _activeTargets = new List<GameObject>();
 
-        public string Name { get; set; }
+        public string Name { get; protected set; }
 
         public GameObject TargetPrefab { get; set; }
 

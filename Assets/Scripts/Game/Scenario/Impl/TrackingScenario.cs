@@ -2,6 +2,7 @@ using Scenes.Range.Components.Scripts.Game.Target;
 using Scenes.Range.Components.Scripts.Game.Util;
 using Scenes.Range.Components.Scripts.Weapon;
 using UnityEngine;
+using Weapon;
 
 namespace Game.Scenario.Impl
 {
@@ -12,7 +13,7 @@ namespace Game.Scenario.Impl
         
         public override void StartScenario()
         {
-            Name = "Tracking Scenario";
+            Name = "Tracking";
             MaxTargets = 1;
             weapon.GetComponent<WeaponBehaviour>().CanFire = false;
         }

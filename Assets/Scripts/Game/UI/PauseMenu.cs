@@ -8,17 +8,19 @@ namespace Game.UI
     {
         private Transform _pauseMenuCanvas;
         private Transform _mainMenuCanvas;
+        private Transform _resultsPanelCanvas;
         private static bool _paused;
         
         public void Awake()
         {
             _pauseMenuCanvas = transform.Find("PauseMenu");
             _mainMenuCanvas = transform.Find("MainMenu");
+            _resultsPanelCanvas = transform.Find("ResultsPanel");
         }
 
         public void Update()
         {
-            if (!InputManager.IsMenuPressed() || IsMainMenuOpen)
+            if (!InputManager.IsMenuPressed() || IsInterfaceOpen)
             {
                 return;
             }
@@ -37,8 +39,6 @@ namespace Game.UI
         {
             _paused = false;
             _pauseMenuCanvas.gameObject.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Time.timeScale = 1f;
             EventBus.PublishResume();
         }
         
@@ -46,8 +46,6 @@ namespace Game.UI
         {
             _paused = true;
             _pauseMenuCanvas.gameObject.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 0f;
             EventBus.PublishPause();
         }
 
@@ -56,7 +54,6 @@ namespace Game.UI
             _paused = false;
             _pauseMenuCanvas.gameObject.SetActive(false);
             _mainMenuCanvas.gameObject.SetActive(true);
-            Time.timeScale = 1f;
             EventBus.PublishStop();
         }
 
@@ -65,6 +62,6 @@ namespace Game.UI
             Application.Quit();
         }
 
-        private bool IsMainMenuOpen => _mainMenuCanvas.gameObject.activeSelf;
+        private bool IsInterfaceOpen => _mainMenuCanvas.gameObject.activeSelf || _resultsPanelCanvas.gameObject.activeSelf; // TODO: rework
     }
 }

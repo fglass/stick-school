@@ -1,3 +1,4 @@
+using Controller;
 using Game.Event;
 using Game.UI;
 using UnityEngine;
@@ -6,20 +7,23 @@ namespace Game.Scenario
 {
     public class ScenarioManager : MonoBehaviour
     {
+        private const int ScenarioDurationS = 5;
+        private const int CameraResetSpeed = 4;
+        
         [SerializeField] private GameObject player;
+        [SerializeField] private Transform cameraTransform;
         [SerializeField] private Hud hud;
-        [SerializeField] private ResultsModal resultsModal;
+        [SerializeField] private ResultsPanel resultsPanel;
         [SerializeField] private Scenario scenario;
         [SerializeField] private GameObject targetPrefab;
-
-        private const int DefaultDurationS = 15;
+        
         private StatsManager _statsManager;
         private bool _playing;
         private float _timer;
 
         public void OnEnable()
         {
-            _statsManager = new StatsManager(hud, resultsModal);
+            _statsManager = new StatsManager(hud, resultsPanel);
             EventBus.OnPlay += OnPlay;
             EventBus.OnPause += OnPause;
             EventBus.OnResume += OnResume;
@@ -38,9 +42,12 @@ namespace Game.Scenario
         {
             _statsManager.Reset();
             hud.Toggle(true);
+
+            Cursor.lockState = CursorLockMode.Locked;
+            player.GetComponent<PlayerController>().ResetCameras();
             player.SetActive(true);
 
-            _timer = DefaultDurationS;
+            _timer = ScenarioDurationS;
             scenario.TargetPrefab = targetPrefab;
             scenario.StartScenario();
 
@@ -49,25 +56,31 @@ namespace Game.Scenario
 
         private void OnPause()
         {
+            Time.timeScale = 0f;
             player.SetActive(false);
+            Cursor.lockState = CursorLockMode.None;
         }
         
         private void OnResume()
         {
+            Time.timeScale = 1f;
             player.SetActive(true);
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void OnStop()
         {
+            Time.timeScale = 1f;
             player.SetActive(false);
-            scenario.EndScenario();
             hud.Toggle(false);
+            scenario.EndScenario();
             _playing = false;
         }
 
         private void Finish()
         {
             OnStop();
+            Cursor.lockState = CursorLockMode.None;
             _statsManager.DisplayResults(scenario.Name);
         }
 
@@ -75,6 +88,7 @@ namespace Game.Scenario
         {
             if (!_playing)
             {
+                CenterCamera();
                 return;
             }
             
@@ -97,6 +111,18 @@ namespace Game.Scenario
             if (_playing)
             {
                 scenario.FixedUpdateScenario();
+            }
+        }
+
+        private void CenterCamera()
+        {
+            if (Quaternion.Angle(cameraTransform.rotation, Quaternion.identity) > 0.01f)
+            {
+                cameraTransform.rotation =  Quaternion.Slerp(
+                    cameraTransform.rotation, 
+                    Quaternion.identity, 
+                    CameraResetSpeed *  Time.deltaTime
+                );
             }
         }
     }

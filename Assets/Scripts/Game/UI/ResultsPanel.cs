@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.UI
 {
-    public class ResultsModal : MonoBehaviour
+    public class ResultsPanel : MonoBehaviour
     {
         private Transform _modalCanvas;
         private Transform _mainMenuCanvas;
@@ -14,7 +14,7 @@ namespace Game.UI
         
         public void Awake()
         {
-            _modalCanvas = transform.Find("ResultsModal");
+            _modalCanvas = transform.Find("ResultsPanel");
             _mainMenuCanvas = transform.Find("MainMenu");
             
             var panel = _modalCanvas.Find("Panel");
@@ -25,12 +25,11 @@ namespace Game.UI
 
         public void Display(string scenarioName, int score, int hitShots, int missedShots, int accuracy)
         {
-            _scenarioName.text = scenarioName;
+            _scenarioName.text = $"{scenarioName} Scenario";
             _scoreField.text = score.ToString();
             _accuracyField.text = $"{hitShots}/{hitShots + missedShots} ({accuracy}%)";
             _modalCanvas.gameObject.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
-            EventBus.PublishPause(); // TODO: change?
         }
 
         public void OnRestart()

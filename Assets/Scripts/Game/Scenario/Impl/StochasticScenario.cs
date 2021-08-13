@@ -7,7 +7,7 @@ namespace Game.Scenario.Impl
     {
         public override void StartScenario()
         {
-            Name = "Stochastic Scenario";
+            Name = "Stochastic";
             MaxTargets = 5;
         }
 

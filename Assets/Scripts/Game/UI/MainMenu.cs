@@ -1,20 +1,26 @@
 using Game.Event;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Game.UI
+namespace Game.UI
 {
     public class MainMenu : MonoBehaviour
     {
+        private GameObject _mainMenu;
+
+        public void Awake()
+        {
+            _mainMenu = transform.Find("MainMenu").gameObject;
+        }
+
         public void OnPlay()
         {
-            transform.Find("MainMenu").gameObject.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
+            _mainMenu.SetActive(false);
             EventBus.PublishPlay();
         }
 
         public void OnSettings()
         {
-            Debug.Log("Settings");
+            Debug.Log("Open settings");
         }
 
         public void OnQuit()

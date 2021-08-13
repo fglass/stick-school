@@ -804,7 +804,7 @@ GameObject:
   - component: {fileID: 68589442}
   - component: {fileID: 68589441}
   m_Layer: 5
-  m_Name: ResultsModal
+  m_Name: ResultsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1775,8 +1775,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1273766503718514}
+  cameraTransform: {fileID: 4660888796433046}
   hud: {fileID: 1067309434}
-  resultsModal: {fileID: 1067309437}
+  resultsPanel: {fileID: 1067309437}
   scenario: {fileID: 292607904}
   targetPrefab: {fileID: 4445158436245017880, guid: 1099fe9633e7e494cab5cda167997df9,
     type: 3}
@@ -7187,7 +7188,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 105}
   m_SizeDelta: {x: 832.57544, y: 398.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1012481612
@@ -13542,8 +13543,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4729121664971682}
   - component: {fileID: 20338764291451304}
-  - component: {fileID: 81077182230894742}
-  - component: {fileID: 167991129837328636}
   - component: {fileID: 1050016178597091}
   m_Layer: 8
   m_Name: WeaponCamera
@@ -13675,7 +13674,6 @@ GameObject:
   - component: {fileID: 4523689763831188}
   - component: {fileID: 54975389729793344}
   - component: {fileID: 136351757417321786}
-  - component: {fileID: 82766376373920650}
   - component: {fileID: 114352006042335988}
   m_Layer: 8
   m_Name: PlayerController
@@ -13873,6 +13871,8 @@ GameObject:
   - component: {fileID: 4660888796433046}
   - component: {fileID: 20859264542836828}
   - component: {fileID: 1640922860769169}
+  - component: {fileID: 1640922860769171}
+  - component: {fileID: 1640922860769170}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -13911,6 +13911,38 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!167 &1640922860769170
+AudioReverbZone:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640922860769168}
+  m_Enabled: 1
+  m_MinDistance: 10
+  m_MaxDistance: 15
+  m_ReverbPreset: 20
+  m_Room: -1000
+  m_RoomHF: -2000
+  m_DecayTime: 1.49
+  m_DecayHFRatio: 0.5
+  m_Reflections: -2466
+  m_ReflectionsDelay: 0.179
+  m_Reverb: -1926
+  m_ReverbDelay: 0.1
+  m_HFReference: 5000
+  m_Diffusion: 21
+  m_Density: 100
+  m_LFReference: 250
+  m_RoomLF: 0
+--- !u!81 &1640922860769171
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640922860769168}
+  m_Enabled: 1
 --- !u!1 &1650488809286534
 GameObject:
   m_ObjectHideFlags: 0
@@ -14938,14 +14970,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!81 &81077182230894742
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050016178597090}
-  m_Enabled: 1
 --- !u!82 &82168096969231964
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15138,102 +15162,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!82 &82766376373920650
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273766503718514}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!95 &95818704114431520
 Animator:
   serializedVersion: 3
@@ -15678,30 +15606,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.06369548, y: 0.38382998, z: 0.36615363}
     m_Extent: {x: 0.053284846, y: 0.07581586, z: 0.050381064}
   m_DirtyAABB: 0
---- !u!167 &167991129837328636
-AudioReverbZone:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050016178597090}
-  m_Enabled: 1
-  m_MinDistance: 10
-  m_MaxDistance: 15
-  m_ReverbPreset: 20
-  m_Room: -1000
-  m_RoomHF: -2000
-  m_DecayTime: 1.49
-  m_DecayHFRatio: 0.5
-  m_Reflections: -2466
-  m_ReflectionsDelay: 0.179
-  m_Reverb: -1926
-  m_ReverbDelay: 0.1
-  m_HFReference: 5000
-  m_Diffusion: 21
-  m_Density: 100
-  m_LFReference: 250
-  m_RoomLF: 0
 --- !u!198 &198674678486220166
 ParticleSystem:
   m_ObjectHideFlags: 0
