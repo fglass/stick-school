@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Scenes.Range.Components.Scripts.Controller.Input
+namespace Controller.Input
 {
     public static class InputManager
     {

@@ -25,11 +25,11 @@ namespace Game.UI
 
         public void Display(string scenarioName, int score, int hitShots, int missedShots, int accuracy)
         {
-            Cursor.lockState = CursorLockMode.None;
-            _modalCanvas.gameObject.SetActive(true);
             _scenarioName.text = scenarioName;
             _scoreField.text = score.ToString();
             _accuracyField.text = $"{hitShots}/{hitShots + missedShots} ({accuracy}%)";
+            _modalCanvas.gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
             EventBus.PublishPause(); // TODO: change?
         }
 

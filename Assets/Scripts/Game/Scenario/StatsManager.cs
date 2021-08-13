@@ -3,15 +3,16 @@ using Game.UI;
 
 namespace Game.Scenario
 {
-    public class ScoreManager
+    public class StatsManager
     {
         private readonly Hud _hud;
         private readonly ResultsModal _resultsModal;
+        
         private int _score;
         private int _hitShots;
         private int _missedShots;
         
-        public ScoreManager(Hud hud, ResultsModal resultsModal)
+        public StatsManager(Hud hud, ResultsModal resultsModal)
         {
             _hud = hud;
             _resultsModal = resultsModal;
@@ -21,11 +22,11 @@ namespace Game.Scenario
 
         private void OnTargetHit()
         {
-            _hitShots++;
             _score += 100;
+            _hitShots++;
             
-            _hud.SetAccuracy(CalculateAccuracy());
             _hud.SetScore(_score);
+            _hud.SetAccuracy(CalculateAccuracy());
         }
 
         private void OnTargetMiss()
@@ -37,13 +38,19 @@ namespace Game.Scenario
         private int CalculateAccuracy()
         {
             float totalShots = _hitShots + _missedShots;
+
+            if (totalShots <= 0)
+            {
+                return 0;
+            }
+            
             var accuracy = _hitShots / totalShots * 100;
             return (int) accuracy;
         }
 
-        public void DisplayResults(string scenarioName)
+        public void DisplayResults(string scenarioName) 
         {
-            _resultsModal.Display(scenarioName, _score, _hitShots, _missedShots, CalculateAccuracy());
+            _resultsModal.Display(scenarioName, _score, _hitShots, _missedShots, CalculateAccuracy()); // TODO: DTO
         }
 
         public void Reset()

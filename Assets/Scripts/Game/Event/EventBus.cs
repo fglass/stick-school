@@ -11,34 +11,16 @@ namespace Game.Event
         public static event GameAction OnTargetHit;
         public static event GameAction OnTargetMiss;
 
-        public static void PublishPlay()
-        {
-            OnPlay?.Invoke();
-        }
+        public static void PublishPlay() => OnPlay?.Invoke();
 
-        public static void PublishStop()
-        {
-            OnStop?.Invoke();
-        }
+        public static void PublishStop() => OnStop?.Invoke();
 
-        public static void PublishPause()
-        {
-            OnPause?.Invoke();
-        }
+        public static void PublishPause() => OnPause?.Invoke();
         
-        public static void PublishResume()
-        {
-            OnResume?.Invoke();
-        }
+        public static void PublishResume() => OnResume?.Invoke();
         
-        public static void PublishTargetHit()
-        {
-            OnTargetHit?.Invoke();
-        }
+        public static void PublishTargetHit() => OnTargetHit?.Invoke();
         
-        public static void PublishTargetMiss()
-        {
-            OnTargetMiss?.Invoke();
-        }
+        public static void PublishTargetMiss() => OnTargetMiss?.Invoke();
     }
 }

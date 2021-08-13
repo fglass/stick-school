@@ -1,5 +1,5 @@
+using Controller.Input;
 using Game.Event;
-using Scenes.Range.Components.Scripts.Controller.Input;
 using UnityEngine;
 
 namespace Game.UI

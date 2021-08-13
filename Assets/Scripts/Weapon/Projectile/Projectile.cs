@@ -3,12 +3,12 @@ using Game.Event;
 using Scenes.Range.Components.Scripts.Game.Target;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Weapon.Projectile
+namespace Weapon.Projectile
 {
 	public class Projectile : MonoBehaviour {
 
 		[SerializeField] private Transform metalImpactPrefab;
-		private const float DurationS = 8.0f;
+		private const float DurationS = 5.0f;
 		private const string TargetTag = "Target";
 		private const string MetalTag = "Metal";
 

@@ -1,5 +1,5 @@
 // ReSharper disable HeuristicUnreachableCode
-
+// ReSharper disable ConditionIsAlwaysTrueOrFalse
 using System.Collections;
 using Scenes.Range.Components.Scripts.Game.Util;
 using UnityEngine;
