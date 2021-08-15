@@ -31,7 +31,7 @@ namespace Game.Scenario
             
         }
 
-        public void EndScenario()
+        public virtual void EndScenario()
         {
             _activeTargets.ForEach(Destroy);
         }

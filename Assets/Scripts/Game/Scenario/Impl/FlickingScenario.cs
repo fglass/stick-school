@@ -9,17 +9,22 @@ using Random = UnityEngine.Random;
 namespace Game.Scenario.Impl
 {
     #pragma warning disable 162
-    public class FlickScenario : Scenario
+    public class FlickingScenario : Scenario
     {
         private const bool DebugMode = false;
         private const float MinDuration = 0.5f;
         private const float MaxDuration = 1.5f;
         private bool _spawnInCenter = true;
 
+        public void Awake()
+        {
+            Name = "Flicking";
+            MaxTargets = 1;
+        }
+
         public override void StartScenario()
         {
-            Name = "Flick";
-            MaxTargets = 1;
+            _spawnInCenter = true;
         }
 
         protected override GameObject SpawnTarget()
@@ -58,6 +63,7 @@ namespace Game.Scenario.Impl
             var point = StochasticSpawn.InHollowRectangle(origin, MaxX, MaxY, 1f);
             return new Vector3(point.x, point.y, CenterPosition.z);
         }
+        
         private static IEnumerator DespawnRoutine(Object target) {
             var duration = Random.Range(MinDuration, MaxDuration);
             yield return new WaitForSeconds(duration);

@@ -5,12 +5,12 @@ namespace Game.Scenario.Impl
 {
     public class StochasticScenario : Scenario
     {
-        public override void StartScenario()
+        public void Awake()
         {
             Name = "Stochastic";
             MaxTargets = 5;
         }
-
+        
         protected override GameObject SpawnTarget()
         {
             var origin = new Vector2(CenterPosition.x, CenterPosition.y);

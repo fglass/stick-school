@@ -1,6 +1,5 @@
 using Scenes.Range.Components.Scripts.Game.Target;
 using Scenes.Range.Components.Scripts.Game.Util;
-using Scenes.Range.Components.Scripts.Weapon;
 using UnityEngine;
 using Weapon;
 
@@ -11,11 +10,22 @@ namespace Game.Scenario.Impl
         [SerializeField] private GameObject weapon;
         [SerializeField] private bool useThreeDimensions;
         
-        public override void StartScenario()
+        public void Awake()
         {
             Name = "Tracking";
             MaxTargets = 1;
+        }
+
+        public override void StartScenario()
+        {
+            base.StartScenario();
             weapon.GetComponent<WeaponBehaviour>().CanFire = false;
+        }
+
+        public override void EndScenario()
+        {
+            base.EndScenario();
+            weapon.GetComponent<WeaponBehaviour>().CanFire = true;
         }
 
         protected override GameObject SpawnTarget()

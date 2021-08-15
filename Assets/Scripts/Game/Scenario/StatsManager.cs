@@ -58,6 +58,8 @@ namespace Game.Scenario
             _score = 0;
             _hitShots = 0;
             _missedShots = 0;
+            _hud.SetScore(0);
+            _hud.SetAccuracy(0);
         }
     }
 }

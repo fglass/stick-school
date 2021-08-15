@@ -1,29 +1,44 @@
 using Controller;
 using Game.Event;
 using Game.UI;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Game.Scenario
 {
     public class ScenarioManager : MonoBehaviour
     {
-        private const int ScenarioDurationS = 5;
+        private const int ScenarioDurationS = 30;
         private const int CameraResetSpeed = 4;
         
         [SerializeField] private GameObject player;
         [SerializeField] private Transform cameraTransform;
+        [SerializeField] private GameObject targetPrefab;
+
+        [SerializeField] private MainMenu mainMenu;
         [SerializeField] private Hud hud;
         [SerializeField] private ResultsPanel resultsPanel;
-        [SerializeField] private Scenario scenario;
-        [SerializeField] private GameObject targetPrefab;
         
+        private Scenario _scenario;
         private StatsManager _statsManager;
         private bool _playing;
         private float _timer;
+        
+        public void Start()
+        {
+            _statsManager = new StatsManager(hud, resultsPanel);
+
+            var scenarios = GetComponents<Scenario>();
+            mainMenu.CreateScenarioButtons(scenarios);
+            
+            foreach (var scenario in scenarios)
+            {
+                scenario.TargetPrefab = targetPrefab; // TODO: remove?
+            }
+        }
 
         public void OnEnable()
         {
-            _statsManager = new StatsManager(hud, resultsPanel);
             EventBus.OnPlay += OnPlay;
             EventBus.OnPause += OnPause;
             EventBus.OnResume += OnResume;
@@ -37,9 +52,14 @@ namespace Game.Scenario
             EventBus.OnResume -= OnResume;
             EventBus.OnStop -= OnStop;
         }
-        
-        private void OnPlay()
+
+        private void OnPlay([CanBeNull] Scenario scenario)
         {
+            if (scenario != null)
+            {
+                _scenario = scenario;
+            }
+            
             _statsManager.Reset();
             hud.Toggle(true);
 
@@ -48,9 +68,7 @@ namespace Game.Scenario
             player.SetActive(true);
 
             _timer = ScenarioDurationS;
-            scenario.TargetPrefab = targetPrefab;
-            scenario.StartScenario();
-
+            _scenario.StartScenario();
             _playing = true;
         }
 
@@ -73,7 +91,7 @@ namespace Game.Scenario
             Time.timeScale = 1f;
             player.SetActive(false);
             hud.Toggle(false);
-            scenario.EndScenario();
+            _scenario.EndScenario();
             _playing = false;
         }
 
@@ -81,7 +99,7 @@ namespace Game.Scenario
         {
             OnStop();
             Cursor.lockState = CursorLockMode.None;
-            _statsManager.DisplayResults(scenario.Name);
+            _statsManager.DisplayResults(_scenario.Name);
         }
 
         public void Update()
@@ -102,7 +120,7 @@ namespace Game.Scenario
             {
                 var secondsRemaining = (int) _timer;
                 hud.SetTimer(secondsRemaining);
-                scenario.UpdateScenario();
+                _scenario.UpdateScenario();
             }
         }
 
@@ -110,7 +128,7 @@ namespace Game.Scenario
         {
             if (_playing)
             {
-                scenario.FixedUpdateScenario();
+                _scenario.FixedUpdateScenario();
             }
         }
 
