@@ -1,10 +1,11 @@
+using Scenes.Range.Components.Scripts.Game.Target;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Game.Target
+namespace Game.Target
 {
     public class HealthBehaviour : MonoBehaviour
     {
-        private const string HoverSoundPath = "Audio/Impacts/ding";
+        private const string HoverSoundPath = "Audio/ding";
         private readonly Color _hoveredColour = new Color(0.04705881f, 0.6039216f, 0.1733971f);
 
         private TargetBehaviour _targetBehaviour;

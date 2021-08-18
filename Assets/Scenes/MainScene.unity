@@ -1780,6 +1780,7 @@ MonoBehaviour:
   cameraTransform: {fileID: 4660888796433046}
   targetPrefab: {fileID: 4445158436245017880, guid: 1099fe9633e7e494cab5cda167997df9,
     type: 3}
+  playScenarioEvent: {fileID: 11400000, guid: 7550b17561a707e4183bc82163152d47, type: 2}
   mainMenu: {fileID: 1067309436}
   hud: {fileID: 1067309434}
   resultsPanel: {fileID: 1067309437}
@@ -8079,6 +8080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0629bf6bfaee438ca05494676cb73028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playScenarioEvent: {fileID: 11400000, guid: 7550b17561a707e4183bc82163152d47, type: 2}
   scenarioButtonPrefab: {fileID: 8924543510913801256, guid: 4a6930c0c5b054a44bcbde65a2501e4b,
     type: 3}
 --- !u!114 &1067309437

@@ -1,4 +1,3 @@
-using Game.Event;
 using TMPro;
 using UnityEngine;
 
@@ -35,8 +34,6 @@ namespace Game.UI
         public void OnRestart()
         {
             Cursor.lockState = CursorLockMode.Locked;
-            _modalCanvas.gameObject.SetActive(false);
-            EventBus.PublishPlay();
         }
 
         public void OnMenu()

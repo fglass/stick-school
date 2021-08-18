@@ -14,7 +14,8 @@ namespace Game.Scenario
         [SerializeField] private GameObject player;
         [SerializeField] private Transform cameraTransform;
         [SerializeField] private GameObject targetPrefab;
-
+        [SerializeField] private PlayScenarioEventChannel playScenarioEvent;
+        
         [SerializeField] private MainMenu mainMenu;
         [SerializeField] private Hud hud;
         [SerializeField] private ResultsPanel resultsPanel;
@@ -39,7 +40,7 @@ namespace Game.Scenario
 
         public void OnEnable()
         {
-            EventBus.OnPlay += OnPlay;
+            playScenarioEvent.Event += OnPlay;
             EventBus.OnPause += OnPause;
             EventBus.OnResume += OnResume;
             EventBus.OnStop += OnStop;
@@ -47,13 +48,13 @@ namespace Game.Scenario
         
         public void OnDisable()
         {
-            EventBus.OnPlay -= OnPlay;
+            playScenarioEvent.Event -= OnPlay;
             EventBus.OnPause -= OnPause;
             EventBus.OnResume -= OnResume;
             EventBus.OnStop -= OnStop;
         }
 
-        private void OnPlay([CanBeNull] Scenario scenario)
+        public void OnPlay([CanBeNull] Scenario scenario)
         {
             if (scenario != null)
             {

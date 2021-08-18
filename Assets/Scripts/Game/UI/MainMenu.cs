@@ -9,8 +9,9 @@ namespace Game.UI
     public class MainMenu : MonoBehaviour
     {
         private static readonly Color Red = new Color(0.8588236f, 0.2235294f, 0.3098039f);
+        [SerializeField] private PlayScenarioEventChannel playScenarioEvent;
         [SerializeField] private Transform scenarioButtonPrefab;
-       
+        
         private GameObject _mainMenu;
         private GameObject _playPanel;
         
@@ -86,7 +87,7 @@ namespace Game.UI
         private void OnScenario(Scenario.Scenario scenario)
         {
             _mainMenu.SetActive(false);
-            EventBus.PublishPlay(scenario);
+            playScenarioEvent.RaiseEvent(scenario);
         }
     }
 }

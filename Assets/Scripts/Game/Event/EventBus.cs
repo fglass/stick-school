@@ -2,7 +2,7 @@ using JetBrains.Annotations;
 
 namespace Game.Event
 {
-    public static class EventBus
+    public static class EventBus // TODO: deprecated
     {
         public delegate void PlayAction([CanBeNull] Scenario.Scenario scenario);
         public static event PlayAction OnPlay;
