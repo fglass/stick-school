@@ -1,7 +1,8 @@
-using Game.Event;
+using Events;
 using Game.UI;
+using UI;
 
-namespace Game.Scenario
+namespace Scenario
 {
     public class StatsManager
     {
@@ -16,11 +17,9 @@ namespace Game.Scenario
         {
             _hud = hud;
             _resultsPanel = resultsPanel;
-            EventBus.OnTargetHit += OnTargetHit;
-            EventBus.OnTargetMiss += OnTargetMiss;
         }
 
-        private void OnTargetHit()
+        public void OnTargetHit()
         {
             _score += 100;
             _hitShots++;
@@ -29,7 +28,7 @@ namespace Game.Scenario
             _hud.SetAccuracy(CalculateAccuracy());
         }
 
-        private void OnTargetMiss()
+        public void OnTargetMiss()
         {
             _missedShots++;
             _hud.SetAccuracy(CalculateAccuracy());

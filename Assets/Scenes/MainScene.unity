@@ -1780,7 +1780,13 @@ MonoBehaviour:
   cameraTransform: {fileID: 4660888796433046}
   targetPrefab: {fileID: 4445158436245017880, guid: 1099fe9633e7e494cab5cda167997df9,
     type: 3}
-  playScenarioEvent: {fileID: 11400000, guid: 7550b17561a707e4183bc82163152d47, type: 2}
+  playScenarioEvent: {fileID: 11400000, guid: 4c83275791f46c1468d6b61bd51b2ce2, type: 2}
+  resumeScenarioEvent: {fileID: 11400000, guid: 970c11379fbe4404588fee39cf7040b5,
+    type: 2}
+  pauseScenarioEvent: {fileID: 11400000, guid: 74ce3ece816718641b0ef4eaa0ba97a5, type: 2}
+  stopScenarioEvent: {fileID: 11400000, guid: 8fac35e6d556df944b1e6fb8d2001922, type: 2}
+  targetHitEvent: {fileID: 11400000, guid: 31e44046e338e954c8fa067298a40543, type: 2}
+  targetMissEvent: {fileID: 11400000, guid: c991cf4ee4d4a504eadd6e9ea596fc3e, type: 2}
   mainMenu: {fileID: 1067309436}
   hud: {fileID: 1067309434}
   resultsPanel: {fileID: 1067309437}
@@ -8068,6 +8074,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc17351acec4a56ba8bef53749b94e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resumeScenarioEvent: {fileID: 11400000, guid: 970c11379fbe4404588fee39cf7040b5,
+    type: 2}
+  pauseScenarioEvent: {fileID: 11400000, guid: 74ce3ece816718641b0ef4eaa0ba97a5, type: 2}
+  stopScenarioEvent: {fileID: 11400000, guid: 8fac35e6d556df944b1e6fb8d2001922, type: 2}
 --- !u!114 &1067309436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8080,7 +8090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0629bf6bfaee438ca05494676cb73028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playScenarioEvent: {fileID: 11400000, guid: 7550b17561a707e4183bc82163152d47, type: 2}
+  playScenarioEvent: {fileID: 11400000, guid: 4c83275791f46c1468d6b61bd51b2ce2, type: 2}
   scenarioButtonPrefab: {fileID: 8924543510913801256, guid: 4a6930c0c5b054a44bcbde65a2501e4b,
     type: 3}
 --- !u!114 &1067309437

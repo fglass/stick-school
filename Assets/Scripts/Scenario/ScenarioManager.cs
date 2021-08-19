@@ -1,10 +1,12 @@
 using Controller;
-using Game.Event;
+using Events;
+using Game.Scenario;
 using Game.UI;
 using JetBrains.Annotations;
+using UI;
 using UnityEngine;
 
-namespace Game.Scenario
+namespace Scenario
 {
     public class ScenarioManager : MonoBehaviour
     {
@@ -14,8 +16,15 @@ namespace Game.Scenario
         [SerializeField] private GameObject player;
         [SerializeField] private Transform cameraTransform;
         [SerializeField] private GameObject targetPrefab;
-        [SerializeField] private PlayScenarioEventChannel playScenarioEvent;
         
+        [SerializeField] private PlayScenarioEvent playScenarioEvent;
+        [SerializeField] private VoidEvent resumeScenarioEvent;
+        [SerializeField] private VoidEvent pauseScenarioEvent;
+        [SerializeField] private VoidEvent stopScenarioEvent;
+        
+        [SerializeField] private VoidEvent targetHitEvent;
+        [SerializeField] private VoidEvent targetMissEvent;
+
         [SerializeField] private MainMenu mainMenu;
         [SerializeField] private Hud hud;
         [SerializeField] private ResultsPanel resultsPanel;
@@ -24,11 +33,31 @@ namespace Game.Scenario
         private StatsManager _statsManager;
         private bool _playing;
         private float _timer;
+
+        public void OnEnable()
+        {
+            playScenarioEvent.OnRaised += OnPlay;
+            pauseScenarioEvent.OnRaised += OnPause;
+            resumeScenarioEvent.OnRaised += OnResume;
+            stopScenarioEvent.OnRaised += OnStop;
+           
+            _statsManager = new StatsManager(hud, resultsPanel);
+            targetHitEvent.OnRaised += _statsManager.OnTargetHit;
+            targetMissEvent.OnRaised += _statsManager.OnTargetMiss;
+        }
+        
+        public void OnDisable()
+        {
+            playScenarioEvent.OnRaised -= OnPlay;
+            pauseScenarioEvent.OnRaised -= OnPause;
+            resumeScenarioEvent.OnRaised -= OnResume;
+            stopScenarioEvent.OnRaised -= OnStop;
+            targetHitEvent.OnRaised -= _statsManager.OnTargetHit;
+            targetMissEvent.OnRaised -= _statsManager.OnTargetMiss;
+        }
         
         public void Start()
         {
-            _statsManager = new StatsManager(hud, resultsPanel);
-
             var scenarios = GetComponents<Scenario>();
             mainMenu.CreateScenarioButtons(scenarios);
             
@@ -38,23 +67,7 @@ namespace Game.Scenario
             }
         }
 
-        public void OnEnable()
-        {
-            playScenarioEvent.Event += OnPlay;
-            EventBus.OnPause += OnPause;
-            EventBus.OnResume += OnResume;
-            EventBus.OnStop += OnStop;
-        }
-        
-        public void OnDisable()
-        {
-            playScenarioEvent.Event -= OnPlay;
-            EventBus.OnPause -= OnPause;
-            EventBus.OnResume -= OnResume;
-            EventBus.OnStop -= OnStop;
-        }
-
-        public void OnPlay([CanBeNull] Scenario scenario)
+        private void OnPlay([CanBeNull] Scenario scenario)
         {
             if (scenario != null)
             {

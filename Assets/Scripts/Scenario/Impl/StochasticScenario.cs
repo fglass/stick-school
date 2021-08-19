@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Scenario.Impl
 {
-    public class StochasticScenario : Scenario
+    public class StochasticScenario : global::Scenario.Scenario
     {
         public void Awake()
         {

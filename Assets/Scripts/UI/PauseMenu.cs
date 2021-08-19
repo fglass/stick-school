@@ -1,11 +1,15 @@
 using Controller.Input;
-using Game.Event;
+using Events;
 using UnityEngine;
 
-namespace Game.UI
+namespace UI
 {
     public class PauseMenu : MonoBehaviour
     {
+        [SerializeField] private VoidEvent resumeScenarioEvent;
+        [SerializeField] private VoidEvent pauseScenarioEvent;
+        [SerializeField] private VoidEvent stopScenarioEvent;
+        
         private Transform _pauseMenuCanvas;
         private Transform _mainMenuCanvas;
         private Transform _resultsPanelCanvas;
@@ -39,14 +43,14 @@ namespace Game.UI
         {
             _paused = false;
             _pauseMenuCanvas.gameObject.SetActive(false);
-            EventBus.PublishResume();
+            resumeScenarioEvent.Raise();
         }
         
         private void Pause()
         {
             _paused = true;
             _pauseMenuCanvas.gameObject.SetActive(true);
-            EventBus.PublishPause();
+            pauseScenarioEvent.Raise();
         }
 
         public void OnMenu()
@@ -54,7 +58,7 @@ namespace Game.UI
             _paused = false;
             _pauseMenuCanvas.gameObject.SetActive(false);
             _mainMenuCanvas.gameObject.SetActive(true);
-            EventBus.PublishStop();
+            stopScenarioEvent.Raise();
         }
 
         public void OnQuit()

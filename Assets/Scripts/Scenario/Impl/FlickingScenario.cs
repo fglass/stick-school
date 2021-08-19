@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 namespace Game.Scenario.Impl
 {
     #pragma warning disable 162
-    public class FlickingScenario : Scenario
+    public class FlickingScenario : global::Scenario.Scenario
     {
         private const bool DebugMode = false;
         private const float MinDuration = 0.5f;

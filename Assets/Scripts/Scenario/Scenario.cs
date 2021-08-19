@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Scenario
+namespace Scenario
 {
     public abstract class Scenario : MonoBehaviour
     {

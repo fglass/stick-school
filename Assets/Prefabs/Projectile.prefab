@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 96448838451407516}
   - component: {fileID: 114243545424532484}
   m_Layer: 0
-  m_Name: Bullet_Prefab
+  m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,6 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ff3ea705a4a7244a59eef82e75c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetHitEvent: {fileID: 11400000, guid: 31e44046e338e954c8fa067298a40543, type: 2}
+  targetMissEvent: {fileID: 11400000, guid: c991cf4ee4d4a504eadd6e9ea596fc3e, type: 2}
   metalImpactPrefab: {fileID: 4458509032938956, guid: 79927c6543a058b4383885fac101fe2e,
     type: 3}
 --- !u!1 &1231345400216816

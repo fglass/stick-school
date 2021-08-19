@@ -1,8 +1,10 @@
+using System;
 using JetBrains.Annotations;
 
-namespace Game.Event
+namespace Events
 {
-    public static class EventBus // TODO: deprecated
+    [Obsolete]
+    public static class EventBus
     {
         public delegate void PlayAction([CanBeNull] Scenario.Scenario scenario);
         public static event PlayAction OnPlay;

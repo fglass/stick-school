@@ -6,7 +6,7 @@ using Weapon;
 
 namespace Game.Scenario.Impl
 {
-    public class TrackingScenario : Scenario
+    public class TrackingScenario : global::Scenario.Scenario
     {
         [SerializeField] private GameObject weapon;
         [SerializeField] private bool useThreeDimensions;

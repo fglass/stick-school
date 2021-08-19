@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Game.UI
+namespace UI
 {
     public class ResultsPanel : MonoBehaviour
     {
