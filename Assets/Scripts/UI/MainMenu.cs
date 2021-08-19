@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Events;
 using TMPro;
@@ -9,37 +10,45 @@ namespace UI
     public class MainMenu : MonoBehaviour
     {
         private static readonly Color Red = new Color(0.8588236f, 0.2235294f, 0.3098039f);
+
+        [SerializeField] private VoidEvent selectPlayTabEvent;
+        [SerializeField] private VoidEvent selectStatsTabEvent;
+        [SerializeField] private VoidEvent selectSettingsTabEvent;
         [SerializeField] private PlayScenarioEvent playScenarioEvent;
+        
         [SerializeField] private Transform scenarioButtonPrefab;
+        [SerializeField] private GameObject playPanel;
+        [SerializeField] private TextMeshProUGUI playText;
+        [SerializeField] private TextMeshProUGUI statsText;
+        [SerializeField] private TextMeshProUGUI settingsText;
         
-        private GameObject _mainMenu;
-        private GameObject _playPanel;
-        
-        private TextMeshProUGUI _playText;
-        private TextMeshProUGUI _statsText;
-        private TextMeshProUGUI _settingsText;
-
-        public void Awake()
+        public void OnEnable()
         {
-            _mainMenu = transform.Find("MainMenu").gameObject;
-            _playPanel = _mainMenu.transform.Find("PlayPanel").gameObject;
-
-            var navBar = _mainMenu.transform.Find("NavBar");
-            _playText = navBar.Find("PlayButton").Find("Text").GetComponent<TextMeshProUGUI>();
-            _statsText = navBar.Find("StatsButton").Find("Text").GetComponent<TextMeshProUGUI>();
-            _settingsText = navBar.Find("SettingsButton").Find("Text").GetComponent<TextMeshProUGUI>();
-            
-            OnPlay();
+            selectPlayTabEvent.OnRaised += OnPlayTabSelect;
+            selectStatsTabEvent.OnRaised += OnStatsTabSelect;
+            selectSettingsTabEvent.OnRaised += OnSettingsTabSelect;
         }
 
-        public void CreateScenarioButtons(IEnumerable<Scenario.Scenario> scenarios)
+        public void OnDisable()
+        {
+            selectPlayTabEvent.OnRaised -= OnPlayTabSelect;
+            selectStatsTabEvent.OnRaised -= OnStatsTabSelect;
+            selectSettingsTabEvent.OnRaised -= OnSettingsTabSelect;
+        }
+        
+        public void Start()
+        {
+            selectPlayTabEvent.Raise();
+        }
+
+        public void CreateScenarioButtons(IEnumerable<Scenario.Scenario> scenarios) // TODO: event
         {
             var xOffset = -550;
             
             foreach (var scenario in scenarios)
             {
                 var button = Instantiate(scenarioButtonPrefab, Vector3.zero, Quaternion.identity);
-                button.SetParent(_playPanel.transform, false);
+                button.SetParent(playPanel.transform, false);
                 button.Translate(xOffset, 0, 0);
                 
                 button.Find("ScenarioName").GetComponent<TextMeshProUGUI>().text = scenario.Name.ToUpper();
@@ -49,44 +58,38 @@ namespace UI
             }
         }
 
-        public void OnPlay()
+        private void OnPlayTabSelect()
         {
             DeselectTabs();
-            _playText.color = Red;
-            _playPanel.SetActive(true);
+            playText.color = Red;
+            playPanel.SetActive(true);
         }
 
-        public void OnStats()
+        private void OnStatsTabSelect()
         {
             DeselectTabs();
-            _statsText.color = Red;
-            Debug.Log("Open stats");
+            statsText.color = Red;
+            // TODO: stats panel
         }
 
-        public void OnSettings()
+        private void OnSettingsTabSelect()
         {
             DeselectTabs();
-            _settingsText.color = Red;
-            Debug.Log("Open settings");
+            settingsText.color = Red;
+            // TODO: settings panel
         }
 
-        public void OnQuit()
-        {
-            Debug.Log("Quitting");
-            Application.Quit();
-        }
-        
         private void DeselectTabs()
         {
-            _playText.color = Color.white;
-            _statsText.color = Color.white;
-            _settingsText.color = Color.white;
-            _playPanel.SetActive(false);
+            playText.color = Color.white;
+            statsText.color = Color.white;
+            settingsText.color = Color.white;
+            playPanel.SetActive(false);
         }
         
         private void OnScenario(Scenario.Scenario scenario)
         {
-            _mainMenu.SetActive(false);
+            gameObject.SetActive(false);
             playScenarioEvent.Raise(scenario);
         }
     }

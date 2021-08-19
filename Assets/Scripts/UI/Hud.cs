@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Game.UI
+namespace UI
 {
     public class Hud : MonoBehaviour
     {
@@ -20,7 +20,7 @@ namespace Game.UI
             _crosshair = _canvas.Find("Crosshair").gameObject;
         }
 
-        public void Toggle(bool enable)
+        public void Toggle(bool enable) // TODO: events
         {
             _canvas.gameObject.SetActive(enable);
         }

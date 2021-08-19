@@ -464,8 +464,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1067309435}
-        m_MethodName: Resume
+      - m_Target: {fileID: 11400000, guid: 970c11379fbe4404588fee39cf7040b5, type: 2}
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -803,6 +803,7 @@ GameObject:
   - component: {fileID: 68589443}
   - component: {fileID: 68589442}
   - component: {fileID: 68589441}
+  - component: {fileID: 68589444}
   m_Layer: 5
   m_Name: ResultsPanel
   m_TagString: Untagged
@@ -891,6 +892,24 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &68589444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68589439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8774f5019e146408199f5c5edf43896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restartScenarioEvent: {fileID: 11400000, guid: c166e845bc34dce45a98ceb1b5bfb52e,
+    type: 2}
+  openMainMenuEvent: {fileID: 11400000, guid: 8c8ce1033ea3e4541bee5a887409203b, type: 2}
+  titleField: {fileID: 1710838961}
+  scoreField: {fileID: 1651176450}
+  accuracyField: {fileID: 1595692373}
 --- !u!1 &81789000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,8 +1405,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1067309437}
-        m_MethodName: OnRestart
+      - m_Target: {fileID: 11400000, guid: c166e845bc34dce45a98ceb1b5bfb52e, type: 2}
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1785,11 +1804,13 @@ MonoBehaviour:
     type: 2}
   pauseScenarioEvent: {fileID: 11400000, guid: 74ce3ece816718641b0ef4eaa0ba97a5, type: 2}
   stopScenarioEvent: {fileID: 11400000, guid: 8fac35e6d556df944b1e6fb8d2001922, type: 2}
+  restartScenarioEvent: {fileID: 11400000, guid: c166e845bc34dce45a98ceb1b5bfb52e,
+    type: 2}
   targetHitEvent: {fileID: 11400000, guid: 31e44046e338e954c8fa067298a40543, type: 2}
   targetMissEvent: {fileID: 11400000, guid: c991cf4ee4d4a504eadd6e9ea596fc3e, type: 2}
-  mainMenu: {fileID: 1067309436}
+  mainMenu: {fileID: 1061824951}
   hud: {fileID: 1067309434}
-  resultsPanel: {fileID: 1067309437}
+  resultsPanel: {fileID: 68589444}
 --- !u!4 &292607902
 Transform:
   m_ObjectHideFlags: 0
@@ -6648,6 +6669,7 @@ GameObject:
   - component: {fileID: 916572946}
   - component: {fileID: 916572945}
   - component: {fileID: 916572944}
+  - component: {fileID: 916572947}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -6738,6 +6760,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &916572947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916572942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc17351acec4a56ba8bef53749b94e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openMainMenuEvent: {fileID: 11400000, guid: 8c8ce1033ea3e4541bee5a887409203b, type: 2}
+  stopScenarioEvent: {fileID: 11400000, guid: 8fac35e6d556df944b1e6fb8d2001922, type: 2}
 --- !u!1 &924680967
 GameObject:
   m_ObjectHideFlags: 0
@@ -7005,8 +7041,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1067309436}
-        m_MethodName: OnStats
+      - m_Target: {fileID: 11400000, guid: 5be3a422b4dba6f47a4f087ac4702307, type: 2}
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7575,8 +7611,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1067309435}
-        m_MethodName: OnMenu
+      - m_Target: {fileID: 11400000, guid: 8c8ce1033ea3e4541bee5a887409203b, type: 2}
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7798,8 +7834,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1067309436}
-        m_MethodName: OnQuit
+      - m_Target: {fileID: 11400000, guid: cf26c7bb3e485c54fbf296634101c303, type: 2}
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7922,6 +7958,7 @@ GameObject:
   - component: {fileID: 1061824950}
   - component: {fileID: 1061824949}
   - component: {fileID: 1061824948}
+  - component: {fileID: 1061824951}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -8011,6 +8048,30 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1061824951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061824946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0629bf6bfaee438ca05494676cb73028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectPlayTabEvent: {fileID: 11400000, guid: 8711f39054d8a034fb856764020a699b, type: 2}
+  selectStatsTabEvent: {fileID: 11400000, guid: 5be3a422b4dba6f47a4f087ac4702307,
+    type: 2}
+  selectSettingsTabEvent: {fileID: 11400000, guid: 55ae49de4b005b141a01375cd6c7e898,
+    type: 2}
+  playScenarioEvent: {fileID: 11400000, guid: 4c83275791f46c1468d6b61bd51b2ce2, type: 2}
+  scenarioButtonPrefab: {fileID: 8924543510913801256, guid: 4a6930c0c5b054a44bcbde65a2501e4b,
+    type: 3}
+  playPanel: {fileID: 1286875565}
+  playText: {fileID: 1644557021}
+  statsText: {fileID: 625715360}
+  settingsText: {fileID: 1233850366}
 --- !u!1 &1067309432
 GameObject:
   m_ObjectHideFlags: 0
@@ -8020,10 +8081,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1067309433}
-  - component: {fileID: 1067309436}
   - component: {fileID: 1067309435}
   - component: {fileID: 1067309434}
-  - component: {fileID: 1067309437}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -8071,40 +8130,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1067309432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fc17351acec4a56ba8bef53749b94e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a0eefb1bbf5413381c3014c5dac3245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quitEvent: {fileID: 11400000, guid: cf26c7bb3e485c54fbf296634101c303, type: 2}
+  openMainMenuEvent: {fileID: 11400000, guid: 8c8ce1033ea3e4541bee5a887409203b, type: 2}
+  pauseScenarioEvent: {fileID: 11400000, guid: 74ce3ece816718641b0ef4eaa0ba97a5, type: 2}
   resumeScenarioEvent: {fileID: 11400000, guid: 970c11379fbe4404588fee39cf7040b5,
     type: 2}
-  pauseScenarioEvent: {fileID: 11400000, guid: 74ce3ece816718641b0ef4eaa0ba97a5, type: 2}
-  stopScenarioEvent: {fileID: 11400000, guid: 8fac35e6d556df944b1e6fb8d2001922, type: 2}
---- !u!114 &1067309436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067309432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0629bf6bfaee438ca05494676cb73028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playScenarioEvent: {fileID: 11400000, guid: 4c83275791f46c1468d6b61bd51b2ce2, type: 2}
-  scenarioButtonPrefab: {fileID: 8924543510913801256, guid: 4a6930c0c5b054a44bcbde65a2501e4b,
-    type: 3}
---- !u!114 &1067309437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067309432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8774f5019e146408199f5c5edf43896, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  mainMenu: {fileID: 1061824946}
+  pauseMenu: {fileID: 916572942}
+  resultsPanel: {fileID: 68589439}
 --- !u!1 &1074858540
 GameObject:
   m_ObjectHideFlags: 0
@@ -8279,8 +8315,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1067309435}
-        m_MethodName: OnQuit
+      - m_Target: {fileID: 11400000, guid: cf26c7bb3e485c54fbf296634101c303, type: 2}
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11099,8 +11135,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1067309437}
-        m_MethodName: OnMenu
+      - m_Target: {fileID: 11400000, guid: 8c8ce1033ea3e4541bee5a887409203b, type: 2}
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12136,8 +12172,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1067309436}
-        m_MethodName: OnSettings
+      - m_Target: {fileID: 11400000, guid: 55ae49de4b005b141a01375cd6c7e898, type: 2}
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12260,7 +12296,7 @@ GameObject:
   - component: {fileID: 1710838962}
   - component: {fileID: 1710838961}
   m_Layer: 5
-  m_Name: ScenarioName
+  m_Name: TitleField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13883,8 +13919,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1067309436}
-        m_MethodName: OnPlay
+      - m_Target: {fileID: 11400000, guid: 8711f39054d8a034fb856764020a699b, type: 2}
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,3 +1,4 @@
+using Events;
 using TMPro;
 using UnityEngine;
 
@@ -5,41 +6,36 @@ namespace UI
 {
     public class ResultsPanel : MonoBehaviour
     {
-        private Transform _modalCanvas;
-        private Transform _mainMenuCanvas;
-        private TextMeshProUGUI _scenarioName;
-        private TextMeshProUGUI _scoreField;
-        private TextMeshProUGUI _accuracyField;
-        
-        public void Awake()
+        [SerializeField] private VoidEvent restartScenarioEvent;
+        [SerializeField] private VoidEvent openMainMenuEvent;
+        [SerializeField] private TextMeshProUGUI titleField;
+        [SerializeField] private TextMeshProUGUI scoreField;
+        [SerializeField] private TextMeshProUGUI accuracyField;
+
+        public void OnEnable()
         {
-            _modalCanvas = transform.Find("ResultsPanel");
-            _mainMenuCanvas = transform.Find("MainMenu");
-            
-            var panel = _modalCanvas.Find("Panel");
-            _scenarioName = panel.Find("ScenarioName").GetComponent<TextMeshProUGUI>();
-            _scoreField = panel.Find("ScoreField").GetComponent<TextMeshProUGUI>();
-            _accuracyField = panel.Find("AccuracyField").GetComponent<TextMeshProUGUI>();
+            restartScenarioEvent.OnRaised += Close;
+            openMainMenuEvent.OnRaised += Close;
         }
 
-        public void Display(string scenarioName, int score, int hitShots, int missedShots, int accuracy)
+        public void OnDisable()
         {
-            _scenarioName.text = $"{scenarioName} Scenario";
-            _scoreField.text = score.ToString();
-            _accuracyField.text = $"{hitShots}/{hitShots + missedShots} ({accuracy}%)";
-            _modalCanvas.gameObject.SetActive(true);
+            restartScenarioEvent.OnRaised -= Close;
+            openMainMenuEvent.OnRaised -= Close;
+        }
+
+        public void Display(string scenarioName, int score, int hitShots, int missedShots, int accuracy) // TODO: event
+        {
+            titleField.text = $"{scenarioName} Scenario";
+            scoreField.text = score.ToString();
+            accuracyField.text = $"{hitShots}/{hitShots + missedShots} ({accuracy}%)";
+            gameObject.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
         }
 
-        public void OnRestart()
+        private void Close()
         {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-
-        public void OnMenu()
-        {
-            _modalCanvas.gameObject.SetActive(false);
-            _mainMenuCanvas.gameObject.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
 }

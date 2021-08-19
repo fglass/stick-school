@@ -8,7 +8,7 @@ namespace Events
     {
         public UnityAction<Scenario.Scenario> OnRaised { get; set; }
 
-        public void Raise(Scenario.Scenario scenario)
+        public void Raise(Scenario.Scenario scenario = null)
         {
             OnRaised?.Invoke(scenario);
         }

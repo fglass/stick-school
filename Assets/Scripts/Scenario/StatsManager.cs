@@ -1,5 +1,3 @@
-using Events;
-using Game.UI;
 using UI;
 
 namespace Scenario

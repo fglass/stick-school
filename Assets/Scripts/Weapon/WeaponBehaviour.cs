@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using Controller.Input;
 using Game.Target;
-using Game.UI;
+using UI;
 using UnityEngine;
 
 namespace Weapon

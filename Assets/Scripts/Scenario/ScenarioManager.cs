@@ -1,7 +1,5 @@
 using Controller;
 using Events;
-using Game.Scenario;
-using Game.UI;
 using JetBrains.Annotations;
 using UI;
 using UnityEngine;
@@ -10,7 +8,7 @@ namespace Scenario
 {
     public class ScenarioManager : MonoBehaviour
     {
-        private const int ScenarioDurationS = 30;
+        private const int ScenarioDurationS = 10;
         private const int CameraResetSpeed = 4;
         
         [SerializeField] private GameObject player;
@@ -21,16 +19,17 @@ namespace Scenario
         [SerializeField] private VoidEvent resumeScenarioEvent;
         [SerializeField] private VoidEvent pauseScenarioEvent;
         [SerializeField] private VoidEvent stopScenarioEvent;
-        
+        [SerializeField] private VoidEvent restartScenarioEvent;
+
         [SerializeField] private VoidEvent targetHitEvent;
         [SerializeField] private VoidEvent targetMissEvent;
 
-        [SerializeField] private MainMenu mainMenu;
+        [SerializeField] private MainMenu mainMenu; // TODO: remove below references
         [SerializeField] private Hud hud;
         [SerializeField] private ResultsPanel resultsPanel;
-        
-        private Scenario _scenario;
+
         private StatsManager _statsManager;
+        private Scenario _scenario;
         private bool _playing;
         private float _timer;
 
@@ -40,18 +39,20 @@ namespace Scenario
             pauseScenarioEvent.OnRaised += OnPause;
             resumeScenarioEvent.OnRaised += OnResume;
             stopScenarioEvent.OnRaised += OnStop;
-           
+            restartScenarioEvent.OnRaised += OnRestart;
+
             _statsManager = new StatsManager(hud, resultsPanel);
             targetHitEvent.OnRaised += _statsManager.OnTargetHit;
             targetMissEvent.OnRaised += _statsManager.OnTargetMiss;
         }
-        
+
         public void OnDisable()
         {
             playScenarioEvent.OnRaised -= OnPlay;
             pauseScenarioEvent.OnRaised -= OnPause;
             resumeScenarioEvent.OnRaised -= OnResume;
             stopScenarioEvent.OnRaised -= OnStop;
+            restartScenarioEvent.OnRaised -= OnRestart;
             targetHitEvent.OnRaised -= _statsManager.OnTargetHit;
             targetMissEvent.OnRaised -= _statsManager.OnTargetMiss;
         }
@@ -67,13 +68,9 @@ namespace Scenario
             }
         }
 
-        private void OnPlay([CanBeNull] Scenario scenario)
+        private void OnPlay(Scenario scenario)
         {
-            if (scenario != null)
-            {
-                _scenario = scenario;
-            }
-            
+            _scenario = scenario;
             _statsManager.Reset();
             hud.Toggle(true);
 
@@ -107,6 +104,11 @@ namespace Scenario
             hud.Toggle(false);
             _scenario.EndScenario();
             _playing = false;
+        }
+        
+        private void OnRestart()
+        {
+            OnPlay(_scenario);
         }
 
         private void Finish()
