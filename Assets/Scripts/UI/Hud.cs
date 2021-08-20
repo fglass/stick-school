@@ -1,3 +1,4 @@
+using Events;
 using TMPro;
 using UnityEngine;
 
@@ -5,44 +6,50 @@ namespace UI
 {
     public class Hud : MonoBehaviour
     {
-        private Transform _canvas;
-        private TextMeshProUGUI _scoreText;
-        private TextMeshProUGUI _timerText;
-        private TextMeshProUGUI _accuracyText;
-        private GameObject _crosshair;
+        [SerializeField] private BoolEvent toggleCrosshairEvent;
+        [SerializeField] private IntEvent setHudTimerEvent;
+        [SerializeField] private IntEvent setHudScoreEvent;
+        [SerializeField] private IntEvent setHudAccuracyEvent;
 
-        public void Awake()
+        [SerializeField] private TextMeshProUGUI scoreText;
+        [SerializeField] private TextMeshProUGUI timerText;
+        [SerializeField] private TextMeshProUGUI accuracyText;
+        [SerializeField] private GameObject crosshair;
+
+        public void OnEnable()
         {
-            _canvas = transform.Find("HUD");
-            _scoreText = _canvas.Find("Score").GetComponent<TextMeshProUGUI>();
-            _timerText = _canvas.Find("Timer").GetComponent<TextMeshProUGUI>();
-            _accuracyText = _canvas.Find("Accuracy").GetComponent<TextMeshProUGUI>();
-            _crosshair = _canvas.Find("Crosshair").gameObject;
+            toggleCrosshairEvent.OnRaised += ToggleCrosshair;
+            setHudTimerEvent.OnRaised += SetTimer;
+            setHudScoreEvent.OnRaised += SetScore;
+            setHudAccuracyEvent.OnRaised += SetAccuracy;
         }
 
-        public void Toggle(bool enable) // TODO: events
+        public void OnDisable()
         {
-            _canvas.gameObject.SetActive(enable);
-        }
-
-        public void SetScore(int score)
-        {
-            _scoreText.text = score.ToString();
+            toggleCrosshairEvent.OnRaised -= ToggleCrosshair;
+            setHudTimerEvent.OnRaised -= SetTimer;
+            setHudScoreEvent.OnRaised -= SetScore;
+            setHudAccuracyEvent.OnRaised -= SetAccuracy;
         }
         
-        public void SetTimer(int seconds)
+        private void SetTimer(int seconds)
         {
-            _timerText.text = $"{seconds / 60}:{seconds % 60:00}";
+            timerText.text = $"{seconds / 60}:{seconds % 60:00}";
         }
 
-        public void SetAccuracy(int accuracy)
+        private void SetScore(int score)
         {
-            _accuracyText.text = $"{accuracy}%";
+            scoreText.text = score.ToString();
         }
 
-        public void ToggleCrosshair(bool enable)
+        private void SetAccuracy(int accuracy)
         {
-            _crosshair.SetActive(enable);
+            accuracyText.text = $"{accuracy}%";
+        }
+
+        private void ToggleCrosshair(bool enable)
+        {
+            crosshair.SetActive(enable);
         }
     }
 }

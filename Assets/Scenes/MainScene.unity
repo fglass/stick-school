@@ -904,6 +904,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8774f5019e146408199f5c5edf43896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayResultsEvent: {fileID: 11400000, guid: 19308176b1524f74994577f82b93e557,
+    type: 2}
   restartScenarioEvent: {fileID: 11400000, guid: c166e845bc34dce45a98ceb1b5bfb52e,
     type: 2}
   openMainMenuEvent: {fileID: 11400000, guid: 8c8ce1033ea3e4541bee5a887409203b, type: 2}
@@ -1773,6 +1775,7 @@ GameObject:
   m_Component:
   - component: {fileID: 292607902}
   - component: {fileID: 292607901}
+  - component: {fileID: 292607906}
   - component: {fileID: 292607904}
   - component: {fileID: 292607903}
   - component: {fileID: 292607905}
@@ -1799,6 +1802,9 @@ MonoBehaviour:
   cameraTransform: {fileID: 4660888796433046}
   targetPrefab: {fileID: 4445158436245017880, guid: 1099fe9633e7e494cab5cda167997df9,
     type: 3}
+  initMainMenuEvent: {fileID: 11400000, guid: abde4f66b30bc98459a94510fa644eda, type: 2}
+  toggleHudEvent: {fileID: 11400000, guid: 47fe64514bd13f943847aaafdf7dcfa3, type: 2}
+  setHudTimerEvent: {fileID: 11400000, guid: 3cf6d04465d849f419069c6283921ccd, type: 2}
   playScenarioEvent: {fileID: 11400000, guid: 4c83275791f46c1468d6b61bd51b2ce2, type: 2}
   resumeScenarioEvent: {fileID: 11400000, guid: 970c11379fbe4404588fee39cf7040b5,
     type: 2}
@@ -1806,11 +1812,6 @@ MonoBehaviour:
   stopScenarioEvent: {fileID: 11400000, guid: 8fac35e6d556df944b1e6fb8d2001922, type: 2}
   restartScenarioEvent: {fileID: 11400000, guid: c166e845bc34dce45a98ceb1b5bfb52e,
     type: 2}
-  targetHitEvent: {fileID: 11400000, guid: 31e44046e338e954c8fa067298a40543, type: 2}
-  targetMissEvent: {fileID: 11400000, guid: c991cf4ee4d4a504eadd6e9ea596fc3e, type: 2}
-  mainMenu: {fileID: 1061824951}
-  hud: {fileID: 1067309434}
-  resultsPanel: {fileID: 68589444}
 --- !u!4 &292607902
 Transform:
   m_ObjectHideFlags: 0
@@ -1863,6 +1864,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 1986870748753906}
   useThreeDimensions: 0
+--- !u!114 &292607906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292607900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac9c73732504c19b2be313e60d997f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetHitEvent: {fileID: 11400000, guid: 31e44046e338e954c8fa067298a40543, type: 2}
+  targetMissEvent: {fileID: 11400000, guid: c991cf4ee4d4a504eadd6e9ea596fc3e, type: 2}
+  setHudScoreEvent: {fileID: 11400000, guid: fb5b8014449d7aa44b03de35d9e76fc3, type: 2}
+  setHudAccuracyEvent: {fileID: 11400000, guid: c8c4840104191754384dc6e59350fe44,
+    type: 2}
+  openResultsPanelEvent: {fileID: 11400000, guid: f12baed30e59cd04f97677e9d5f2bfc2,
+    type: 2}
+  displayResultsEvent: {fileID: 11400000, guid: 19308176b1524f74994577f82b93e557,
+    type: 2}
 --- !u!1 &317262408
 GameObject:
   m_ObjectHideFlags: 0
@@ -8060,6 +8082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0629bf6bfaee438ca05494676cb73028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initMainMenuEvent: {fileID: 11400000, guid: abde4f66b30bc98459a94510fa644eda, type: 2}
   selectPlayTabEvent: {fileID: 11400000, guid: 8711f39054d8a034fb856764020a699b, type: 2}
   selectStatsTabEvent: {fileID: 11400000, guid: 5be3a422b4dba6f47a4f087ac4702307,
     type: 2}
@@ -8082,7 +8105,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1067309433}
   - component: {fileID: 1067309435}
-  - component: {fileID: 1067309434}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -8109,18 +8131,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1067309434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067309432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f7f0cfc87844115a070e6ba795eb62d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1067309435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8133,14 +8143,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0eefb1bbf5413381c3014c5dac3245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quitEvent: {fileID: 11400000, guid: cf26c7bb3e485c54fbf296634101c303, type: 2}
   openMainMenuEvent: {fileID: 11400000, guid: 8c8ce1033ea3e4541bee5a887409203b, type: 2}
+  toggleHudEvent: {fileID: 11400000, guid: 47fe64514bd13f943847aaafdf7dcfa3, type: 2}
+  openResultsPanelEvent: {fileID: 11400000, guid: f12baed30e59cd04f97677e9d5f2bfc2,
+    type: 2}
   pauseScenarioEvent: {fileID: 11400000, guid: 74ce3ece816718641b0ef4eaa0ba97a5, type: 2}
   resumeScenarioEvent: {fileID: 11400000, guid: 970c11379fbe4404588fee39cf7040b5,
     type: 2}
+  quitEvent: {fileID: 11400000, guid: cf26c7bb3e485c54fbf296634101c303, type: 2}
   mainMenu: {fileID: 1061824946}
   pauseMenu: {fileID: 916572942}
   resultsPanel: {fileID: 68589439}
+  hud: {fileID: 1468396201}
 --- !u!1 &1074858540
 GameObject:
   m_ObjectHideFlags: 0
@@ -10185,6 +10199,7 @@ GameObject:
   - component: {fileID: 1468396204}
   - component: {fileID: 1468396203}
   - component: {fileID: 1468396202}
+  - component: {fileID: 1468396206}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -10275,6 +10290,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1468396206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468396201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f7f0cfc87844115a070e6ba795eb62d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleCrosshairEvent: {fileID: 11400000, guid: 9d888283b9ca7d149baa3ed79e2adee9,
+    type: 2}
+  setHudTimerEvent: {fileID: 11400000, guid: 3cf6d04465d849f419069c6283921ccd, type: 2}
+  setHudScoreEvent: {fileID: 11400000, guid: fb5b8014449d7aa44b03de35d9e76fc3, type: 2}
+  setHudAccuracyEvent: {fileID: 11400000, guid: c8c4840104191754384dc6e59350fe44,
+    type: 2}
+  scoreText: {fileID: 317262410}
+  timerText: {fileID: 1642576752}
+  accuracyText: {fileID: 1289746954}
+  crosshair: {fileID: 998939294}
 --- !u!1 &1468870823
 GameObject:
   m_ObjectHideFlags: 0
@@ -14679,7 +14716,8 @@ MonoBehaviour:
   defaultFov: 40
   aimFov: 15
   bulletForce: 400
-  hud: {fileID: 1067309434}
+  toggleCrosshairEvent: {fileID: 11400000, guid: 9d888283b9ca7d149baa3ed79e2adee9,
+    type: 2}
   weaponCamera: {fileID: 20338764291451304}
   muzzleFlash: {fileID: 108631436279109306}
   muzzleParticleSystem: {fileID: 198674678486220166}

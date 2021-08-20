@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Controller.Input;
+using Events;
 using Game.Target;
 using UI;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace Weapon
         [SerializeField] private float aimFov = 15.0f;
         [SerializeField] private float bulletForce = 400;
 
-        [SerializeField] private Hud hud;
+        [SerializeField] private BoolEvent toggleCrosshairEvent;
         [SerializeField] private Camera weaponCamera;
         [SerializeField] private Light muzzleFlash;
         [SerializeField] private ParticleSystem muzzleParticleSystem;
@@ -72,7 +73,7 @@ namespace Weapon
         
             if (Math.Abs(weaponCamera.fieldOfView - aimFov) < 1f)
             {
-                hud.ToggleCrosshair(false);
+                toggleCrosshairEvent.Raise(false);
             }
 
             if (!_hasSoundPlayed) 
@@ -88,7 +89,7 @@ namespace Weapon
         private void ReleaseAim()
         {
             weaponCamera.fieldOfView = Mathf.Lerp(weaponCamera.fieldOfView, defaultFov,fovSpeed * Time.deltaTime);
-            hud.ToggleCrosshair(true);
+            toggleCrosshairEvent.Raise(true);
 
             _animator.SetBool(AimAnimatorState, false);
             _hasSoundPlayed = false;

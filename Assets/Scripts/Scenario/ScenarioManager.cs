@@ -1,37 +1,38 @@
+using System;
 using Controller;
 using Events;
-using JetBrains.Annotations;
-using UI;
 using UnityEngine;
 
 namespace Scenario
 {
     public class ScenarioManager : MonoBehaviour
     {
-        private const int ScenarioDurationS = 10;
+        private const int ScenarioDurationS = 5;
         private const int CameraResetSpeed = 4;
         
         [SerializeField] private GameObject player;
         [SerializeField] private Transform cameraTransform;
         [SerializeField] private GameObject targetPrefab;
         
+        [SerializeField] private InitMainMenuEvent initMainMenuEvent;
+        [SerializeField] private BoolEvent toggleHudEvent;
+        [SerializeField] private IntEvent setHudTimerEvent;
+        
         [SerializeField] private PlayScenarioEvent playScenarioEvent;
         [SerializeField] private VoidEvent resumeScenarioEvent;
         [SerializeField] private VoidEvent pauseScenarioEvent;
         [SerializeField] private VoidEvent stopScenarioEvent;
         [SerializeField] private VoidEvent restartScenarioEvent;
-
-        [SerializeField] private VoidEvent targetHitEvent;
-        [SerializeField] private VoidEvent targetMissEvent;
-
-        [SerializeField] private MainMenu mainMenu; // TODO: remove below references
-        [SerializeField] private Hud hud;
-        [SerializeField] private ResultsPanel resultsPanel;
-
+        
         private StatsManager _statsManager;
         private Scenario _scenario;
         private bool _playing;
         private float _timer;
+
+        public void Awake()
+        {
+            _statsManager = GetComponent<StatsManager>();
+        }
 
         public void OnEnable()
         {
@@ -40,10 +41,6 @@ namespace Scenario
             resumeScenarioEvent.OnRaised += OnResume;
             stopScenarioEvent.OnRaised += OnStop;
             restartScenarioEvent.OnRaised += OnRestart;
-
-            _statsManager = new StatsManager(hud, resultsPanel);
-            targetHitEvent.OnRaised += _statsManager.OnTargetHit;
-            targetMissEvent.OnRaised += _statsManager.OnTargetMiss;
         }
 
         public void OnDisable()
@@ -53,14 +50,12 @@ namespace Scenario
             resumeScenarioEvent.OnRaised -= OnResume;
             stopScenarioEvent.OnRaised -= OnStop;
             restartScenarioEvent.OnRaised -= OnRestart;
-            targetHitEvent.OnRaised -= _statsManager.OnTargetHit;
-            targetMissEvent.OnRaised -= _statsManager.OnTargetMiss;
         }
         
         public void Start()
         {
             var scenarios = GetComponents<Scenario>();
-            mainMenu.CreateScenarioButtons(scenarios);
+            initMainMenuEvent.Raise(scenarios);
             
             foreach (var scenario in scenarios)
             {
@@ -70,15 +65,15 @@ namespace Scenario
 
         private void OnPlay(Scenario scenario)
         {
-            _scenario = scenario;
+            toggleHudEvent.Raise(true);
             _statsManager.Reset();
-            hud.Toggle(true);
+            _timer = ScenarioDurationS;
 
             Cursor.lockState = CursorLockMode.Locked;
             player.GetComponent<PlayerController>().ResetCameras();
             player.SetActive(true);
 
-            _timer = ScenarioDurationS;
+            _scenario = scenario;
             _scenario.StartScenario();
             _playing = true;
         }
@@ -101,7 +96,7 @@ namespace Scenario
         {
             Time.timeScale = 1f;
             player.SetActive(false);
-            hud.Toggle(false);
+            toggleHudEvent.Raise(false);
             _scenario.EndScenario();
             _playing = false;
         }
@@ -114,8 +109,8 @@ namespace Scenario
         private void Finish()
         {
             OnStop();
-            Cursor.lockState = CursorLockMode.None;
             _statsManager.DisplayResults(_scenario.Name);
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public void Update()
@@ -135,7 +130,7 @@ namespace Scenario
             else
             {
                 var secondsRemaining = (int) _timer;
-                hud.SetTimer(secondsRemaining);
+                setHudTimerEvent.Raise(secondsRemaining);
                 _scenario.UpdateScenario();
             }
         }

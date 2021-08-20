@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace Events
 {
-    [CreateAssetMenu(menuName = "Events/PlayScenarioEvent")]
+    [CreateAssetMenu(menuName = "Events/Custom/PlayScenarioEvent")]
     public class PlayScenarioEvent : ScriptableObject
     {
         public UnityAction<Scenario.Scenario> OnRaised { get; set; }

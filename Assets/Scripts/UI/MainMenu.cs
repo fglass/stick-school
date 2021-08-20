@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Events;
 using TMPro;
@@ -9,8 +8,10 @@ namespace UI
 {
     public class MainMenu : MonoBehaviour
     {
-        private static readonly Color Red = new Color(0.8588236f, 0.2235294f, 0.3098039f);
-
+        private const int ScenarioButtonOffset = 550;
+        private static readonly Color RedTextColour = new Color(0.8588236f, 0.2235294f, 0.3098039f);
+        
+        [SerializeField] private InitMainMenuEvent initMainMenuEvent;
         [SerializeField] private VoidEvent selectPlayTabEvent;
         [SerializeField] private VoidEvent selectStatsTabEvent;
         [SerializeField] private VoidEvent selectSettingsTabEvent;
@@ -24,6 +25,7 @@ namespace UI
         
         public void OnEnable()
         {
+            initMainMenuEvent.OnRaised += Initialise;
             selectPlayTabEvent.OnRaised += OnPlayTabSelect;
             selectStatsTabEvent.OnRaised += OnStatsTabSelect;
             selectSettingsTabEvent.OnRaised += OnSettingsTabSelect;
@@ -31,19 +33,21 @@ namespace UI
 
         public void OnDisable()
         {
+            initMainMenuEvent.OnRaised -= Initialise;
             selectPlayTabEvent.OnRaised -= OnPlayTabSelect;
             selectStatsTabEvent.OnRaised -= OnStatsTabSelect;
             selectSettingsTabEvent.OnRaised -= OnSettingsTabSelect;
         }
-        
-        public void Start()
+
+        private void Initialise(IEnumerable<Scenario.Scenario> scenarios)
         {
+            CreateScenarioButtons(scenarios);
             selectPlayTabEvent.Raise();
         }
 
-        public void CreateScenarioButtons(IEnumerable<Scenario.Scenario> scenarios) // TODO: event
+        private void CreateScenarioButtons(IEnumerable<Scenario.Scenario> scenarios)
         {
-            var xOffset = -550;
+            var xOffset = -ScenarioButtonOffset;
             
             foreach (var scenario in scenarios)
             {
@@ -51,31 +55,35 @@ namespace UI
                 button.SetParent(playPanel.transform, false);
                 button.Translate(xOffset, 0, 0);
                 
-                button.Find("ScenarioName").GetComponent<TextMeshProUGUI>().text = scenario.Name.ToUpper();
-                button.GetComponent<Button>().onClick.AddListener(delegate { OnScenario(scenario); });
+                button.GetComponentInChildren<TextMeshProUGUI>().text = scenario.Name.ToUpper();
+                button.GetComponent<Button>().onClick.AddListener(delegate
+                {
+                    gameObject.SetActive(false);
+                    playScenarioEvent.Raise(scenario);
+                });
                 
-                xOffset += 550;
+                xOffset += ScenarioButtonOffset;
             }
         }
 
         private void OnPlayTabSelect()
         {
             DeselectTabs();
-            playText.color = Red;
+            playText.color = RedTextColour;
             playPanel.SetActive(true);
         }
 
         private void OnStatsTabSelect()
         {
             DeselectTabs();
-            statsText.color = Red;
+            statsText.color = RedTextColour;
             // TODO: stats panel
         }
 
         private void OnSettingsTabSelect()
         {
             DeselectTabs();
-            settingsText.color = Red;
+            settingsText.color = RedTextColour;
             // TODO: settings panel
         }
 
@@ -85,12 +93,6 @@ namespace UI
             statsText.color = Color.white;
             settingsText.color = Color.white;
             playPanel.SetActive(false);
-        }
-        
-        private void OnScenario(Scenario.Scenario scenario)
-        {
-            gameObject.SetActive(false);
-            playScenarioEvent.Raise(scenario);
         }
     }
 }

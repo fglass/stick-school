@@ -7,6 +7,9 @@ namespace UI
     public class UIManager : MonoBehaviour
     {
         [SerializeField] private VoidEvent openMainMenuEvent;
+        [SerializeField] private BoolEvent toggleHudEvent;
+        [SerializeField] private VoidEvent openResultsPanelEvent;
+
         [SerializeField] private VoidEvent pauseScenarioEvent;
         [SerializeField] private VoidEvent resumeScenarioEvent;
         [SerializeField] private VoidEvent quitEvent;
@@ -14,14 +17,16 @@ namespace UI
         [SerializeField] private GameObject mainMenu;
         [SerializeField] private GameObject pauseMenu;
         [SerializeField] private GameObject resultsPanel;
+        [SerializeField] private GameObject hud;
 
         private bool _paused;
-
         private bool IsInterfaceOpen => mainMenu.activeSelf || resultsPanel.activeSelf;
 
         public void OnEnable()
         {
             openMainMenuEvent.OnRaised += OpenMainMenu;
+            toggleHudEvent.OnRaised += ToggleHud;
+            openResultsPanelEvent.OnRaised += OpenResultsPanel;
             pauseScenarioEvent.OnRaised += OnPause;
             resumeScenarioEvent.OnRaised += OnResume;
             quitEvent.OnRaised += OnQuit;
@@ -30,6 +35,8 @@ namespace UI
         public void OnDisable()
         {
             openMainMenuEvent.OnRaised -= OpenMainMenu;
+            toggleHudEvent.OnRaised -= ToggleHud;
+            openResultsPanelEvent.OnRaised -= OpenResultsPanel;
             pauseScenarioEvent.OnRaised -= OnPause;
             resumeScenarioEvent.OnRaised -= OnResume;
             quitEvent.OnRaised -= OnQuit;
@@ -58,6 +65,17 @@ namespace UI
             mainMenu.SetActive(true);
         }
 
+        private void ToggleHud(bool enable)
+        {
+            hud.SetActive(enable);
+        }
+
+        private void OpenResultsPanel()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            resultsPanel.SetActive(true);
+        }
+        
         private void OnPause()
         {
             _paused = true;
@@ -72,7 +90,6 @@ namespace UI
         
         private static void OnQuit()
         {
-            Debug.Log("quit");
             Application.Quit();
         }
     }
