@@ -8,7 +8,7 @@ namespace UI
 {
     public class MainMenu : MonoBehaviour
     {
-        private const int ScenarioButtonOffset = 550;
+        private static readonly Vector2 ScenarioButtonOffset = new Vector2(550, -150);
         private static readonly Color RedTextColour = new Color(0.8588236f, 0.2235294f, 0.3098039f);
         
         [SerializeField] private InitMainMenuEvent initMainMenuEvent;
@@ -47,13 +47,13 @@ namespace UI
 
         private void CreateScenarioButtons(IEnumerable<Scenario.Scenario> scenarios)
         {
-            var xOffset = -ScenarioButtonOffset;
+            var xOffset = -ScenarioButtonOffset.x;
             
             foreach (var scenario in scenarios)
             {
                 var button = Instantiate(scenarioButtonPrefab, Vector3.zero, Quaternion.identity);
                 button.SetParent(playPanel.transform, false);
-                button.Translate(xOffset, 0, 0);
+                button.Translate(xOffset, ScenarioButtonOffset.y, 0);
                 
                 button.GetComponentInChildren<TextMeshProUGUI>().text = scenario.Name.ToUpper();
                 button.GetComponent<Button>().onClick.AddListener(delegate
@@ -62,7 +62,7 @@ namespace UI
                     playScenarioEvent.Raise(scenario);
                 });
                 
-                xOffset += ScenarioButtonOffset;
+                xOffset += ScenarioButtonOffset.x;
             }
         }
 

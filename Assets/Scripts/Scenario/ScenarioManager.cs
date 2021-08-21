@@ -1,4 +1,3 @@
-using System;
 using Controller;
 using Events;
 using UnityEngine;
@@ -7,7 +6,7 @@ namespace Scenario
 {
     public class ScenarioManager : MonoBehaviour
     {
-        private const int ScenarioDurationS = 5;
+        private const int ScenarioDurationS = 30;
         private const int CameraResetSpeed = 4;
         
         [SerializeField] private GameObject player;

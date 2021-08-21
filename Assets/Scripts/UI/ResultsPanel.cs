@@ -31,7 +31,7 @@ namespace UI
 
         private void Display(StatsManager.ResultsDto results)
         {
-            titleField.text = $"{results.ScenarioName} Scenario";
+            titleField.text = $"{results.ScenarioName.ToUpper()} SCENARIO";
             scoreField.text = results.Score.ToString();
             accuracyField.text = $"{results.HitShots}/{results.HitShots + results.MissedShots} ({results.Accuracy}%)";
         }
