@@ -3,6 +3,7 @@ using Controller.Input;
 using Events;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI
@@ -11,6 +12,7 @@ namespace UI
     {
         private static readonly Vector2 ScenarioButtonOffset = new Vector2(550, 0);
         private static readonly Color RedTextColour = new Color(0.8588236f, 0.2235294f, 0.3098039f);
+        private const int TrainTabIndex = 1;
         
         [SerializeField] private InitMainMenuEvent initMainMenuEvent;
         [SerializeField] private VoidEvent selectHomeTabEvent;
@@ -46,6 +48,7 @@ namespace UI
             selectTrainTabEvent.OnRaised += OnTrainTabSelect;
             selectStatsTabEvent.OnRaised += OnStatsTabSelect;
             selectSettingsTabEvent.OnRaised += OnSettingsTabSelect;
+            SelectTab(selectedTabIndex);
         }
 
         public void OnDisable()
@@ -60,7 +63,6 @@ namespace UI
         private void Initialise(IEnumerable<Scenario.Scenario> scenarios)
         {
             CreateScenarioButtons(scenarios);
-            selectHomeTabEvent.Raise();
         }
 
         private void CreateScenarioButtons(IEnumerable<Scenario.Scenario> scenarios)
@@ -86,12 +88,12 @@ namespace UI
         
         public void Update()
         {
-            if (InputManager.IsLeftTabSelected())
+            if (InputManager.IsLeftMenuNavigationPressed())
             {
                 var previousTabIndex = Mod(selectedTabIndex - 1, tabs.Count);
                 SelectTab(previousTabIndex);
 
-            } else if (InputManager.IsRightTabSelected())
+            } else if (InputManager.IsRightMenuNavigationPressed())
             {
                 var nextTabIndex = Mod(selectedTabIndex + 1, tabs.Count);
                 SelectTab(nextTabIndex);
@@ -122,8 +124,17 @@ namespace UI
         {
             DeselectTabs();
             selectedTabIndex = index;
-            tabs[selectedTabIndex].SetActive(true);
+            
+            var selectedTab = tabs[selectedTabIndex];
+            selectedTab.SetActive(true);
             tabTexts[selectedTabIndex].color = RedTextColour;
+
+            if (InputManager.IsUsingController())
+            {
+                EventSystem.current.SetSelectedGameObject(
+                    selectedTabIndex == TrainTabIndex ? selectedTab.transform.GetChild(0).gameObject : null
+                );
+            }
         }
 
         private void DeselectTabs()

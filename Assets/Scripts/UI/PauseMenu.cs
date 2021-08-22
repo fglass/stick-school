@@ -1,5 +1,7 @@
+using Controller.Input;
 using Events;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace UI
 {
@@ -11,6 +13,11 @@ namespace UI
         public void OnEnable()
         {
             openMainMenuEvent.OnRaised += OnMenu;
+            
+            if (InputManager.IsUsingController())
+            {
+                EventSystem.current.SetSelectedGameObject(transform.GetChild(1).gameObject); // TODO: to resume button
+            }
         }
 
         public void OnDisable()

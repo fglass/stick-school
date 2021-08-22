@@ -156,7 +156,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "LeftTab",
+                    "name": "LeftMenuNavigation",
                     "type": "Button",
                     "id": "b2a1615c-a0fc-4462-a9c6-330a3409120b",
                     "expectedControlType": "Button",
@@ -164,7 +164,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "RightTab",
+                    "name": "RightMenuNavigation",
                     "type": "Button",
                     "id": "08ebe7c8-e025-475d-bf55-e7870a9ffc54",
                     "expectedControlType": "Button",
@@ -202,7 +202,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller Control Scheme",
-                    "action": "RightTab",
+                    "action": "RightMenuNavigation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -213,7 +213,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse Control Scheme",
-                    "action": "RightTab",
+                    "action": "RightMenuNavigation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -224,7 +224,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller Control Scheme",
-                    "action": "LeftTab",
+                    "action": "LeftMenuNavigation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -235,7 +235,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse Control Scheme",
-                    "action": "LeftTab",
+                    "action": "LeftMenuNavigation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

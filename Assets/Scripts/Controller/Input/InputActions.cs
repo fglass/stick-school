@@ -178,7 +178,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""LeftTab"",
+                    ""name"": ""LeftMenuNavigation"",
                     ""type"": ""Button"",
                     ""id"": ""b2a1615c-a0fc-4462-a9c6-330a3409120b"",
                     ""expectedControlType"": ""Button"",
@@ -186,7 +186,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""RightTab"",
+                    ""name"": ""RightMenuNavigation"",
                     ""type"": ""Button"",
                     ""id"": ""08ebe7c8-e025-475d-bf55-e7870a9ffc54"",
                     ""expectedControlType"": ""Button"",
@@ -224,7 +224,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller Control Scheme"",
-                    ""action"": ""RightTab"",
+                    ""action"": ""RightMenuNavigation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -235,7 +235,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse Control Scheme"",
-                    ""action"": ""RightTab"",
+                    ""action"": ""RightMenuNavigation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -246,7 +246,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller Control Scheme"",
-                    ""action"": ""LeftTab"",
+                    ""action"": ""LeftMenuNavigation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -257,7 +257,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse Control Scheme"",
-                    ""action"": ""LeftTab"",
+                    ""action"": ""LeftMenuNavigation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -297,8 +297,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Menu = m_UI.FindAction("Menu", throwIfNotFound: true);
-        m_UI_LeftTab = m_UI.FindAction("LeftTab", throwIfNotFound: true);
-        m_UI_RightTab = m_UI.FindAction("RightTab", throwIfNotFound: true);
+        m_UI_LeftMenuNavigation = m_UI.FindAction("LeftMenuNavigation", throwIfNotFound: true);
+        m_UI_RightMenuNavigation = m_UI.FindAction("RightMenuNavigation", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -408,15 +408,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
     private readonly InputAction m_UI_Menu;
-    private readonly InputAction m_UI_LeftTab;
-    private readonly InputAction m_UI_RightTab;
+    private readonly InputAction m_UI_LeftMenuNavigation;
+    private readonly InputAction m_UI_RightMenuNavigation;
     public struct UIActions
     {
         private @InputActions m_Wrapper;
         public UIActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Menu => m_Wrapper.m_UI_Menu;
-        public InputAction @LeftTab => m_Wrapper.m_UI_LeftTab;
-        public InputAction @RightTab => m_Wrapper.m_UI_RightTab;
+        public InputAction @LeftMenuNavigation => m_Wrapper.m_UI_LeftMenuNavigation;
+        public InputAction @RightMenuNavigation => m_Wrapper.m_UI_RightMenuNavigation;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -429,12 +429,12 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Menu.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMenu;
                 @Menu.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMenu;
                 @Menu.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMenu;
-                @LeftTab.started -= m_Wrapper.m_UIActionsCallbackInterface.OnLeftTab;
-                @LeftTab.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnLeftTab;
-                @LeftTab.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnLeftTab;
-                @RightTab.started -= m_Wrapper.m_UIActionsCallbackInterface.OnRightTab;
-                @RightTab.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnRightTab;
-                @RightTab.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnRightTab;
+                @LeftMenuNavigation.started -= m_Wrapper.m_UIActionsCallbackInterface.OnLeftMenuNavigation;
+                @LeftMenuNavigation.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnLeftMenuNavigation;
+                @LeftMenuNavigation.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnLeftMenuNavigation;
+                @RightMenuNavigation.started -= m_Wrapper.m_UIActionsCallbackInterface.OnRightMenuNavigation;
+                @RightMenuNavigation.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnRightMenuNavigation;
+                @RightMenuNavigation.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnRightMenuNavigation;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -442,12 +442,12 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Menu.started += instance.OnMenu;
                 @Menu.performed += instance.OnMenu;
                 @Menu.canceled += instance.OnMenu;
-                @LeftTab.started += instance.OnLeftTab;
-                @LeftTab.performed += instance.OnLeftTab;
-                @LeftTab.canceled += instance.OnLeftTab;
-                @RightTab.started += instance.OnRightTab;
-                @RightTab.performed += instance.OnRightTab;
-                @RightTab.canceled += instance.OnRightTab;
+                @LeftMenuNavigation.started += instance.OnLeftMenuNavigation;
+                @LeftMenuNavigation.performed += instance.OnLeftMenuNavigation;
+                @LeftMenuNavigation.canceled += instance.OnLeftMenuNavigation;
+                @RightMenuNavigation.started += instance.OnRightMenuNavigation;
+                @RightMenuNavigation.performed += instance.OnRightMenuNavigation;
+                @RightMenuNavigation.canceled += instance.OnRightMenuNavigation;
             }
         }
     }
@@ -479,7 +479,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnMenu(InputAction.CallbackContext context);
-        void OnLeftTab(InputAction.CallbackContext context);
-        void OnRightTab(InputAction.CallbackContext context);
+        void OnLeftMenuNavigation(InputAction.CallbackContext context);
+        void OnRightMenuNavigation(InputAction.CallbackContext context);
     }
 }

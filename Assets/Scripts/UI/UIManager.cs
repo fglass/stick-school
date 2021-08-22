@@ -72,7 +72,7 @@ namespace UI
 
         private void OpenResultsPanel()
         {
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.None; // TODO: if not controller
             resultsPanel.SetActive(true);
         }
         
