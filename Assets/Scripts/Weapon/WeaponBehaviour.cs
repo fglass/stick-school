@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using Controller.Input;
 using Events;
-using Game.Target;
+using Scenario.Target;
 using UI;
 using UnityEngine;
 

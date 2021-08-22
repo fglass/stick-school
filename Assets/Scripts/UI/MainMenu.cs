@@ -12,7 +12,6 @@ namespace UI
     {
         private static readonly Vector2 ScenarioButtonOffset = new Vector2(550, 0);
         private static readonly Color RedTextColour = new Color(0.8588236f, 0.2235294f, 0.3098039f);
-        private const int TrainTabIndex = 1;
         
         [SerializeField] private InitMainMenuEvent initMainMenuEvent;
         [SerializeField] private VoidEvent selectHomeTabEvent;
@@ -124,15 +123,15 @@ namespace UI
         {
             DeselectTabs();
             selectedTabIndex = index;
+            tabTexts[selectedTabIndex].color = RedTextColour;
             
             var selectedTab = tabs[selectedTabIndex];
             selectedTab.SetActive(true);
-            tabTexts[selectedTabIndex].color = RedTextColour;
 
             if (InputManager.IsUsingController())
             {
                 EventSystem.current.SetSelectedGameObject(
-                    selectedTabIndex == TrainTabIndex ? selectedTab.transform.GetChild(0).gameObject : null
+                    selectedTab == trainTab ? selectedTab.transform.GetChild(0).gameObject : null
                 );
             }
         }

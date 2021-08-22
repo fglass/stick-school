@@ -1,7 +1,7 @@
 using Scenes.Range.Components.Scripts.Game.Target;
 using UnityEngine;
 
-namespace Game.Target
+namespace Scenario.Target
 {
     public class HealthBehaviour : MonoBehaviour
     {

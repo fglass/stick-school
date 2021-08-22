@@ -6,17 +6,17 @@ namespace Scenario
 {
     public class ScenarioManager : MonoBehaviour
     {
-        private const int ScenarioDurationS = 30;
         private const int CameraResetSpeed = 4;
         
         [SerializeField] private GameObject player;
         [SerializeField] private Transform cameraTransform;
         [SerializeField] private GameObject targetPrefab;
-        
+        [SerializeField] private int scenarioDurationS = 30;
+
+        [Header("Events")]
         [SerializeField] private InitMainMenuEvent initMainMenuEvent;
         [SerializeField] private BoolEvent toggleHudEvent;
         [SerializeField] private IntEvent setHudTimerEvent;
-        
         [SerializeField] private PlayScenarioEvent playScenarioEvent;
         [SerializeField] private VoidEvent resumeScenarioEvent;
         [SerializeField] private VoidEvent pauseScenarioEvent;
@@ -66,7 +66,7 @@ namespace Scenario
         {
             toggleHudEvent.Raise(true);
             _statsManager.Reset();
-            _timer = ScenarioDurationS;
+            _timer = scenarioDurationS;
 
             Cursor.lockState = CursorLockMode.Locked;
             player.GetComponent<PlayerController>().ResetCameras();

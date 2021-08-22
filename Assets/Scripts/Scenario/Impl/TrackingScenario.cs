@@ -1,4 +1,4 @@
-using Game.Target;
+using Scenario.Target;
 using Scenes.Range.Components.Scripts.Game.Target;
 using Scenes.Range.Components.Scripts.Game.Util;
 using UnityEngine;
