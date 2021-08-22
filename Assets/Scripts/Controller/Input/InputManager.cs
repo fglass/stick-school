@@ -32,6 +32,16 @@ namespace Controller.Input
         {
             return Actions.UI.Menu.WasPressedThisFrame();
         }
+        
+        public static bool IsLeftTabSelected()
+        {
+            return Actions.UI.LeftTab.WasPressedThisFrame();
+        }
+        
+        public static bool IsRightTabSelected()
+        {
+            return Actions.UI.RightTab.WasPressedThisFrame();
+        }
 
         public static bool IsUsingController()
         {

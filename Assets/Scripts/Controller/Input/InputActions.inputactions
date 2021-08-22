@@ -154,6 +154,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "LeftTab",
+                    "type": "Button",
+                    "id": "b2a1615c-a0fc-4462-a9c6-330a3409120b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightTab",
+                    "type": "Button",
+                    "id": "08ebe7c8-e025-475d-bf55-e7870a9ffc54",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -176,6 +192,50 @@
                     "processors": "",
                     "groups": "Mouse Control Scheme",
                     "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f4da6cff-7e37-486e-8530-471b78a87c7b",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller Control Scheme",
+                    "action": "RightTab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "69beeb8d-e1bc-44b3-a920-284d7d5f2fb3",
+                    "path": "<Keyboard>/#(E)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse Control Scheme",
+                    "action": "RightTab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f3db2a01-c028-410d-9b69-e9f1b2aa844e",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller Control Scheme",
+                    "action": "LeftTab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1354774f-0535-4e42-9023-62557a9f9588",
+                    "path": "<Keyboard>/#(Q)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse Control Scheme",
+                    "action": "LeftTab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

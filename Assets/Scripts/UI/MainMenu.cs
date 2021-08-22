@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Controller.Input;
 using Events;
 using TMPro;
 using UnityEngine;
@@ -27,7 +28,17 @@ namespace UI
         [SerializeField] private TextMeshProUGUI trainText;
         [SerializeField] private TextMeshProUGUI statsText;
         [SerializeField] private TextMeshProUGUI settingsText;
-        
+
+        private IList<GameObject> tabs;
+        private IList<TextMeshProUGUI> tabTexts;
+        private int selectedTabIndex;
+
+        public void Awake()
+        {
+            tabs = new[] { homeTab, trainTab, statsTab, settingsTab };
+            tabTexts = new[] { homeText, trainText, statsText, settingsText };
+        }
+
         public void OnEnable()
         {
             initMainMenuEvent.OnRaised += Initialise;
@@ -40,7 +51,7 @@ namespace UI
         public void OnDisable()
         {
             initMainMenuEvent.OnRaised -= Initialise;
-            selectHomeTabEvent.OnRaised += OnHomeTabSelect;
+            selectHomeTabEvent.OnRaised -= OnHomeTabSelect;
             selectTrainTabEvent.OnRaised -= OnTrainTabSelect;
             selectStatsTabEvent.OnRaised -= OnStatsTabSelect;
             selectSettingsTabEvent.OnRaised -= OnSettingsTabSelect;
@@ -72,44 +83,61 @@ namespace UI
                 xOffset += ScenarioButtonOffset.x;
             }
         }
+        
+        public void Update()
+        {
+            if (InputManager.IsLeftTabSelected())
+            {
+                var previousTabIndex = Mod(selectedTabIndex - 1, tabs.Count);
+                SelectTab(previousTabIndex);
+
+            } else if (InputManager.IsRightTabSelected())
+            {
+                var nextTabIndex = Mod(selectedTabIndex + 1, tabs.Count);
+                SelectTab(nextTabIndex);
+            }
+        }
 
         private void OnHomeTabSelect()
         {
-            SelectTab(homeTab, homeText);
+            SelectTab(0);
         }
 
         private void OnTrainTabSelect()
         {
-            SelectTab(trainTab, trainText);
+            SelectTab(1);
         }
 
         private void OnStatsTabSelect()
         {
-            SelectTab(statsTab, statsText);
+            SelectTab(2);
         }
 
         private void OnSettingsTabSelect()
         {
-            SelectTab(settingsTab, settingsText);
+            SelectTab(3);
         }
 
-        private void SelectTab(GameObject tab, Graphic text)
+        private void SelectTab(int index)
         {
             DeselectTabs();
-            tab.SetActive(true);
-            text.color = RedTextColour;
+            selectedTabIndex = index;
+            tabs[selectedTabIndex].SetActive(true);
+            tabTexts[selectedTabIndex].color = RedTextColour;
         }
 
         private void DeselectTabs()
         {
-            homeTab.SetActive(false);
-            trainTab.SetActive(false);
-            statsTab.SetActive(false);
-            settingsTab.SetActive(false);
-            homeText.color = Color.white;
-            trainText.color = Color.white;
-            statsText.color = Color.white;
-            settingsText.color = Color.white;
+            for (var i = 0; i < tabs.Count; i++)
+            {
+                tabs[i].SetActive(false);
+                tabTexts[i].color = Color.white;
+            }
+        }
+
+        private static int Mod(int n, int m)
+        {
+            return (n %= m) < 0 ? n + m : n;
         }
     }
 }

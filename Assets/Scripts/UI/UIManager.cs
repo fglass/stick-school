@@ -41,7 +41,7 @@ namespace UI
             resumeScenarioEvent.OnRaised -= OnResume;
             quitEvent.OnRaised -= OnQuit;
         }
-        
+
         public void Update()
         {
             if (!InputManager.IsMenuPressed() || IsInterfaceOpen)
