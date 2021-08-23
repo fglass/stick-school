@@ -45,7 +45,7 @@ namespace Controller.Input
 
         public static bool IsUsingController()
         {
-            return Gamepad.all.Count > 0; // TODO: last action or setting
+            return Gamepad.all.Count > 0; // TODO: last action or setting - Gamepad.current.lastUpdateTime
         }
     }
 }

@@ -58,7 +58,7 @@ namespace UI
                 pauseScenarioEvent.Raise();
             }
         }
-
+        
         private void OpenMainMenu()
         {
             OnResume();
