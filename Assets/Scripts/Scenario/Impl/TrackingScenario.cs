@@ -1,12 +1,11 @@
 using Scenario.Target;
-using Scenes.Range.Components.Scripts.Game.Target;
 using Scenes.Range.Components.Scripts.Game.Util;
 using UnityEngine;
 using Weapon;
 
-namespace Game.Scenario.Impl
+namespace Scenario.Impl
 {
-    public class TrackingScenario : global::Scenario.Scenario
+    public class TrackingScenario : Scenario
     {
         [SerializeField] private GameObject weapon;
         [SerializeField] private bool useThreeDimensions;

@@ -1,13 +1,16 @@
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Game.Target
+namespace Scenario.Target
 {
     public class TargetBehaviour : MonoBehaviour
     {
         private static readonly Vector3 PlayerPosition = new Vector3(0, 0, 0);
+        private static readonly int ColourId = Shader.PropertyToID("TargetColour");
+        
         [SerializeField] private AudioClip hitSound;
         [SerializeField] private GameObject shatteredPrefab;
         [SerializeField] private bool showTrail;
+        
         private Material _material;
         private Color _initialColour;
 
@@ -17,7 +20,7 @@ namespace Scenes.Range.Components.Scripts.Game.Target
         {
             GetComponent<TrailRenderer>().enabled = showTrail;
             _material = GetComponent<MeshRenderer>().material;
-            _initialColour = _material.color;
+            _initialColour = _material.GetColor(ColourId);
         }
         
         public void Update()
@@ -44,7 +47,7 @@ namespace Scenes.Range.Components.Scripts.Game.Target
 
         private void TryUpdateColour(GameObject shatteredObject)
         {            
-            var targetColour = _material.color;
+            var targetColour = _material.GetColor(ColourId);
             if (targetColour != _initialColour)
             {
                 shatteredObject.GetComponent<ShatterEffect>().SetColour(targetColour);

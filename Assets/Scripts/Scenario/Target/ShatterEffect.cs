@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Game.Target
+namespace Scenario.Target
 {
     public class ShatterEffect : MonoBehaviour
     {
+        private const float EffectDuration = 0.2f;
         private const float ShatterForce = 50;
         private const float OpacityDelta = 0.1f;
-        private const float Duration = 0.2f;
+        private static readonly int ColourId = Shader.PropertyToID("TargetColour");
+        private static readonly int AlphaId = Shader.PropertyToID("TargetAlpha");
         private IEnumerable<Material> _materials;
 
         public void Awake()
@@ -29,7 +31,7 @@ namespace Scenes.Range.Components.Scripts.Game.Target
         }
         
         private IEnumerator DespawnRoutine() {
-            yield return new WaitForSeconds(Duration);
+            yield return new WaitForSeconds(EffectDuration);
             Destroy(gameObject);
         }
         
@@ -42,9 +44,8 @@ namespace Scenes.Range.Components.Scripts.Game.Target
         {
             foreach (var material in _materials)
             {
-                var colour = material.color;
-                colour.a -= OpacityDelta;
-                material.color = colour;
+                var newAlpha = material.GetFloat(AlphaId) - OpacityDelta;
+                material.SetFloat(AlphaId, newAlpha);
             }
         }
         
@@ -52,7 +53,7 @@ namespace Scenes.Range.Components.Scripts.Game.Target
         {
             foreach (var material in _materials)
             {
-                material.color = colour;
+                material.SetColor(ColourId, colour);
             }
         }
     }

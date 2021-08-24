@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using Events;
-using Scenes.Range.Components.Scripts.Game.Target;
+using Scenario.Target;
 using UnityEngine;
 
 namespace Weapon.Projectile
