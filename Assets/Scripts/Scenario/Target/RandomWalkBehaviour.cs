@@ -31,9 +31,10 @@ namespace Scenario.Target
             }
         }
         
-        private void ChangeTargetDirection() // TODO: no ceiling
+        private void ChangeTargetDirection()
         {
-            rb.velocity = Random.insideUnitSphere.normalized * Thrust;
+            var direction = Random.insideUnitSphere.normalized;
+            rb.velocity = direction * Thrust;
             directionTimer = Random.Range(MinDirectionDurationS, MaxDirectionDurationS);
         }
     }
