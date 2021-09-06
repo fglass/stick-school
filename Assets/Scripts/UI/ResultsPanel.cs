@@ -3,7 +3,6 @@ using Events;
 using Scenario;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace UI
 {
@@ -26,8 +25,7 @@ namespace UI
 
             if (InputManager.IsUsingController())
             {
-                EventSystem.current.SetSelectedGameObject(null);
-                EventSystem.current.SetSelectedGameObject(restartButton);
+                StartCoroutine(UIManager.SelectButtonRoutine(restartButton));
             }
         }
 

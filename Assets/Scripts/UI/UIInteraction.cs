@@ -39,7 +39,7 @@ namespace UI
 
         public void OnDisable()
         {
-            GetComponent<Image>().material = defaultMaterial;
+            image.material = defaultMaterial;
         }
 
         private void SetAccentMaterial()

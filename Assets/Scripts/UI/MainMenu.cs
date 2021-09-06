@@ -91,7 +91,6 @@ namespace UI
             {
                 var previousTabIndex = Mod(selectedTabIndex - 1, tabs.Count);
                 SelectTab(previousTabIndex);
-
             } else if (InputManager.IsRightMenuNavigationPressed())
             {
                 var nextTabIndex = Mod(selectedTabIndex + 1, tabs.Count);
