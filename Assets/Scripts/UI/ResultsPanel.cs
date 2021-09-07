@@ -23,7 +23,7 @@ namespace UI
             restartScenarioEvent.OnRaised += Close;
             openMainMenuEvent.OnRaised += Close;
 
-            if (InputManager.IsUsingController())
+            if (InputManager.IsUsingController)
             {
                 StartCoroutine(UIManager.SelectButtonRoutine(restartButton));
             }

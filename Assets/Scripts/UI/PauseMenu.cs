@@ -14,7 +14,7 @@ namespace UI
         {
             openMainMenuEvent.OnRaised += OnMenu;
             
-            if (InputManager.IsUsingController())
+            if (InputManager.IsUsingController)
             {
                 StartCoroutine(UIManager.SelectButtonRoutine(resumeButton));
             }

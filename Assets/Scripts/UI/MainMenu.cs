@@ -25,6 +25,7 @@ namespace UI
         [SerializeField] private GameObject trainTab;
         [SerializeField] private GameObject statsTab;
         [SerializeField] private GameObject settingsTab;
+        [SerializeField] private GameObject controllerNavigation;
         [SerializeField] private TextMeshProUGUI homeText;
         [SerializeField] private TextMeshProUGUI trainText;
         [SerializeField] private TextMeshProUGUI statsText;
@@ -47,6 +48,7 @@ namespace UI
             selectTrainTabEvent.OnRaised += OnTrainTabSelect;
             selectStatsTabEvent.OnRaised += OnStatsTabSelect;
             selectSettingsTabEvent.OnRaised += OnSettingsTabSelect;
+            InputManager.InputChangeEvent += OnInputChange;
             SelectTab(selectedTabIndex);
         }
 
@@ -57,6 +59,7 @@ namespace UI
             selectTrainTabEvent.OnRaised -= OnTrainTabSelect;
             selectStatsTabEvent.OnRaised -= OnStatsTabSelect;
             selectSettingsTabEvent.OnRaised -= OnSettingsTabSelect;
+            InputManager.InputChangeEvent -= OnInputChange;
         }
 
         private void Initialise(IEnumerable<Scenario.Scenario> scenarios)
@@ -127,7 +130,7 @@ namespace UI
             var selectedTab = tabs[selectedTabIndex];
             selectedTab.SetActive(true);
 
-            if (InputManager.IsUsingController())
+            if (InputManager.IsUsingController)
             {
                 EventSystem.current.SetSelectedGameObject(
                     selectedTab == trainTab ? selectedTab.transform.GetChild(0).gameObject : null
@@ -142,6 +145,11 @@ namespace UI
                 tabs[i].SetActive(false);
                 tabTexts[i].color = Color.white;
             }
+        }
+        
+        private void OnInputChange(bool isUsingController)
+        {
+            controllerNavigation.SetActive(isUsingController);
         }
 
         private static int Mod(int n, int m)

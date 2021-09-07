@@ -7,6 +7,10 @@ namespace Controller.Input
     public static class InputManager
     {
         private static readonly InputActions Actions = new InputActions();
+        public delegate void InputChangeEventHandler(bool isUsingController);
+        public static event InputChangeEventHandler InputChangeEvent;
+
+        public static bool IsUsingController { get; private set; }
 
         static InputManager()
         {
@@ -44,17 +48,13 @@ namespace Controller.Input
         {
             return Actions.UI.RightMenuNavigation.WasPressedThisFrame();
         }
-
-        public static bool IsUsingController()
-        {
-            return Gamepad.all.Count > 0; // TODO: replace with below
-        }
         
-        private static void OnInputChange(InputUser user, InputUserChange change, InputDevice _)
+        private static void OnInputChange(InputUser user, InputUserChange change, InputDevice device)
         {
             if (change == InputUserChange.ControlSchemeChanged)
             {
-                Debug.Log(user.controlScheme == Actions.ControllerControlSchemeScheme); // TODO: use
+                IsUsingController = user.controlScheme == Actions.ControllerControlSchemeScheme;
+                InputChangeEvent?.Invoke(IsUsingController);
             }
         }
     }
