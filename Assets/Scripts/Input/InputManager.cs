@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 
-namespace Controller.Input
+namespace Input
 {
     public static class InputManager
     {
@@ -14,9 +14,10 @@ namespace Controller.Input
 
         static InputManager()
         {
-            InputUser.onChange += OnInputChange;
             Actions.Gameplay.Enable();
             Actions.UI.Enable();
+            IsUsingController = Gamepad.all.Count > 0;
+            InputUser.onChange += OnInputChange;
         }
 
         public static Vector2 GetRotationDelta()
@@ -36,7 +37,12 @@ namespace Controller.Input
 
         public static bool IsMenuPressed()
         {
-            return Actions.UI.Menu.WasPressedThisFrame();
+            return Actions.Gameplay.Menu.WasPressedThisFrame();
+        }
+        
+        public static bool IsRestartPressed()
+        {
+            return Actions.Gameplay.Restart.WasPressedThisFrame();
         }
 
         public static bool IsLeftMenuNavigationPressed() // TODO: event instead?

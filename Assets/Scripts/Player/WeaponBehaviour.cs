@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
-using Controller.Input;
 using Events;
+using Input;
 using Scenario.Target;
 using UI;
 using UnityEngine;

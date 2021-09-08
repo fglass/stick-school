@@ -1,6 +1,7 @@
 using System.Collections;
-using Controller.Input;
 using Events;
+using Input;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -14,6 +15,7 @@ namespace UI
 
         [SerializeField] private VoidEvent pauseScenarioEvent;
         [SerializeField] private VoidEvent resumeScenarioEvent;
+        [SerializeField] private VoidEvent restartScenarioEvent;
         [SerializeField] private VoidEvent quitEvent;
 
         [SerializeField] private GameObject mainMenu;
@@ -22,7 +24,6 @@ namespace UI
         [SerializeField] private GameObject hud;
 
         private bool _paused;
-        private bool IsInterfaceOpen => mainMenu.activeSelf || resultsPanel.activeSelf;
 
         public void OnEnable()
         {
@@ -46,7 +47,18 @@ namespace UI
 
         public void Update()
         {
-            if (!InputManager.IsMenuPressed() || IsInterfaceOpen)
+            if (InputManager.IsMenuPressed())
+            {
+                OnMenuPressed();
+            } else if (InputManager.IsRestartPressed())
+            {
+                OnRestartPressed();
+            }
+        }
+
+        private void OnMenuPressed()
+        {
+            if (mainMenu.activeSelf || resultsPanel.activeSelf)
             {
                 return;
             }
@@ -58,6 +70,14 @@ namespace UI
             else
             {
                 pauseScenarioEvent.Raise();
+            }
+        }
+
+        private void OnRestartPressed()
+        {
+            if (!mainMenu.activeSelf && !resultsPanel.activeSelf && !pauseMenu.activeSelf)
+            {
+                restartScenarioEvent.Raise();
             }
         }
         
@@ -92,6 +112,7 @@ namespace UI
         
         private static void OnQuit()
         {
+            EditorApplication.ExitPlaymode();
             Application.Quit();
         }
         

@@ -1694,7 +1694,7 @@ MonoBehaviour:
   cameraTransform: {fileID: 4660888796433046}
   targetPrefab: {fileID: 4445158436245017880, guid: 1099fe9633e7e494cab5cda167997df9,
     type: 3}
-  scenarioDurationS: 5
+  scenarioDurationS: 30
   initMainMenuEvent: {fileID: 11400000, guid: abde4f66b30bc98459a94510fa644eda, type: 2}
   toggleHudEvent: {fileID: 11400000, guid: 47fe64514bd13f943847aaafdf7dcfa3, type: 2}
   setHudTimerEvent: {fileID: 11400000, guid: 3cf6d04465d849f419069c6283921ccd, type: 2}
@@ -6524,8 +6524,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7664,6 +7664,8 @@ MonoBehaviour:
   pauseScenarioEvent: {fileID: 11400000, guid: 74ce3ece816718641b0ef4eaa0ba97a5, type: 2}
   resumeScenarioEvent: {fileID: 11400000, guid: 970c11379fbe4404588fee39cf7040b5,
     type: 2}
+  restartScenarioEvent: {fileID: 11400000, guid: c166e845bc34dce45a98ceb1b5bfb52e,
+    type: 2}
   quitEvent: {fileID: 11400000, guid: cf26c7bb3e485c54fbf296634101c303, type: 2}
   mainMenu: {fileID: 1061824946}
   pauseMenu: {fileID: 916572942}
@@ -8474,8 +8476,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9962,7 +9964,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 155, y: 2}
-  m_SizeDelta: {x: -40, y: -64}
+  m_SizeDelta: {x: -50, y: -72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1467973326
 GameObject:
@@ -10558,7 +10560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1519698216
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13470,32 +13472,10 @@ MonoBehaviour:
       m_Calls: []
   m_ControlsChangedEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Fire
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 0e75988c-d916-4140-9d34-3b7679670982
     m_ActionName: Gameplay/Fire[/XInputControllerWindows/rightTrigger,/Mouse/leftButton]
   - m_PersistentCalls:
@@ -13508,16 +13488,16 @@ MonoBehaviour:
     m_ActionName: Gameplay/Camera[/XInputControllerWindows/rightStick/up,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/rightStick/right,/Mouse/delta]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 9c74025c-0012-4657-9f8a-554c1e31e204
-    m_ActionName: UI/Menu[/XInputControllerWindows/start,/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: b2a1615c-a0fc-4462-a9c6-330a3409120b
     m_ActionName: UI/LeftMenuNavigation[/XInputControllerWindows/leftShoulder,/Keyboard/q]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 08ebe7c8-e025-475d-bf55-e7870a9ffc54
     m_ActionName: UI/RightMenuNavigation[/XInputControllerWindows/rightShoulder,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d4f1c7bb-f146-4cc2-8e53-8a4d32333104
+    m_ActionName: Gameplay/Menu[/Keyboard/escape,/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Controller Control Scheme
   m_DefaultActionMap: Gameplay
@@ -14168,8 +14148,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -600, y: 2}
-  m_SizeDelta: {x: -40, y: -64}
+  m_AnchoredPosition: {x: -605, y: 2}
+  m_SizeDelta: {x: -50, y: -72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2124785684
 GameObject:

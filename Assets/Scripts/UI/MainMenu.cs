@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Controller.Input;
 using Events;
+using Input;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -39,6 +39,7 @@ namespace UI
         {
             tabs = new[] { homeTab, trainTab, statsTab, settingsTab };
             tabTexts = new[] { homeText, trainText, statsText, settingsText };
+            OnInputChange(InputManager.IsUsingController);
         }
 
         public void OnEnable()

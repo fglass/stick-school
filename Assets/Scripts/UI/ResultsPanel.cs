@@ -1,5 +1,5 @@
-using Controller.Input;
 using Events;
+using Input;
 using Scenario;
 using TMPro;
 using UnityEngine;

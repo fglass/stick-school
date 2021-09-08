@@ -1,4 +1,4 @@
-﻿using Controller.Input;
+﻿using Input;
 using UnityEngine;
 
 namespace Controller
