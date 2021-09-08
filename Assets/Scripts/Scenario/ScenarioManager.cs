@@ -68,7 +68,8 @@ namespace Scenario
             _statsManager.Reset();
             _timer = scenarioDurationS;
 
-            Cursor.lockState = CursorLockMode.Locked;
+            Time.timeScale = 1f;
+
             player.GetComponent<PlayerController>().ResetCameras();
             player.SetActive(true);
 
@@ -81,14 +82,12 @@ namespace Scenario
         {
             Time.timeScale = 0f;
             player.SetActive(false);
-            Cursor.lockState = CursorLockMode.None;
         }
         
         private void OnResume()
         {
             Time.timeScale = 1f;
             player.SetActive(true);
-            Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void OnStop()
@@ -109,7 +108,6 @@ namespace Scenario
         {
             OnStop();
             _statsManager.DisplayResults(_scenario.Name);
-            Cursor.lockState = CursorLockMode.None;
         }
 
         public void Update()

@@ -33,6 +33,7 @@ namespace UI
             pauseScenarioEvent.OnRaised += OnPause;
             resumeScenarioEvent.OnRaised += OnResume;
             quitEvent.OnRaised += OnQuit;
+            ToggleCursor(true);
         }
 
         public void OnDisable()
@@ -75,7 +76,7 @@ namespace UI
 
         private void OnRestartPressed()
         {
-            if (!mainMenu.activeSelf && !resultsPanel.activeSelf && !pauseMenu.activeSelf)
+            if (!mainMenu.activeSelf)
             {
                 restartScenarioEvent.Raise();
             }
@@ -83,37 +84,56 @@ namespace UI
         
         private void OpenMainMenu()
         {
-            OnResume();
+            _paused = false;
+            pauseMenu.SetActive(false);
             mainMenu.SetActive(true);
+            ToggleCursor(true);
         }
 
         private void ToggleHud(bool enable)
         {
             hud.SetActive(enable);
+            if (enable)
+            {
+                ToggleCursor(false);
+            }
         }
 
         private void OpenResultsPanel()
         {
-            Cursor.lockState = CursorLockMode.None; // TODO: if not controller
             resultsPanel.SetActive(true);
+            ToggleCursor(true);
         }
         
         private void OnPause()
         {
             _paused = true;
             pauseMenu.SetActive(true);
+            ToggleCursor(true);
         }
 
         private void OnResume()
         {
             _paused = false;
             pauseMenu.SetActive(false);
+            ToggleCursor(false);
         }
         
         private static void OnQuit()
         {
             EditorApplication.ExitPlaymode();
             Application.Quit();
+        }
+
+        private static void ToggleCursor(bool enable)
+        {
+            if (!enable)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            } else if (!InputManager.IsUsingController)
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
         
         public static IEnumerator SelectButtonRoutine(GameObject button)
