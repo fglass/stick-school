@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 144457879314593232}
   - component: {fileID: 7251711075223753311}
   m_Layer: 0
-  m_Name: ShatteredSphere
+  m_Name: ShatteredTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4297f9938d73d734d9d329ba9c04a0c8, type: 2}
+  - {fileID: 2100000, guid: e5ee3bbde5b6ce941968c970211e5b6c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -203,7 +203,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4297f9938d73d734d9d329ba9c04a0c8, type: 2}
+  - {fileID: 2100000, guid: e5ee3bbde5b6ce941968c970211e5b6c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -299,7 +299,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4297f9938d73d734d9d329ba9c04a0c8, type: 2}
+  - {fileID: 2100000, guid: e5ee3bbde5b6ce941968c970211e5b6c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -395,7 +395,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4297f9938d73d734d9d329ba9c04a0c8, type: 2}
+  - {fileID: 2100000, guid: e5ee3bbde5b6ce941968c970211e5b6c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -491,7 +491,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4297f9938d73d734d9d329ba9c04a0c8, type: 2}
+  - {fileID: 2100000, guid: e5ee3bbde5b6ce941968c970211e5b6c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

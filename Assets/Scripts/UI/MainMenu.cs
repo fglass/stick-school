@@ -10,7 +10,7 @@ namespace UI
 {
     public class MainMenu : MonoBehaviour
     {
-        private static readonly Vector2 ScenarioButtonOffset = new Vector2(550, 0);
+        private static readonly Vector2 ScenarioButtonOffset = new Vector2(550, 175);
         private static readonly Color RedTextColour = new Color(0.8588236f, 0.2235294f, 0.3098039f);
         
         [SerializeField] private InitMainMenuEvent initMainMenuEvent;

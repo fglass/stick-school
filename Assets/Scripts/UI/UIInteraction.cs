@@ -6,13 +6,16 @@ namespace UI
 {
     public class UIInteraction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
     {
-        private Image image;
+        [SerializeField] private Image targetImage;
         private Material defaultMaterial;
         private Material accentMaterial;
 
         public void Awake()
         {
-            image = GetComponent<Image>();
+            if (targetImage == null)
+            {
+                targetImage = GetComponent<Image>();
+            }
             defaultMaterial = Resources.Load<Material>("Materials/UIPrimaryMaterial");
             accentMaterial = Resources.Load<Material>("Materials/UIAccentMaterial");
         }
@@ -39,17 +42,17 @@ namespace UI
 
         public void OnDisable()
         {
-            image.material = defaultMaterial;
+            targetImage.material = defaultMaterial;
         }
 
         private void SetAccentMaterial()
         {
-            image.material = accentMaterial;
+            targetImage.material = accentMaterial;
         }
 
         private void SetDefaultMaterial()
         {
-            image.material = defaultMaterial;
+            targetImage.material = defaultMaterial;
         }
     }
 }
