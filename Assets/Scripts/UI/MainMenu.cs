@@ -26,6 +26,7 @@ namespace UI
         [SerializeField] private GameObject statsTab;
         [SerializeField] private GameObject settingsTab;
         [SerializeField] private GameObject controllerNavigation;
+        [SerializeField] private GameObject controllerExitButton;
         [SerializeField] private TextMeshProUGUI homeText;
         [SerializeField] private TextMeshProUGUI trainText;
         [SerializeField] private TextMeshProUGUI statsText;
@@ -151,6 +152,7 @@ namespace UI
         private void OnInputChange(bool isUsingController)
         {
             controllerNavigation.SetActive(isUsingController);
+            controllerExitButton.SetActive(isUsingController);
         }
 
         private static int Mod(int n, int m)
