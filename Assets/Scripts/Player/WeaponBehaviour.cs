@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using Events;
 using Input;
 using Scenario.Target;
@@ -9,7 +8,6 @@ namespace Player
 {
     public class WeaponBehaviour : MonoBehaviour
     {
-        [SerializeField] private float lightDuration = 0.02f;
         [SerializeField] private float fovSpeed = 15.0f;
         [SerializeField] private float defaultFov = 40.0f;
         [SerializeField] private float aimFov = 15.0f;
@@ -18,8 +16,6 @@ namespace Player
         [SerializeField] private BoolEvent toggleCrosshairEvent;
         [SerializeField] private Camera mainCamera;
         [SerializeField] private Camera weaponCamera;
-        [SerializeField] private Light muzzleFlash;
-        [SerializeField] private ParticleSystem muzzleParticleSystem;
         
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private Transform weaponBarrel;
@@ -41,7 +37,6 @@ namespace Player
         public void Start()
         {
             _animator = GetComponent<Animator>();
-            muzzleFlash.enabled = false;
         }
 
         public void Update()
@@ -96,25 +91,9 @@ namespace Player
         {
             _animator.Play(_isAds ? AimFireAnimationId : FireAnimationId, 0, 0f);
             shootAudioSource.Play();
-            muzzleParticleSystem.Emit(1);
-
-            DoMuzzleFlash();
             SpawnProjectile();
         }
-
-        private void DoMuzzleFlash()
-        {
-            StartCoroutine(MuzzleFlashLightRoutine());
-            muzzleParticleSystem.Emit (1);
-        }
         
-        private IEnumerator MuzzleFlashLightRoutine() 
-        {
-            muzzleFlash.enabled = true;
-            yield return new WaitForSeconds(lightDuration);
-            muzzleFlash.enabled = false;
-        }
-
         private void SpawnProjectile()
         {
             var rayOrigin = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
