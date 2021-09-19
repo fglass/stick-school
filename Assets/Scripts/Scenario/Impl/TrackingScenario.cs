@@ -1,7 +1,7 @@
+using Player;
 using Scenario.Target;
 using Scenes.Range.Components.Scripts.Game.Util;
 using UnityEngine;
-using Weapon;
 
 namespace Scenario.Impl
 {

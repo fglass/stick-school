@@ -3,10 +3,9 @@ using System.Collections;
 using Events;
 using Input;
 using Scenario.Target;
-using UI;
 using UnityEngine;
 
-namespace Weapon
+namespace Player
 {
     public class WeaponBehaviour : MonoBehaviour
     {
@@ -14,17 +13,19 @@ namespace Weapon
         [SerializeField] private float fovSpeed = 15.0f;
         [SerializeField] private float defaultFov = 40.0f;
         [SerializeField] private float aimFov = 15.0f;
-        [SerializeField] private float bulletForce = 400;
+        [SerializeField] private float projectileSpeed = 400;
 
         [SerializeField] private BoolEvent toggleCrosshairEvent;
+        [SerializeField] private Camera mainCamera;
         [SerializeField] private Camera weaponCamera;
         [SerializeField] private Light muzzleFlash;
         [SerializeField] private ParticleSystem muzzleParticleSystem;
         
-        [SerializeField] private Transform projectilePrefab;
-        [SerializeField] private Transform casingPrefab;
+        [SerializeField] private GameObject projectilePrefab;
+        [SerializeField] private GameObject casingPrefab;
+        [SerializeField] private Transform weaponBarrel;
         [SerializeField] private Transform casingSpawn;
-        
+
         [SerializeField] private AudioSource mainAudioSource;
         [SerializeField] private AudioSource shootAudioSource;
 
@@ -60,10 +61,7 @@ namespace Weapon
             {
                 Fire();
             }
-        }
-
-        public void FixedUpdate()
-        {
+            
             CheckIfTargetHovered();
         }
 
@@ -106,23 +104,6 @@ namespace Weapon
             SpawnProjectile();
         }
 
-        private void CheckIfTargetHovered()
-        {
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, Mathf.Infinity, TargetLayerMask))
-            {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-                var healthBehaviour = hit.transform.gameObject.GetComponent<HealthBehaviour>();
-                if (healthBehaviour != null)
-                {
-                    healthBehaviour.IsHovered = true;
-                }
-            }
-            else
-            {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            }
-        }
-        
         private void DoMuzzleFlash()
         {
             StartCoroutine(MuzzleFlashLightRoutine());
@@ -138,15 +119,39 @@ namespace Weapon
 
         private void SpawnProjectile()
         {
-            var projectileTransform = transform;
-            var position = projectileTransform.TransformDirection(Vector3.forward);
-            position.y += 1.54f; // TODO: more robust solution
+            var rayOrigin = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
+            var rayDirection = mainCamera.transform.forward;
             
-            var projectile = Instantiate(projectilePrefab, position, projectileTransform.rotation);
-            projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * bulletForce;
+            var intersects = Physics.Raycast(rayOrigin, rayDirection, out var hit, Mathf.Infinity);
+            var destination = intersects ? hit.point : rayDirection * 1000;
+            
+            var firePoint = weaponBarrel.position;
+            var projectile = Instantiate(projectilePrefab, firePoint, Quaternion.identity);
+            var direction = (destination - firePoint).normalized;
+            projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
 
             var casingTransform = casingSpawn.transform;
             Instantiate(casingPrefab, casingTransform.position, casingTransform.rotation);
+        }
+        
+        private void CheckIfTargetHovered()
+        {
+            var rayOrigin = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
+            var rayDirection = mainCamera.transform.forward;
+            
+            if (Physics.Raycast(rayOrigin, rayDirection, out var hit, Mathf.Infinity, TargetLayerMask))
+            {
+                Debug.DrawRay(rayOrigin, rayDirection * hit.distance, Color.yellow);
+                var healthBehaviour = hit.transform.gameObject.GetComponent<HealthBehaviour>();
+                if (healthBehaviour != null)
+                {
+                    healthBehaviour.IsHovered = true;
+                }
+            }
+            else
+            {
+                Debug.DrawRay(rayOrigin, rayDirection * 1000, Color.white);
+            }
         }
     }
 }

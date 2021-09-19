@@ -28,7 +28,7 @@ namespace Scenario.Target
             _defaultColour = _material.GetColor(ColourId);
         }
         
-        public void FixedUpdate() // TODO: order guaranteed?
+        public void FixedUpdate()
         {
             TryPlaySound();
             TryDecrementHealth();

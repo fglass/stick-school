@@ -3,16 +3,17 @@ using Events;
 using Scenario.Target;
 using UnityEngine;
 
-namespace Weapon.Projectile
+namespace Player.Projectile
 {
 	public class Projectile : MonoBehaviour {
-
-		[SerializeField] private VoidEvent targetHitEvent;
-		[SerializeField] private VoidEvent targetMissEvent;
-		[SerializeField] private Transform metalImpactPrefab;
+		
 		private const float DurationS = 5.0f;
 		private const string TargetTag = "Target";
 		private const string MetalTag = "Metal";
+		
+		[SerializeField] private VoidEvent targetHitEvent;
+		[SerializeField] private VoidEvent targetMissEvent;
+		[SerializeField] private Transform metalImpactPrefab;
 
 		public void Start() 
 		{
