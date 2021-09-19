@@ -13,7 +13,7 @@ namespace Player.Projectile
 		
 		[SerializeField] private VoidEvent targetHitEvent;
 		[SerializeField] private VoidEvent targetMissEvent;
-		[SerializeField] private Transform metalImpactPrefab;
+		[SerializeField] private Transform impactPrefab;
 
 		public void Start() 
 		{
@@ -47,7 +47,7 @@ namespace Player.Projectile
 		private void InstantiateImpactPrefab(Collision collision)
 		{
 			Instantiate(
-				metalImpactPrefab, 
+				impactPrefab, 
 				transform.position, 
 				Quaternion.LookRotation(collision.contacts[0].normal)
 			);

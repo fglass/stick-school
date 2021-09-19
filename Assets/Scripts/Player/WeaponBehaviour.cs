@@ -22,9 +22,7 @@ namespace Player
         [SerializeField] private ParticleSystem muzzleParticleSystem;
         
         [SerializeField] private GameObject projectilePrefab;
-        [SerializeField] private GameObject casingPrefab;
         [SerializeField] private Transform weaponBarrel;
-        [SerializeField] private Transform casingSpawn;
 
         [SerializeField] private AudioSource mainAudioSource;
         [SerializeField] private AudioSource shootAudioSource;
@@ -129,9 +127,6 @@ namespace Player
             var projectile = Instantiate(projectilePrefab, firePoint, Quaternion.identity);
             var direction = (destination - firePoint).normalized;
             projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
-
-            var casingTransform = casingSpawn.transform;
-            Instantiate(casingPrefab, casingTransform.position, casingTransform.rotation);
         }
         
         private void CheckIfTargetHovered()
