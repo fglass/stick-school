@@ -96,15 +96,15 @@ namespace Player
         
         private void SpawnProjectile()
         {
-            var rayOrigin = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
-            var rayDirection = mainCamera.transform.forward;
-            
-            var intersects = Physics.Raycast(rayOrigin, rayDirection, out var hit, Mathf.Infinity);
-            var destination = intersects ? hit.point : rayDirection * 1000;
-            
             var firePoint = weaponBarrel.position;
             var projectile = Instantiate(projectilePrefab, firePoint, Quaternion.identity);
+            
+            var rayOrigin = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
+            var rayDirection = mainCamera.transform.forward;
+            var intersects = Physics.Raycast(rayOrigin, rayDirection, out var hit, Mathf.Infinity);
+            var destination = intersects ? hit.point : rayDirection * 1000;
             var direction = (destination - firePoint).normalized;
+            
             projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
         }
         

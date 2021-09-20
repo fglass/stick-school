@@ -11,7 +11,7 @@ namespace UI
     public class MainMenu : MonoBehaviour
     {
         private static readonly Vector2 ScenarioButtonOffset = new Vector2(550, 175);
-        private static readonly Color RedTextColour = new Color(0.8588236f, 0.2235294f, 0.3098039f);
+        private static readonly Color AccentColour = new Color(0.8588236f, 0.2235294f, 0.3098039f);
         
         [SerializeField] private InitMainMenuEvent initMainMenuEvent;
         [SerializeField] private VoidEvent selectHomeTabEvent;
@@ -127,8 +127,9 @@ namespace UI
         {
             DeselectTabs();
             selectedTabIndex = index;
-            tabTexts[selectedTabIndex].color = RedTextColour;
-            
+            // tabTexts[selectedTabIndex].color = AccentColour;
+            tabTexts[selectedTabIndex].GetComponent<TextInteraction>().Select();
+
             var selectedTab = tabs[selectedTabIndex];
             selectedTab.SetActive(true);
 
@@ -145,7 +146,7 @@ namespace UI
             for (var i = 0; i < tabs.Count; i++)
             {
                 tabs[i].SetActive(false);
-                tabTexts[i].color = Color.white;
+                tabTexts[i].GetComponent<TextInteraction>().Deselect();
             }
         }
         

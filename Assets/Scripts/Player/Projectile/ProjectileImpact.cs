@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Weapon.Projectile
+namespace Player.Projectile
 {
 	public class ProjectileImpact : MonoBehaviour {
 
+		private const float DurationS = 8.0f;
 		[SerializeField] private AudioSource audioSource;
 		[SerializeField] private AudioClip[] impactSounds;
-		private const float DurationS = 8.0f;
 
 		private void Start () {
 			StartCoroutine(DespawnRoutine());

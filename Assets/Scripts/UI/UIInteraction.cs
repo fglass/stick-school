@@ -42,7 +42,7 @@ namespace UI
 
         public void OnDisable()
         {
-            targetImage.material = defaultMaterial;
+            SetDefaultMaterial();
         }
 
         private void SetAccentMaterial()
