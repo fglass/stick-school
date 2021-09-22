@@ -23,7 +23,7 @@ namespace UI
         [SerializeField] private GameObject resultsPanel;
         [SerializeField] private GameObject hud;
 
-        private bool _paused;
+        private bool paused;
 
         public void OnEnable()
         {
@@ -64,7 +64,7 @@ namespace UI
                 return;
             }
             
-            if (_paused)
+            if (paused)
             {
                 resumeScenarioEvent.Raise();
             }
@@ -84,7 +84,7 @@ namespace UI
         
         private void OpenMainMenu()
         {
-            _paused = false;
+            paused = false;
             pauseMenu.SetActive(false);
             mainMenu.SetActive(true);
             ToggleCursor(true);
@@ -107,14 +107,14 @@ namespace UI
         
         private void OnPause()
         {
-            _paused = true;
+            paused = true;
             pauseMenu.SetActive(true);
             ToggleCursor(true);
         }
 
         private void OnResume()
         {
-            _paused = false;
+            paused = false;
             pauseMenu.SetActive(false);
             ToggleCursor(false);
         }

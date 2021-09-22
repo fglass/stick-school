@@ -15,30 +15,20 @@ namespace UI
         [SerializeField] private InitMainMenuEvent initMainMenuEvent;
         [SerializeField] private VoidEvent selectHomeTabEvent;
         [SerializeField] private VoidEvent selectTrainTabEvent;
-        [SerializeField] private VoidEvent selectStatsTabEvent;
+        [SerializeField] private VoidEvent selectProfileTabEvent;
         [SerializeField] private VoidEvent selectSettingsTabEvent;
         [SerializeField] private PlayScenarioEvent playScenarioEvent;
         
-        [SerializeField] private Transform scenarioButtonPrefab;
-        [SerializeField] private GameObject homeTab;
-        [SerializeField] private GameObject trainTab;
-        [SerializeField] private GameObject statsTab;
-        [SerializeField] private GameObject settingsTab;
+        [SerializeField] private GameObject[] tabs;
+        [SerializeField] private TextMeshProUGUI[] tabTexts;
         [SerializeField] private GameObject controllerNavigation;
         [SerializeField] private GameObject controllerExitButton;
-        [SerializeField] private TextMeshProUGUI homeText;
-        [SerializeField] private TextMeshProUGUI trainText;
-        [SerializeField] private TextMeshProUGUI statsText;
-        [SerializeField] private TextMeshProUGUI settingsText;
+        [SerializeField] private Transform scenarioButtonPrefab;
 
-        private IList<GameObject> tabs;
-        private IList<TextMeshProUGUI> tabTexts;
         private int selectedTabIndex;
 
         public void Awake()
         {
-            tabs = new[] { homeTab, trainTab, statsTab, settingsTab };
-            tabTexts = new[] { homeText, trainText, statsText, settingsText };
             OnInputChange(InputManager.IsUsingController);
         }
 
@@ -47,7 +37,7 @@ namespace UI
             initMainMenuEvent.OnRaised += Initialise;
             selectHomeTabEvent.OnRaised += OnHomeTabSelect;
             selectTrainTabEvent.OnRaised += OnTrainTabSelect;
-            selectStatsTabEvent.OnRaised += OnStatsTabSelect;
+            selectProfileTabEvent.OnRaised += OnProfileTabSelect;
             selectSettingsTabEvent.OnRaised += OnSettingsTabSelect;
             InputManager.InputChangeEvent += OnInputChange;
             SelectTab(selectedTabIndex);
@@ -58,7 +48,7 @@ namespace UI
             initMainMenuEvent.OnRaised -= Initialise;
             selectHomeTabEvent.OnRaised -= OnHomeTabSelect;
             selectTrainTabEvent.OnRaised -= OnTrainTabSelect;
-            selectStatsTabEvent.OnRaised -= OnStatsTabSelect;
+            selectProfileTabEvent.OnRaised -= OnProfileTabSelect;
             selectSettingsTabEvent.OnRaised -= OnSettingsTabSelect;
             InputManager.InputChangeEvent -= OnInputChange;
         }
@@ -71,6 +61,7 @@ namespace UI
 
         private void CreateScenarioButtons(IEnumerable<Scenario.Scenario> scenarios)
         {
+            var trainTab = tabs[1];
             var xOffset = -ScenarioButtonOffset.x;
             
             foreach (var scenario in scenarios)
@@ -94,11 +85,11 @@ namespace UI
         {
             if (InputManager.IsLeftMenuNavigationPressed())
             {
-                var previousTabIndex = Mod(selectedTabIndex - 1, tabs.Count);
+                var previousTabIndex = Mod(selectedTabIndex - 1, tabs.Length);
                 SelectTab(previousTabIndex);
             } else if (InputManager.IsRightMenuNavigationPressed())
             {
-                var nextTabIndex = Mod(selectedTabIndex + 1, tabs.Count);
+                var nextTabIndex = Mod(selectedTabIndex + 1, tabs.Length);
                 SelectTab(nextTabIndex);
             }
         }
@@ -113,7 +104,7 @@ namespace UI
             SelectTab(1);
         }
 
-        private void OnStatsTabSelect()
+        private void OnProfileTabSelect()
         {
             SelectTab(2);
         }
@@ -134,6 +125,7 @@ namespace UI
 
             if (InputManager.IsUsingController)
             {
+                var trainTab = tabs[1];
                 var selectedObject = selectedTab == trainTab ? selectedTab.transform.GetChild(0).gameObject : null;
                 EventSystem.current.SetSelectedGameObject(selectedObject);
             }
@@ -141,7 +133,7 @@ namespace UI
 
         private void DeselectTabs()
         {
-            for (var i = 0; i < tabs.Count; i++)
+            for (var i = 0; i < tabs.Length; i++)
             {
                 tabs[i].SetActive(false);
                 tabTexts[i].GetComponent<TextInteraction>().Deselect();
