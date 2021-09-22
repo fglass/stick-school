@@ -1,20 +1,21 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace UI
 {
     public class TextInteraction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        private TextMeshProUGUI text;
         private static readonly Color DefaultColour = Color.white;
         private Color accentColour;
+        private TextMeshProUGUI text;
         private bool selected;
 
         public void Awake()
         {
-            text = GetComponent<TextMeshProUGUI>();
             accentColour = Resources.Load<Material>("Materials/UIAccentMaterial").color;
+            text = GetComponent<TextMeshProUGUI>();
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -50,12 +51,18 @@ namespace UI
 
         private void SetAccentColour()
         {
-            text.color = accentColour;
+            if (text != null)
+            {
+                text.color = accentColour;
+            }
         }
 
         private void SetDefaultColour()
         {
-            text.color = DefaultColour;
+            if (text != null)
+            {
+                text.color = DefaultColour;
+            }
         }
     }
 }

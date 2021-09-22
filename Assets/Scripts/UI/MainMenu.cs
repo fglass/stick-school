@@ -11,8 +11,7 @@ namespace UI
     public class MainMenu : MonoBehaviour
     {
         private static readonly Vector2 ScenarioButtonOffset = new Vector2(550, 175);
-        private static readonly Color AccentColour = new Color(0.8588236f, 0.2235294f, 0.3098039f);
-        
+
         [SerializeField] private InitMainMenuEvent initMainMenuEvent;
         [SerializeField] private VoidEvent selectHomeTabEvent;
         [SerializeField] private VoidEvent selectTrainTabEvent;
@@ -67,6 +66,7 @@ namespace UI
         private void Initialise(IEnumerable<Scenario.Scenario> scenarios)
         {
             CreateScenarioButtons(scenarios);
+            SelectTab(selectedTabIndex);
         }
 
         private void CreateScenarioButtons(IEnumerable<Scenario.Scenario> scenarios)
@@ -127,7 +127,6 @@ namespace UI
         {
             DeselectTabs();
             selectedTabIndex = index;
-            // tabTexts[selectedTabIndex].color = AccentColour;
             tabTexts[selectedTabIndex].GetComponent<TextInteraction>().Select();
 
             var selectedTab = tabs[selectedTabIndex];
@@ -135,9 +134,8 @@ namespace UI
 
             if (InputManager.IsUsingController)
             {
-                EventSystem.current.SetSelectedGameObject(
-                    selectedTab == trainTab ? selectedTab.transform.GetChild(0).gameObject : null
-                );
+                var selectedObject = selectedTab == trainTab ? selectedTab.transform.GetChild(0).gameObject : null;
+                EventSystem.current.SetSelectedGameObject(selectedObject);
             }
         }
 
