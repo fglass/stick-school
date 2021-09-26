@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Events;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -12,9 +14,12 @@ namespace UI
         [SerializeField] private TMP_Dropdown qualityDropdown;
         [SerializeField] private TMP_Dropdown resolutionDropdown;
         [SerializeField] private TMP_Dropdown displayModeDropdown;
+        [SerializeField] private Slider framerateLimitSlider;
+        [SerializeField] private TextMeshProUGUI framerateLimitText;
         [SerializeField] private IntEvent setQualityEvent;
         [SerializeField] private IntEvent setResolutionEvent;
         [SerializeField] private IntEvent setDisplayModeEvent;
+        [SerializeField] private FloatEvent setFramerateLimitEvent;
 
         private Resolution[] resolutions;
         private readonly FullScreenMode[] displayModes =
@@ -29,6 +34,7 @@ namespace UI
             InitialiseQualityDropdown();
             InitialiseResolutionDropdown();
             InitialiseDisplayModeDropdown();
+            InitialiseFramerateLimitSetting();
         }
 
         public void OnEnable()
@@ -36,6 +42,7 @@ namespace UI
             setQualityEvent.OnRaised += SetQuality;
             setResolutionEvent.OnRaised += SetResolution;
             setDisplayModeEvent.OnRaised += SetDisplayMode;
+            setFramerateLimitEvent.OnRaised += SetFramerateLimitText;
         }
 
         public void OnDisable()
@@ -43,6 +50,7 @@ namespace UI
             setQualityEvent.OnRaised -= SetQuality;
             setResolutionEvent.OnRaised -= SetResolution;
             setDisplayModeEvent.OnRaised -= SetDisplayMode;
+            setFramerateLimitEvent.OnRaised -= SetFramerateLimitText;
         }
 
         private void InitialiseQualityDropdown()
@@ -81,12 +89,18 @@ namespace UI
 
         private void InitialiseDisplayModeDropdown()
         {
-            var options = new List<string>() { "Fullscreen", "Fullscreen Windowed", "Windowed" };
+            var options = new List<string> { "Fullscreen", "Fullscreen Windowed", "Windowed" };
             displayModeDropdown.ClearOptions();
             displayModeDropdown.AddOptions(options);
 
             displayModeDropdown.value = Array.IndexOf(displayModes, Screen.fullScreenMode);
             displayModeDropdown.RefreshShownValue();
+        }
+        
+        private void InitialiseFramerateLimitSetting()
+        {
+            framerateLimitSlider.value = FramerateLimiter.Limit;
+            SetFramerateLimitText(FramerateLimiter.Limit);
         }
 
         private void SetResolution(int selectedIndex)
@@ -104,6 +118,11 @@ namespace UI
         {
             var selectedDisplayMode = displayModes[selectedIndex];
             Screen.fullScreenMode = selectedDisplayMode;
+        }
+
+        private void SetFramerateLimitText(float limit)
+        {
+            framerateLimitText.text = Mathf.Round(limit).ToString(CultureInfo.InvariantCulture);
         }
     }
 }
