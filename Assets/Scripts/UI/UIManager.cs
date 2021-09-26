@@ -9,19 +9,20 @@ namespace UI
 {
     public class UIManager : MonoBehaviour
     {
-        [SerializeField] private VoidEvent openMainMenuEvent;
-        [SerializeField] private BoolEvent toggleHudEvent;
-        [SerializeField] private VoidEvent openResultsPanelEvent;
-
-        [SerializeField] private VoidEvent pauseScenarioEvent;
-        [SerializeField] private VoidEvent resumeScenarioEvent;
-        [SerializeField] private VoidEvent restartScenarioEvent;
-        [SerializeField] private VoidEvent quitEvent;
-
         [SerializeField] private GameObject mainMenu;
         [SerializeField] private GameObject pauseMenu;
         [SerializeField] private GameObject resultsPanel;
         [SerializeField] private GameObject hud;
+        [SerializeField] private GameObject fpsDisplay;
+        
+        [SerializeField] private VoidEvent openMainMenuEvent;
+        [SerializeField] private BoolEvent toggleHudEvent;
+        [SerializeField] private VoidEvent openResultsPanelEvent;
+        [SerializeField] private VoidEvent pauseScenarioEvent;
+        [SerializeField] private VoidEvent resumeScenarioEvent;
+        [SerializeField] private VoidEvent restartScenarioEvent;
+        [SerializeField] private IntEvent setDisplayFpsEvent;
+        [SerializeField] private VoidEvent quitEvent;
 
         private bool paused;
 
@@ -32,6 +33,7 @@ namespace UI
             openResultsPanelEvent.OnRaised += OpenResultsPanel;
             pauseScenarioEvent.OnRaised += OnPause;
             resumeScenarioEvent.OnRaised += OnResume;
+            setDisplayFpsEvent.OnRaised += ToggleFps;
             quitEvent.OnRaised += OnQuit;
             ToggleCursor(true);
         }
@@ -43,6 +45,7 @@ namespace UI
             openResultsPanelEvent.OnRaised -= OpenResultsPanel;
             pauseScenarioEvent.OnRaised -= OnPause;
             resumeScenarioEvent.OnRaised -= OnResume;
+            setDisplayFpsEvent.OnRaised -= ToggleFps;
             quitEvent.OnRaised -= OnQuit;
         }
 
@@ -123,6 +126,11 @@ namespace UI
         {
             EditorApplication.ExitPlaymode();
             Application.Quit();
+        }
+        
+        private void ToggleFps(int active)
+        {
+            fpsDisplay.SetActive(active == 0);
         }
 
         private static void ToggleCursor(bool enable)

@@ -14,8 +14,9 @@ namespace UI
         [SerializeField] private TMP_Dropdown qualityDropdown;
         [SerializeField] private TMP_Dropdown resolutionDropdown;
         [SerializeField] private TMP_Dropdown displayModeDropdown;
-        [SerializeField] private Slider framerateLimitSlider;
+        [SerializeField] private TMP_Dropdown displayFpsDropdown;
         [SerializeField] private TextMeshProUGUI framerateLimitText;
+        [SerializeField] private Slider framerateLimitSlider;
         [SerializeField] private IntEvent setQualityEvent;
         [SerializeField] private IntEvent setResolutionEvent;
         [SerializeField] private IntEvent setDisplayModeEvent;
@@ -34,6 +35,7 @@ namespace UI
             InitialiseQualityDropdown();
             InitialiseResolutionDropdown();
             InitialiseDisplayModeDropdown();
+            InitialiseDisplayFpsDropdown();
             InitialiseFramerateLimitSetting();
         }
 
@@ -96,11 +98,21 @@ namespace UI
             displayModeDropdown.value = Array.IndexOf(displayModes, Screen.fullScreenMode);
             displayModeDropdown.RefreshShownValue();
         }
+
+        private void InitialiseDisplayFpsDropdown()
+        {
+            var options = new List<string> { "Enabled", "Disabled" };
+            displayFpsDropdown.ClearOptions();
+            displayFpsDropdown.AddOptions(options);
+
+            displayFpsDropdown.value = 1;
+            displayFpsDropdown.RefreshShownValue();
+        }
         
         private void InitialiseFramerateLimitSetting()
         {
-            framerateLimitSlider.value = FramerateLimiter.Limit;
             SetFramerateLimitText(FramerateLimiter.Limit);
+            framerateLimitSlider.value = FramerateLimiter.Limit;
         }
 
         private void SetResolution(int selectedIndex)
@@ -119,7 +131,7 @@ namespace UI
             var selectedDisplayMode = displayModes[selectedIndex];
             Screen.fullScreenMode = selectedDisplayMode;
         }
-
+        
         private void SetFramerateLimitText(float limit)
         {
             framerateLimitText.text = Mathf.Round(limit).ToString(CultureInfo.InvariantCulture);

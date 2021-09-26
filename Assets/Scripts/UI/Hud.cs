@@ -6,30 +6,31 @@ namespace UI
 {
     public class Hud : MonoBehaviour
     {
-        [SerializeField] private BoolEvent toggleCrosshairEvent;
-        [SerializeField] private IntEvent setHudTimerEvent;
-        [SerializeField] private IntEvent setHudScoreEvent;
-        [SerializeField] private IntEvent setHudAccuracyEvent;
-
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private TextMeshProUGUI timerText;
         [SerializeField] private TextMeshProUGUI accuracyText;
         [SerializeField] private GameObject crosshair;
 
+        [SerializeField] private IntEvent setHudTimerEvent;
+        [SerializeField] private IntEvent setHudScoreEvent;
+        [SerializeField] private IntEvent setHudAccuracyEvent;
+        [SerializeField] private BoolEvent toggleCrosshairEvent;
+
+
         public void OnEnable()
         {
-            toggleCrosshairEvent.OnRaised += ToggleCrosshair;
             setHudTimerEvent.OnRaised += SetTimer;
             setHudScoreEvent.OnRaised += SetScore;
             setHudAccuracyEvent.OnRaised += SetAccuracy;
+            toggleCrosshairEvent.OnRaised += ToggleCrosshair;
         }
 
         public void OnDisable()
         {
-            toggleCrosshairEvent.OnRaised -= ToggleCrosshair;
             setHudTimerEvent.OnRaised -= SetTimer;
             setHudScoreEvent.OnRaised -= SetScore;
             setHudAccuracyEvent.OnRaised -= SetAccuracy;
+            toggleCrosshairEvent.OnRaised -= ToggleCrosshair;
         }
         
         private void SetTimer(int seconds)

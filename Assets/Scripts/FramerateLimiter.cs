@@ -32,7 +32,7 @@ public class FramerateLimiter : MonoBehaviour
         StartCoroutine(WaitForNextFrame());
     }
 
-    private IEnumerator WaitForNextFrame() // TODO: 120hz monitor unaffected
+    private IEnumerator WaitForNextFrame()
     {
         // Reference: https://blog.unity.com/technology/precise-framerates-in-unity
         while (true)
