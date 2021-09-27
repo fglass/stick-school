@@ -1,7 +1,7 @@
 ﻿using Input;
 using UnityEngine;
 
-namespace Controller
+namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
@@ -34,6 +34,6 @@ namespace Controller
         
         private Vector2 GetInputRotationDelta() => InputManager.GetRotationDelta() * (GetInputMultiplier() * sensitivity);
 
-        private static float GetInputMultiplier() => InputManager.IsUsingController ? 3.5f : 1f;
+        private static float GetInputMultiplier() => InputManager.IsUsingController ? 10f : 1f;
     }
 }

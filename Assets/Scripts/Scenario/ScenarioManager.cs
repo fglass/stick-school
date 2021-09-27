@@ -1,5 +1,5 @@
-using Controller;
 using Events;
+using Player;
 using UnityEngine;
 
 namespace Scenario
