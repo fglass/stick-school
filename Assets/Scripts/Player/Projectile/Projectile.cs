@@ -28,7 +28,7 @@ namespace Player.Projectile
 			
 			if (tf.CompareTag(TargetTag))
 			{
-				tf.gameObject.GetComponent<TargetBehaviour>().IsHit = true;
+				tf.gameObject.GetComponent<TargetController>().IsHit = true;
 				targetHitEvent.Raise();
 			}
 			else if (tf.CompareTag(MetalTag)) 

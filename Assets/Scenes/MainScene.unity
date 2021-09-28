@@ -1693,8 +1693,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1273766503718514}
   cameraTransform: {fileID: 4660888796433046}
-  targetPrefab: {fileID: 4445158436245017880, guid: 1099fe9633e7e494cab5cda167997df9,
-    type: 3}
   scenarioDurationS: 30
   initMainMenuEvent: {fileID: 11400000, guid: abde4f66b30bc98459a94510fa644eda, type: 2}
   toggleHudEvent: {fileID: 11400000, guid: 47fe64514bd13f943847aaafdf7dcfa3, type: 2}
@@ -1732,6 +1730,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfa9e67d79e4291a8afbd4237292870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPrefab: {fileID: 4445158436245017880, guid: 1099fe9633e7e494cab5cda167997df9,
+    type: 3}
+  maxTargets: 1
+  debugMode: 0
 --- !u!114 &292607904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1744,6 +1746,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c24263246544f4e9e168b7a647a3d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPrefab: {fileID: 4445158436245017880, guid: 1099fe9633e7e494cab5cda167997df9,
+    type: 3}
+  maxTargets: 5
 --- !u!114 &292607905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1756,6 +1761,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97505596b1cd46a1b44a5be940fc716f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPrefab: {fileID: 4445158436245017880, guid: 1099fe9633e7e494cab5cda167997df9,
+    type: 3}
+  maxTargets: 1
   weapon: {fileID: 1986870748753906}
   useThreeDimensions: 0
 --- !u!114 &292607906
@@ -11978,13 +11986,14 @@ GameObject:
   - component: {fileID: 1579225255}
   - component: {fileID: 1579225258}
   - component: {fileID: 1579225257}
+  - component: {fileID: 1579225256}
   m_Layer: 5
   m_Name: DebugConsole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1579225255
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12004,6 +12013,18 @@ RectTransform:
   m_AnchoredPosition: {x: 75, y: -200}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &1579225256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579225254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d3070922fe4e4e8e506389cc0ac6cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1579225257
 MonoBehaviour:
   m_ObjectHideFlags: 0

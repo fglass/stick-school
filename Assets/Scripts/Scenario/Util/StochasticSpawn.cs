@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Scenes.Range.Components.Scripts.Game.Util
+namespace Scenario.Util
 {
     public static class StochasticSpawn
     {

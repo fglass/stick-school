@@ -1,30 +1,25 @@
-using Scenes.Range.Components.Scripts.Game.Util;
+using Scenario.Util;
 using UnityEngine;
 
-namespace Game.Scenario.Impl
+namespace Scenario.Impl
 {
-    public class StochasticScenario : global::Scenario.Scenario
+    public class StochasticScenario : Scenario
     {
         public void Awake()
         {
             Name = "Stochastic";
-            MaxTargets = 5;
         }
         
         protected override GameObject SpawnTarget()
         {
             var origin = new Vector2(CenterPosition.x, CenterPosition.y);
-            var point = StochasticSpawn.InBounds(origin, -MaxX, MaxX, -MaxY, MaxY);
-            var position = new Vector3(point.x, point.y, CenterPosition.z);
+            var randomPoint = StochasticSpawn.InBounds(origin, -MaxX, MaxX, -MaxY, MaxY);
+            var position = new Vector3(randomPoint.x, randomPoint.y, CenterPosition.z);
             
-            var target = Instantiate(TargetPrefab, position, Quaternion.identity);
-            FreezeTarget(target);
-            return target;
-        }
-
-        private static void FreezeTarget(GameObject target)
-        {
+            var target = Instantiate(targetPrefab, position, Quaternion.identity);
             target.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            
+            return target;
         }
     }
 }

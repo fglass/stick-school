@@ -7,13 +7,13 @@ namespace Scenario
     {
         protected const float MaxX = 12f;
         protected const float MaxY = 5f;
-        protected int MaxTargets = 5;
+
+        [SerializeField] protected GameObject targetPrefab;
+        [SerializeField] private int maxTargets = 1;
         protected readonly Vector3 CenterPosition = new Vector3(0f, 4.75f, 17f);
         private readonly List<GameObject> _activeTargets = new List<GameObject>();
 
         public string Name { get; protected set; }
-
-        public GameObject TargetPrefab { get; set; }
 
         public virtual void StartScenario()
         {
@@ -43,7 +43,7 @@ namespace Scenario
 
         private void TrySpawnTargets()
         {
-            for (var i = _activeTargets.Count; i < MaxTargets; i++)
+            for (var i = _activeTargets.Count; i < maxTargets; i++)
             {
                 var target = SpawnTarget();
                 _activeTargets.Add(target);

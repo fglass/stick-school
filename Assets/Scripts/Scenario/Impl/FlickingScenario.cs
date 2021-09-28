@@ -1,25 +1,22 @@
-// ReSharper disable HeuristicUnreachableCode
-// ReSharper disable ConditionIsAlwaysTrueOrFalse
 using System.Collections;
-using Scenes.Range.Components.Scripts.Game.Util;
+using Scenario.Util;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
-namespace Game.Scenario.Impl
+namespace Scenario.Impl
 {
-    #pragma warning disable 162
-    public class FlickingScenario : global::Scenario.Scenario
+    public class FlickingScenario : Scenario
     {
-        private const bool DebugMode = false;
         private const float MinDuration = 0.5f;
         private const float MaxDuration = 1.5f;
+        
+        [SerializeField] private bool debugMode;
         private bool _spawnInCenter = true;
 
         public void Awake()
         {
             Name = "Flicking";
-            MaxTargets = 1;
         }
 
         public override void StartScenario()
@@ -29,9 +26,9 @@ namespace Game.Scenario.Impl
 
         protected override GameObject SpawnTarget()
         {
-            var target = Instantiate(TargetPrefab, GetSpawnPosition(), Quaternion.identity);
+            var target = Instantiate(targetPrefab, GetSpawnPosition(), Quaternion.identity);
             
-            if (DebugMode)
+            if (debugMode)
             {
                 target.GetComponent<MeshCollider>().enabled = false;
             } else if (target.transform.position != CenterPosition)
@@ -44,7 +41,7 @@ namespace Game.Scenario.Impl
 
         public override void FixedUpdateScenario()
         {
-            if (DebugMode)
+            if (debugMode)
             {
                 SpawnTarget();
             }

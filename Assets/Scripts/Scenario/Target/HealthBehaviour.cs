@@ -8,7 +8,7 @@ namespace Scenario.Target
         private static readonly int ColourId = Shader.PropertyToID("TargetColour");
         private static readonly Color HoveredColour = new Color(0.04705881f, 0.6039216f, 0.1733971f);
 
-        private TargetBehaviour _targetBehaviour;
+        private TargetController _targetController;
         private AudioSource _audioSource;
         private Material _material;
         private Color _defaultColour;
@@ -18,7 +18,7 @@ namespace Scenario.Target
 
         public void Awake()
         {
-            _targetBehaviour = GetComponent<TargetBehaviour>();
+            _targetController = GetComponent<TargetController>();
 
             _audioSource = GetComponent<AudioSource>();
             _audioSource.clip = Resources.Load<AudioClip>(HoverSoundPath);
@@ -69,7 +69,7 @@ namespace Scenario.Target
         {
             if (_health <= 0)
             {
-                _targetBehaviour.IsHit = true;
+                _targetController.IsHit = true;
             } 
         }
 

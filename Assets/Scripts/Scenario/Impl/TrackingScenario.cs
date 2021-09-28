@@ -1,6 +1,6 @@
 using Player;
 using Scenario.Target;
-using Scenes.Range.Components.Scripts.Game.Util;
+using Scenario.Util;
 using UnityEngine;
 
 namespace Scenario.Impl
@@ -13,25 +13,23 @@ namespace Scenario.Impl
         public void Awake()
         {
             Name = "Tracking";
-            MaxTargets = 1;
         }
 
         public override void StartScenario()
         {
             base.StartScenario();
-            weapon.GetComponent<WeaponBehaviour>().CanFire = false;
+            weapon.GetComponent<WeaponController>().CanFire = false;
         }
 
         public override void EndScenario()
         {
             base.EndScenario();
-            weapon.GetComponent<WeaponBehaviour>().CanFire = true;
+            weapon.GetComponent<WeaponController>().CanFire = true;
         }
 
         protected override GameObject SpawnTarget()
         {
-            var target = Instantiate(TargetPrefab, GetSpawnPosition(), Quaternion.identity);
-
+            var target = Instantiate(targetPrefab, GetSpawnPosition(), Quaternion.identity);
             target.AddComponent<HealthBehaviour>();
             var walkBehaviour = target.AddComponent<RandomWalkBehaviour>();
             

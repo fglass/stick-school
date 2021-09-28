@@ -7,25 +7,25 @@ namespace Scenario.Target
         private const float Thrust = 10f;
         private const float MinDirectionDurationS = 1f;
         private const float MaxDirectionDurationS = 2f;
-        private float directionTimer;
-        private Rigidbody rb;
+        private float _directionTimer;
+        private Rigidbody _rigidbody;
         
         public void Awake()
         {
-            rb = GetComponent<Rigidbody>();
-            rb.constraints = RigidbodyConstraints.FreezePositionZ;
+            _rigidbody = GetComponent<Rigidbody>();
+            _rigidbody.constraints = RigidbodyConstraints.FreezePositionZ;
         }
 
         public void UseThreeDimensions()
         {
-            rb.constraints = RigidbodyConstraints.None;
+            _rigidbody.constraints = RigidbodyConstraints.None;
         }
         
         public void FixedUpdate()
         {
-            directionTimer -= Time.deltaTime;
+            _directionTimer -= Time.deltaTime;
  
-            if (directionTimer <= 0)
+            if (_directionTimer <= 0)
             {
                 ChangeTargetDirection();
             }
@@ -34,8 +34,8 @@ namespace Scenario.Target
         private void ChangeTargetDirection()
         {
             var direction = Random.insideUnitSphere.normalized;
-            rb.velocity = direction * Thrust;
-            directionTimer = Random.Range(MinDirectionDurationS, MaxDirectionDurationS);
+            _rigidbody.velocity = direction * Thrust;
+            _directionTimer = Random.Range(MinDirectionDurationS, MaxDirectionDurationS);
         }
     }
 }

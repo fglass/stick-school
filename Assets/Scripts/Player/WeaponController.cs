@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Player
 {
-    public class WeaponBehaviour : MonoBehaviour
+    public class WeaponController : MonoBehaviour
     {
         [SerializeField] private float fovSpeed = 15.0f;
         [SerializeField] private float defaultFov = 40.0f;
@@ -24,10 +24,10 @@ namespace Player
         [SerializeField] private AudioSource shootAudioSource;
 
         private const int TargetLayerMask = 1 << 9;
-        private const string AimFireAnimationId = "Aim Fire";
-        private const string FireAnimationId = "Fire";
+        private const string AimFireAnimationID = "Aim Fire";
+        private const string FireAnimationID = "Fire";
         private static readonly int AimAnimatorState = Animator.StringToHash("Aim");
-
+        
         private Animator _animator;
         private bool _isAds;
         private bool _hasSoundPlayed;
@@ -89,7 +89,7 @@ namespace Player
 
         private void Fire()
         {
-            _animator.Play(_isAds ? AimFireAnimationId : FireAnimationId, 0, 0f);
+            _animator.Play(_isAds ? AimFireAnimationID : FireAnimationID, 0, 0f);
             shootAudioSource.Play();
             SpawnProjectile();
         }

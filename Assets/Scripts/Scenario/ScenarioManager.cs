@@ -10,7 +10,6 @@ namespace Scenario
         
         [SerializeField] private GameObject player;
         [SerializeField] private Transform cameraTransform;
-        [SerializeField] private GameObject targetPrefab;
         [SerializeField] private int scenarioDurationS = 30;
 
         [Header("Events")]
@@ -55,11 +54,6 @@ namespace Scenario
         {
             var scenarios = GetComponents<Scenario>();
             initMainMenuEvent.Raise(scenarios);
-            
-            foreach (var scenario in scenarios)
-            {
-                scenario.TargetPrefab = targetPrefab; // TODO: remove?
-            }
         }
 
         private void OnPlay(Scenario scenario)

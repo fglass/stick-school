@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Scenario.Target
 {
-    public class TargetBehaviour : MonoBehaviour
+    public class TargetController : MonoBehaviour
     {
         private static readonly Vector3 PlayerPosition = new Vector3(0, 0, 0);
         private static readonly int ColourId = Shader.PropertyToID("TargetColour");
