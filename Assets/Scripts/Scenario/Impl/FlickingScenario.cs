@@ -14,11 +14,6 @@ namespace Scenario.Impl
         [SerializeField] private bool debugMode;
         private bool _spawnInCenter = true;
 
-        public void Awake()
-        {
-            Name = "Flicking";
-        }
-
         public override void StartScenario()
         {
             base.StartScenario();

@@ -5,11 +5,6 @@ namespace Scenario.Impl
 {
     public class StochasticScenario : Scenario
     {
-        public void Awake()
-        {
-            Name = "Stochastic";
-        }
-        
         protected override GameObject SpawnTarget()
         {
             var origin = new Vector2(CenterPosition.x, CenterPosition.y);

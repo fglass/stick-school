@@ -10,7 +10,9 @@ namespace UI
 {
     public class MainMenu : MonoBehaviour
     {
-        private static readonly Vector2 ScenarioButtonOffset = new Vector2(550, 175);
+        private const int NGridColumns = 3;
+        private static readonly Vector2 GridStartPosition = new Vector2(-550, 175);
+        private static readonly Vector2 GridSpacing = new Vector2(550, -400);
 
         [SerializeField] private InitMainMenuEvent initMainMenuEvent;
         [SerializeField] private VoidEvent selectHomeTabEvent;
@@ -25,7 +27,7 @@ namespace UI
         [SerializeField] private GameObject controllerExitButton;
         [SerializeField] private Transform scenarioButtonPrefab;
 
-        private int selectedTabIndex;
+        private int _selectedTabIndex;
 
         public void Awake()
         {
@@ -40,7 +42,7 @@ namespace UI
             selectProfileTabEvent.OnRaised += OnProfileTabSelect;
             selectSettingsTabEvent.OnRaised += OnSettingsTabSelect;
             InputManager.InputChangeEvent += OnInputChange;
-            SelectTab(selectedTabIndex);
+            SelectTab(_selectedTabIndex);
         }
 
         public void OnDisable()
@@ -53,31 +55,34 @@ namespace UI
             InputManager.InputChangeEvent -= OnInputChange;
         }
 
-        private void Initialise(IEnumerable<Scenario.Scenario> scenarios)
+        private void Initialise(IReadOnlyList<Scenario.Scenario> scenarios)
         {
             CreateScenarioButtons(scenarios);
-            SelectTab(selectedTabIndex);
+            SelectTab(_selectedTabIndex);
         }
 
-        private void CreateScenarioButtons(IEnumerable<Scenario.Scenario> scenarios)
+        private void CreateScenarioButtons(IReadOnlyList<Scenario.Scenario> scenarios)
         {
             var trainTab = tabs[1];
-            var xOffset = -ScenarioButtonOffset.x;
-            
-            foreach (var scenario in scenarios)
+
+            for (var i = 0; i < scenarios.Count; i++)
             {
                 var button = Instantiate(scenarioButtonPrefab, Vector3.zero, Quaternion.identity);
                 button.SetParent(trainTab.transform, false);
-                button.Translate(xOffset, ScenarioButtonOffset.y, 0);
+
+                var column = i % NGridColumns;
+                var row = i / NGridColumns;
+                var x = GridStartPosition.x + column * GridSpacing.x;
+                var y = GridStartPosition.y + row * GridSpacing.y;
+                button.Translate(x, y, 0);
                 
+                var scenario = scenarios[i];
                 button.GetComponentInChildren<TextMeshProUGUI>().text = scenario.Name.ToUpper();
                 button.GetComponent<Button>().onClick.AddListener(delegate
                 {
                     gameObject.SetActive(false);
                     playScenarioEvent.Raise(scenario);
                 });
-                
-                xOffset += ScenarioButtonOffset.x;
             }
         }
         
@@ -85,11 +90,11 @@ namespace UI
         {
             if (InputManager.IsLeftMenuNavigationPressed())
             {
-                var previousTabIndex = Mod(selectedTabIndex - 1, tabs.Length);
+                var previousTabIndex = Mod(_selectedTabIndex - 1, tabs.Length);
                 SelectTab(previousTabIndex);
             } else if (InputManager.IsRightMenuNavigationPressed())
             {
-                var nextTabIndex = Mod(selectedTabIndex + 1, tabs.Length);
+                var nextTabIndex = Mod(_selectedTabIndex + 1, tabs.Length);
                 SelectTab(nextTabIndex);
             }
         }
@@ -117,10 +122,10 @@ namespace UI
         private void SelectTab(int index)
         {
             DeselectTabs();
-            selectedTabIndex = index;
-            tabTexts[selectedTabIndex].GetComponent<TextInteraction>().Select();
+            _selectedTabIndex = index;
+            tabTexts[_selectedTabIndex].GetComponent<TextInteraction>().Select();
 
-            var selectedTab = tabs[selectedTabIndex];
+            var selectedTab = tabs[_selectedTabIndex];
             selectedTab.SetActive(true);
 
             if (InputManager.IsUsingController)

@@ -7,24 +7,19 @@ namespace Scenario.Impl
 {
     public class TrackingScenario : Scenario
     {
-        [SerializeField] private GameObject weapon;
+        [SerializeField] private WeaponController weapon;
         [SerializeField] private bool useThreeDimensions;
-        
-        public void Awake()
-        {
-            Name = "Tracking";
-        }
 
         public override void StartScenario()
         {
             base.StartScenario();
-            weapon.GetComponent<WeaponController>().CanFire = false;
+            weapon.CanFire = false;
         }
 
         public override void EndScenario()
         {
             base.EndScenario();
-            weapon.GetComponent<WeaponController>().CanFire = true;
+            weapon.CanFire = true;
         }
 
         protected override GameObject SpawnTarget()

@@ -7,9 +7,9 @@ namespace Events
     [CreateAssetMenu(menuName = "Events/Custom/InitMainMenuEvent")]
     public class InitMainMenuEvent : ScriptableObject
     {
-        public UnityAction<IEnumerable<Scenario.Scenario>> OnRaised { get; set; }
+        public UnityAction<IReadOnlyList<Scenario.Scenario>> OnRaised { get; set; }
 
-        public void Raise(IEnumerable<Scenario.Scenario> scenarios)
+        public void Raise(IReadOnlyList<Scenario.Scenario> scenarios)
         {
             OnRaised?.Invoke(scenarios);
         }

@@ -8,12 +8,13 @@ namespace Scenario
         protected const float MaxX = 12f;
         protected const float MaxY = 5f;
 
-        [SerializeField] protected GameObject targetPrefab;
+        [SerializeField] private string scenarioName;
         [SerializeField] private int maxTargets = 1;
+        [SerializeField] protected GameObject targetPrefab;
         protected readonly Vector3 CenterPosition = new Vector3(0f, 4.75f, 17f);
         private readonly List<GameObject> _activeTargets = new List<GameObject>();
 
-        public string Name { get; protected set; }
+        public string Name => scenarioName;
 
         public virtual void StartScenario()
         {
