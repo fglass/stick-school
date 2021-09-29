@@ -30,6 +30,7 @@ namespace Scenario.Impl
         protected override GameObject SpawnTarget()
         {
             var target = Instantiate(targetPrefab, GetSpawnPosition(), Quaternion.identity);
+            
             target.AddComponent<HealthBehaviour>();
             var walkBehaviour = target.AddComponent<RandomWalkBehaviour>();
             

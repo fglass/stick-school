@@ -21,6 +21,7 @@ namespace Scenario.Impl
 
         public override void StartScenario()
         {
+            base.StartScenario();
             _spawnInCenter = true;
         }
 
@@ -41,6 +42,7 @@ namespace Scenario.Impl
 
         public override void FixedUpdateScenario()
         {
+            base.FixedUpdateScenario();
             if (debugMode)
             {
                 SpawnTarget();
