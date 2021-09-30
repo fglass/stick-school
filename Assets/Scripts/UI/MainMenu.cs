@@ -3,7 +3,6 @@ using Events;
 using Input;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI
@@ -23,9 +22,8 @@ namespace UI
         
         [SerializeField] private GameObject[] tabs;
         [SerializeField] private TextMeshProUGUI[] tabTexts;
-        [SerializeField] private GameObject controllerNavigation;
-        [SerializeField] private GameObject controllerExitButton;
         [SerializeField] private Transform scenarioButtonPrefab;
+        [SerializeField] private GameObject[] controllerElements;
 
         private int _selectedTabIndex;
 
@@ -142,8 +140,10 @@ namespace UI
         
         private void OnInputChange(bool isUsingController)
         {
-            controllerNavigation.SetActive(isUsingController);
-            controllerExitButton.SetActive(isUsingController);
+            foreach (var element in controllerElements)
+            {
+                element.SetActive(isUsingController);
+            }
         }
 
         private static int Mod(int n, int m)

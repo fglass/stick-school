@@ -8260,10 +8260,11 @@ MonoBehaviour:
   - {fileID: 1644557021}
   - {fileID: 625715360}
   - {fileID: 1233850366}
-  controllerNavigation: {fileID: 1519698215}
-  controllerExitButton: {fileID: 2145466859}
   scenarioButtonPrefab: {fileID: 8924543510913801256, guid: 4a6930c0c5b054a44bcbde65a2501e4b,
     type: 3}
+  controllerElements:
+  - {fileID: 1519698215}
+  - {fileID: 2145466859}
 --- !u!1 &1067309432
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using Events;
 using Input;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace UI
 {
@@ -33,7 +34,7 @@ namespace UI
             resumeScenarioEvent.OnRaised += OnResume;
             setDisplayFpsEvent.OnRaised += ToggleFps;
             quitEvent.OnRaised += OnQuit;
-            ToggleCursor(true);
+            InputManager.InputChangeEvent += OnInputChange;
         }
 
         public void OnDisable()
@@ -45,6 +46,7 @@ namespace UI
             resumeScenarioEvent.OnRaised -= OnResume;
             setDisplayFpsEvent.OnRaised -= ToggleFps;
             quitEvent.OnRaised -= OnQuit;
+            InputManager.InputChangeEvent -= OnInputChange;
         }
 
         public void Update()
@@ -139,6 +141,15 @@ namespace UI
             } else if (!InputManager.IsUsingController)
             {
                 Cursor.lockState = CursorLockMode.None;
+            }
+        }
+        
+        private static void OnInputChange(bool isUsingController)
+        {
+            ToggleCursor(!isUsingController);
+            if (!isUsingController)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
             }
         }
     }
