@@ -1,5 +1,4 @@
 using Events;
-using Input;
 using UnityEngine;
 
 namespace UI
@@ -9,17 +8,11 @@ namespace UI
         [SerializeField] private VoidEvent openMainMenuEvent;
         [SerializeField] private VoidEvent stopScenarioEvent;
         [SerializeField] private VoidEvent restartScenarioEvent;
-        [SerializeField] private GameObject resumeButton;
 
         public void OnEnable()
         {
             openMainMenuEvent.OnRaised += OnMenu;
             restartScenarioEvent.OnRaised += Close;
-            
-            if (InputManager.IsUsingController)
-            {
-                StartCoroutine(UIManager.SelectButtonRoutine(resumeButton));
-            }
         }
 
         public void OnDisable()

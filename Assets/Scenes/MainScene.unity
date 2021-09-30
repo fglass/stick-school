@@ -588,6 +588,7 @@ GameObject:
   - component: {fileID: 68589442}
   - component: {fileID: 68589441}
   - component: {fileID: 68589444}
+  - component: {fileID: 68589445}
   m_Layer: 5
   m_Name: ResultsPanel
   m_TagString: Untagged
@@ -692,10 +693,22 @@ MonoBehaviour:
   restartScenarioEvent: {fileID: 11400000, guid: c166e845bc34dce45a98ceb1b5bfb52e,
     type: 2}
   openMainMenuEvent: {fileID: 11400000, guid: 8c8ce1033ea3e4541bee5a887409203b, type: 2}
-  restartButton: {fileID: 205065895}
   titleField: {fileID: 1710838961}
   scoreField: {fileID: 1651176450}
   accuracyField: {fileID: 1595692373}
+--- !u!114 &68589445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68589439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309fad0639f947f7a09dadd7595c613e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstObject: {fileID: 205065895}
 --- !u!1 &77099483
 GameObject:
   m_ObjectHideFlags: 0
@@ -6666,6 +6679,7 @@ GameObject:
   - component: {fileID: 916572945}
   - component: {fileID: 916572944}
   - component: {fileID: 916572947}
+  - component: {fileID: 916572948}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -6772,7 +6786,19 @@ MonoBehaviour:
   stopScenarioEvent: {fileID: 11400000, guid: 8fac35e6d556df944b1e6fb8d2001922, type: 2}
   restartScenarioEvent: {fileID: 11400000, guid: c166e845bc34dce45a98ceb1b5bfb52e,
     type: 2}
-  resumeButton: {fileID: 772702766}
+--- !u!114 &916572948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916572942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309fad0639f947f7a09dadd7595c613e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstObject: {fileID: 772702766}
 --- !u!1 &924680967
 GameObject:
   m_ObjectHideFlags: 0
@@ -9586,7 +9612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309fad0639f947f7a09dadd7595c613e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstSelectableObject: {fileID: 25556001}
+  firstObject: {fileID: 25556001}
 --- !u!1 &1248443899
 GameObject:
   m_ObjectHideFlags: 0
@@ -9983,7 +10009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309fad0639f947f7a09dadd7595c613e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstSelectableObject: {fileID: 1968946398}
+  firstObject: {fileID: 1968946398}
 --- !u!1 &1289439938
 GameObject:
   m_ObjectHideFlags: 0

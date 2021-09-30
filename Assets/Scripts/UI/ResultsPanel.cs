@@ -1,5 +1,4 @@
 using Events;
-using Input;
 using Scenario;
 using TMPro;
 using UnityEngine;
@@ -12,7 +11,6 @@ namespace UI
         [SerializeField] private VoidEvent restartScenarioEvent;
         [SerializeField] private VoidEvent openMainMenuEvent;
         
-        [SerializeField] private GameObject restartButton;
         [SerializeField] private TextMeshProUGUI titleField;
         [SerializeField] private TextMeshProUGUI scoreField;
         [SerializeField] private TextMeshProUGUI accuracyField;
@@ -22,11 +20,6 @@ namespace UI
             displayResultsEvent.OnRaised += Display;
             restartScenarioEvent.OnRaised += Close;
             openMainMenuEvent.OnRaised += Close;
-
-            if (InputManager.IsUsingController)
-            {
-                StartCoroutine(UIManager.SelectButtonRoutine(restartButton));
-            }
         }
 
         public void OnDisable()
