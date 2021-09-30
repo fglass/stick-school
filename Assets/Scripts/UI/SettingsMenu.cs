@@ -22,8 +22,8 @@ namespace UI
         [SerializeField] private IntEvent setDisplayModeEvent;
         [SerializeField] private FloatEvent setFramerateLimitEvent;
 
-        private Resolution[] resolutions;
-        private readonly FullScreenMode[] displayModes =
+        private Resolution[] _resolutions;
+        private readonly FullScreenMode[] _displayModes =
         {
             FullScreenMode.ExclusiveFullScreen, 
             FullScreenMode.FullScreenWindow, 
@@ -66,14 +66,14 @@ namespace UI
         
         private void InitialiseResolutionDropdown()
         {
-            resolutions = Screen.resolutions;
+            _resolutions = Screen.resolutions;
             
             var resolutionOptions = new List<string>();
             var currentResolutionIndex = 0;
             
-            for (var i = 0; i < resolutions.Length; i++)
+            for (var i = 0; i < _resolutions.Length; i++)
             {
-                var resolution = resolutions[i];
+                var resolution = _resolutions[i];
                 resolutionOptions.Add($"{resolution.width} x {resolution.height}");
                 
                 if (resolution.width == Screen.currentResolution.width && resolution.height == Screen.currentResolution.height)
@@ -95,7 +95,7 @@ namespace UI
             displayModeDropdown.ClearOptions();
             displayModeDropdown.AddOptions(options);
 
-            displayModeDropdown.value = Array.IndexOf(displayModes, Screen.fullScreenMode);
+            displayModeDropdown.value = Array.IndexOf(_displayModes, Screen.fullScreenMode);
             displayModeDropdown.RefreshShownValue();
         }
 
@@ -117,7 +117,7 @@ namespace UI
 
         private void SetResolution(int selectedIndex)
         {
-            var selectedResolution = resolutions[selectedIndex];
+            var selectedResolution = _resolutions[selectedIndex];
             Screen.SetResolution(selectedResolution.width, selectedResolution.height, Screen.fullScreen);
         }
 
@@ -128,7 +128,7 @@ namespace UI
 
         private void SetDisplayMode(int selectedIndex)
         {
-            var selectedDisplayMode = displayModes[selectedIndex];
+            var selectedDisplayMode = _displayModes[selectedIndex];
             Screen.fullScreenMode = selectedDisplayMode;
         }
         

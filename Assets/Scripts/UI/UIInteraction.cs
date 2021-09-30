@@ -7,8 +7,8 @@ namespace UI
     public class UIInteraction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
     {
         [SerializeField] private Image targetImage;
-        private Material defaultMaterial;
-        private Material accentMaterial;
+        [SerializeField] private Material defaultMaterial;
+        [SerializeField] private Material accentMaterial;
 
         public void Awake()
         {
@@ -16,8 +16,16 @@ namespace UI
             {
                 targetImage = GetComponent<Image>();
             }
-            defaultMaterial = Resources.Load<Material>("Materials/UIPrimaryMaterial");
-            accentMaterial = Resources.Load<Material>("Materials/UIAccentMaterial");
+
+            if (defaultMaterial == null)
+            {
+                defaultMaterial = Resources.Load<Material>("Materials/UIPrimaryMaterial");
+            }
+
+            if (accentMaterial == null)
+            {
+                accentMaterial = Resources.Load<Material>("Materials/UIAccentMaterial");
+            }
         }
 
         public void OnPointerEnter(PointerEventData eventData)

@@ -67,7 +67,9 @@ namespace UI
 
             for (var i = 0; i < scenarios.Count; i++)
             {
-                var button = Instantiate(scenarioButtonPrefab, Vector3.zero, Quaternion.identity);
+                var button = i == 0 ? trainTab.transform.GetChild(0) : Instantiate(
+                    scenarioButtonPrefab, Vector3.zero, Quaternion.identity
+                );
                 button.SetParent(trainTab.transform, false);
 
                 var column = i % NGridColumns;
@@ -78,7 +80,7 @@ namespace UI
                 
                 var scenario = scenarios[i];
                 button.GetComponentInChildren<TextMeshProUGUI>().text = scenario.Name.ToUpper();
-                button.GetComponent<Button>().onClick.AddListener(delegate
+                button.GetComponent<Button>().onClick.AddListener(() =>
                 {
                     gameObject.SetActive(false);
                     playScenarioEvent.Raise(scenario);
@@ -127,13 +129,6 @@ namespace UI
 
             var selectedTab = tabs[_selectedTabIndex];
             selectedTab.SetActive(true);
-
-            if (InputManager.IsUsingController)
-            {
-                var trainTab = tabs[1];
-                var selectedObject = selectedTab == trainTab ? selectedTab.transform.GetChild(0).gameObject : null;
-                EventSystem.current.SetSelectedGameObject(selectedObject);
-            }
         }
 
         private void DeselectTabs()
