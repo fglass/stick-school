@@ -28,7 +28,6 @@ namespace UI
         {
             initMainMenuEvent.OnRaised += Initialise;
             InputManager.InputChangeEvent += OnInputChange;
-            navBar.Reselect();
         }
 
         public void OnDisable()

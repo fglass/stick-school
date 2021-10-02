@@ -15,6 +15,7 @@ namespace UI
         public void OnEnable()
         {
             selectTabEvent.OnRaised += SelectTab;
+            Reselect();
         }
         
         public void OnDisable()

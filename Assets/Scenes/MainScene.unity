@@ -2575,7 +2575,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 764be310de411c6488dbfdd9d9abdafa, type: 2}
+      - m_Target: {fileID: 11400000, guid: 55ae49de4b005b141a01375cd6c7e898, type: 2}
         m_MethodName: Raise
         m_Mode: 3
         m_Arguments:
@@ -4367,13 +4367,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 764be310de411c6488dbfdd9d9abdafa, type: 2}
+      - m_Target: {fileID: 11400000, guid: 55ae49de4b005b141a01375cd6c7e898, type: 2}
         m_MethodName: Raise
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -9804,6 +9804,7 @@ GameObject:
   - component: {fileID: 1245339130}
   - component: {fileID: 1245339132}
   - component: {fileID: 1245339133}
+  - component: {fileID: 1245339134}
   m_Layer: 5
   m_Name: SettingsTab
   m_TagString: Untagged
@@ -9908,6 +9909,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstObject: {fileID: 25556001}
+--- !u!114 &1245339134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245339128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5442792041864d98acf802e7870ae33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabs:
+  - {fileID: 64706450}
+  - {fileID: 736961541}
+  tabTexts:
+  - {fileID: 1595615638}
+  - {fileID: 484496546}
+  selectTabEvent: {fileID: 11400000, guid: 55ae49de4b005b141a01375cd6c7e898, type: 2}
 --- !u!1 &1248443899
 GameObject:
   m_ObjectHideFlags: 0
