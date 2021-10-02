@@ -2,7 +2,7 @@ using Events;
 using TMPro;
 using UnityEngine;
 
-namespace UI
+namespace UI.Behaviour
 {
     public class TabCoordinator : MonoBehaviour
     {

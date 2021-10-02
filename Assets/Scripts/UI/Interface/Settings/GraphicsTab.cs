@@ -7,9 +7,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI.Interface.Settings
 {
-    public class SettingsMenu : MonoBehaviour
+    public class GraphicsTab : MonoBehaviour
     {
         [SerializeField] private TMP_Dropdown qualityDropdown;
         [SerializeField] private TMP_Dropdown resolutionDropdown;

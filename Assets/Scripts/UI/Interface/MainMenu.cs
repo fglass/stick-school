@@ -2,10 +2,11 @@ using System.Collections.Generic;
 using Events;
 using Input;
 using TMPro;
+using UI.Behaviour;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI.Interface
 {
     public class MainMenu : MonoBehaviour
     {
