@@ -14,10 +14,7 @@ namespace UI
         private static readonly Vector2 GridSpacing = new Vector2(550, -400);
 
         [SerializeField] private InitMainMenuEvent initMainMenuEvent;
-        [SerializeField] private VoidEvent selectHomeTabEvent;
-        [SerializeField] private VoidEvent selectTrainTabEvent;
-        [SerializeField] private VoidEvent selectProfileTabEvent;
-        [SerializeField] private VoidEvent selectSettingsTabEvent;
+        [SerializeField] private IntEvent selectNavBarTabEvent;
         [SerializeField] private PlayScenarioEvent playScenarioEvent;
         
         [SerializeField] private GameObject[] tabs;
@@ -35,10 +32,7 @@ namespace UI
         public void OnEnable()
         {
             initMainMenuEvent.OnRaised += Initialise;
-            selectHomeTabEvent.OnRaised += OnHomeTabSelect;
-            selectTrainTabEvent.OnRaised += OnTrainTabSelect;
-            selectProfileTabEvent.OnRaised += OnProfileTabSelect;
-            selectSettingsTabEvent.OnRaised += OnSettingsTabSelect;
+            selectNavBarTabEvent.OnRaised += SelectTab;
             InputManager.InputChangeEvent += OnInputChange;
             SelectTab(_selectedTabIndex);
         }
@@ -46,10 +40,7 @@ namespace UI
         public void OnDisable()
         {
             initMainMenuEvent.OnRaised -= Initialise;
-            selectHomeTabEvent.OnRaised -= OnHomeTabSelect;
-            selectTrainTabEvent.OnRaised -= OnTrainTabSelect;
-            selectProfileTabEvent.OnRaised -= OnProfileTabSelect;
-            selectSettingsTabEvent.OnRaised -= OnSettingsTabSelect;
+            selectNavBarTabEvent.OnRaised -= SelectTab;
             InputManager.InputChangeEvent -= OnInputChange;
         }
 
@@ -97,26 +88,6 @@ namespace UI
                 var nextTabIndex = Mod(_selectedTabIndex + 1, tabs.Length);
                 SelectTab(nextTabIndex);
             }
-        }
-
-        private void OnHomeTabSelect()
-        {
-            SelectTab(0);
-        }
-
-        private void OnTrainTabSelect()
-        {
-            SelectTab(1);
-        }
-
-        private void OnProfileTabSelect()
-        {
-            SelectTab(2);
-        }
-
-        private void OnSettingsTabSelect()
-        {
-            SelectTab(3);
         }
 
         private void SelectTab(int index)

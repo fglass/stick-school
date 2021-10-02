@@ -143,7 +143,7 @@ namespace UI
                 Cursor.lockState = CursorLockMode.None;
             }
         }
-        
+          
         private static void OnInputChange(bool isUsingController)
         {
             ToggleCursor(!isUsingController);

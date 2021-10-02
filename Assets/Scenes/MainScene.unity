@@ -2435,9 +2435,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: da2531f0a0597bb418c294f783c2446b, type: 2}
+      - m_Target: {fileID: 11400000, guid: 764be310de411c6488dbfdd9d9abdafa, type: 2}
         m_MethodName: Raise
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3563,7 +3563,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4682,7 +4682,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7315,13 +7315,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 5be3a422b4dba6f47a4f087ac4702307, type: 2}
+      - m_Target: {fileID: 11400000, guid: 764be310de411c6488dbfdd9d9abdafa, type: 2}
         m_MethodName: Raise
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8242,12 +8242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initMainMenuEvent: {fileID: 11400000, guid: abde4f66b30bc98459a94510fa644eda, type: 2}
-  selectHomeTabEvent: {fileID: 11400000, guid: da2531f0a0597bb418c294f783c2446b, type: 2}
-  selectTrainTabEvent: {fileID: 11400000, guid: 8711f39054d8a034fb856764020a699b,
-    type: 2}
-  selectProfileTabEvent: {fileID: 11400000, guid: 5be3a422b4dba6f47a4f087ac4702307,
-    type: 2}
-  selectSettingsTabEvent: {fileID: 11400000, guid: 55ae49de4b005b141a01375cd6c7e898,
+  selectNavBarTabEvent: {fileID: 11400000, guid: 764be310de411c6488dbfdd9d9abdafa,
     type: 2}
   playScenarioEvent: {fileID: 11400000, guid: 4c83275791f46c1468d6b61bd51b2ce2, type: 2}
   tabs:
@@ -9514,7 +9509,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1245339129
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13962,13 +13957,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 55ae49de4b005b141a01375cd6c7e898, type: 2}
+      - m_Target: {fileID: 11400000, guid: 764be310de411c6488dbfdd9d9abdafa, type: 2}
         m_MethodName: Raise
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -16514,13 +16509,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 8711f39054d8a034fb856764020a699b, type: 2}
+      - m_Target: {fileID: 11400000, guid: 764be310de411c6488dbfdd9d9abdafa, type: 2}
         m_MethodName: Raise
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
