@@ -2,7 +2,6 @@ using Player;
 using Scenario.Target;
 using Scenario.Util;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Scenario.Impl
 {
