@@ -1,10 +1,12 @@
+using Events;
 using UnityEngine;
 
 namespace Scenario.Target
 {
     public class HealthBehaviour : MonoBehaviour
     {
-        private const string HoverSoundPath = "Audio/ding";
+        [SerializeField] private VoidEvent targetHitEvent;
+
         private static readonly int ColourId = Shader.PropertyToID("TargetColour");
         private static readonly Color HoveredColour = new Color(0.04705881f, 0.6039216f, 0.1733971f);
 
@@ -19,11 +21,7 @@ namespace Scenario.Target
         public void Awake()
         {
             _targetController = GetComponent<TargetController>();
-
             _audioSource = GetComponent<AudioSource>();
-            _audioSource.clip = Resources.Load<AudioClip>(HoverSoundPath);
-            _audioSource.bypassReverbZones = true;
-            
             _material = GetComponent<MeshRenderer>().material;
             _defaultColour = _material.GetColor(ColourId);
         }
@@ -70,6 +68,7 @@ namespace Scenario.Target
             if (_health <= 0)
             {
                 _targetController.IsHit = true;
+                targetHitEvent.Raise();
             } 
         }
 

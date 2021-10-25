@@ -27,12 +27,9 @@ namespace Scenario.Impl
         {
             var target = Instantiate(targetPrefab, GetSpawnPosition(), Quaternion.identity);
             
-            target.AddComponent<HealthBehaviour>();
-            var walkBehaviour = target.AddComponent<RandomWalkBehaviour>();
-            
             if (useThreeDimensions)
             {
-                walkBehaviour.UseThreeDimensions();
+                target.GetComponent<RandomWalkBehaviour>().UseThreeDimensions();
             }
             
             return target;

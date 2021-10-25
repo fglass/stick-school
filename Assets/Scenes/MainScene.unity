@@ -2408,7 +2408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenarioName: Tracking
   maxTargets: 1
-  targetPrefab: {fileID: 4445158436245017880, guid: 1099fe9633e7e494cab5cda167997df9,
+  targetPrefab: {fileID: 4004731591674215038, guid: cdb1bb6ff844ca344a9acb65860b50f1,
     type: 3}
   player: {fileID: 114352006042335988}
   useThreeDimensions: 0
@@ -2447,7 +2447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenarioName: Tracking 3D
   maxTargets: 1
-  targetPrefab: {fileID: 4445158436245017880, guid: 1099fe9633e7e494cab5cda167997df9,
+  targetPrefab: {fileID: 4004731591674215038, guid: cdb1bb6ff844ca344a9acb65860b50f1,
     type: 3}
   player: {fileID: 114352006042335988}
   useThreeDimensions: 1
@@ -7319,7 +7319,7 @@ Transform:
   - {fileID: 2094489517}
   - {fileID: 261469969}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &802440892
 GameObject:
@@ -8966,7 +8966,7 @@ GameObject:
   m_Component:
   - component: {fileID: 940297537}
   m_Layer: 0
-  m_Name: Managers
+  m_Name: Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8987,7 +8987,7 @@ Transform:
   - {fileID: 2013630240}
   - {fileID: 292607902}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &955517105
 PrefabInstance:
@@ -14612,7 +14612,7 @@ Transform:
   m_Children:
   - {fileID: 235869933}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1569146046
 GameObject:
@@ -21287,7 +21287,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4668617040872660
 Transform:

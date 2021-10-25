@@ -9,7 +9,6 @@ namespace Scenario.Target
         
         [SerializeField] private AudioClip hitSound;
         [SerializeField] private GameObject shatteredPrefab;
-        [SerializeField] private bool showTrail;
         
         private Material _material;
         private Color _initialColour;
@@ -18,7 +17,6 @@ namespace Scenario.Target
         
         public void Awake()
         {
-            GetComponent<TrailRenderer>().enabled = showTrail;
             _material = GetComponent<MeshRenderer>().material;
             _initialColour = _material.GetColor(ColourId);
         }
