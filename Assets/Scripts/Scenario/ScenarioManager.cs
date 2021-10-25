@@ -11,10 +11,12 @@ namespace Scenario
         [SerializeField] private GameObject player;
         [SerializeField] private Transform cameraTransform;
         [SerializeField] private int scenarioDurationS = 30;
+        [SerializeField] private int countdownDurationS = 3;
 
         [Header("Events")]
         [SerializeField] private InitMainMenuEvent initMainMenuEvent;
         [SerializeField] private BoolEvent toggleHudEvent;
+        [SerializeField] private IntEvent setHudCountdownTimerEvent;
         [SerializeField] private IntEvent setHudTimerEvent;
         [SerializeField] private PlayScenarioEvent playScenarioEvent;
         [SerializeField] private VoidEvent resumeScenarioEvent;
@@ -24,8 +26,9 @@ namespace Scenario
         
         private StatsManager _statsManager;
         private Scenario _scenario;
+        private float _countdownTimer;
+        private float _scenarioTimer;
         private bool _playing;
-        private float _timer;
 
         public void Awake()
         {
@@ -58,20 +61,18 @@ namespace Scenario
 
         private void OnPlay(Scenario scenario)
         {
-            toggleHudEvent.Raise(true);
-            _statsManager.Reset();
-            _timer = scenarioDurationS;
-
+            _scenario = scenario;
+            _countdownTimer = countdownDurationS;
             Time.timeScale = 1f;
 
-            player.GetComponent<PlayerController>().ResetCameras();
-            player.SetActive(true);
+            toggleHudEvent.Raise(true);
+            _statsManager.Reset();
 
-            _scenario = scenario;
-            _scenario.StartScenario();
+            player.GetComponent<PlayerController>().Reset();
+            player.SetActive(true);
             _playing = true;
         }
-
+        
         private void OnPause()
         {
             Time.timeScale = 0f;
@@ -112,25 +113,57 @@ namespace Scenario
                 return;
             }
             
-            _timer -= Time.deltaTime;
-
-            if (_timer <= 0)
+            if (_countdownTimer > 0)
             {
-                Finish();
+                OnCountdownTick();
             }
             else
             {
-                var secondsRemaining = Mathf.CeilToInt(_timer);
-                setHudTimerEvent.Raise(secondsRemaining);
-                _scenario.UpdateScenario();
+                OnScenarioTick();
             }
         }
 
         public void FixedUpdate()
         {
-            if (_playing)
+            if (_playing && _countdownTimer <= 0)
             {
                 _scenario.FixedUpdateScenario();
+            }
+        }
+        
+        private void OnCountdownTick()
+        {
+            _countdownTimer -= Time.deltaTime;
+
+            var secondsRemaining = Mathf.CeilToInt(_countdownTimer);
+            setHudCountdownTimerEvent.Raise(secondsRemaining);
+
+            if (secondsRemaining <= 0)
+            {
+                StartScenario();
+            }
+        }
+        
+        private void StartScenario()
+        {
+            player.GetComponent<PlayerController>().CanFire(true);
+            _scenarioTimer = scenarioDurationS;
+            _scenario.StartScenario();
+        }
+
+        private void OnScenarioTick()
+        {
+            _scenarioTimer -= Time.deltaTime;
+
+            if (_scenarioTimer <= 0)
+            {
+                Finish();
+            }
+            else
+            {
+                var secondsRemaining = Mathf.CeilToInt(_scenarioTimer);
+                setHudTimerEvent.Raise(secondsRemaining);
+                _scenario.UpdateScenario();
             }
         }
 

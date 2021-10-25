@@ -5,23 +5,35 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private Transform cameraTransform;
         [SerializeField, Range(0, 20)] private float sensitivity = 0.05f;
+        [SerializeField] private Transform cameraTransform;
+        [SerializeField] private WeaponController weapon;
 
         public void Awake()
         {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
-        
-        public void ResetCameras()
-        {
-            transform.rotation = Quaternion.identity;
-            cameraTransform.rotation = Quaternion.identity;
-        }
 
         public void Update()
         {
             Rotate();
+        }
+        
+        public void Reset()
+        {
+            CanFire(false);
+            ResetCameras();
+        }
+        
+        public void CanFire(bool canFire)
+        {
+            weapon.CanFire = canFire;
+        }
+        
+        private void ResetCameras()
+        {
+            transform.rotation = Quaternion.identity;
+            cameraTransform.rotation = Quaternion.identity;
         }
 
         private void Rotate()

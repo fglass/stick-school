@@ -2,24 +2,25 @@ using Player;
 using Scenario.Target;
 using Scenario.Util;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Scenario.Impl
 {
     public class TrackingScenario : Scenario
     {
-        [SerializeField] private WeaponController weapon;
+        [SerializeField] private PlayerController player;
         [SerializeField] private bool useThreeDimensions;
 
         public override void StartScenario()
         {
             base.StartScenario();
-            weapon.CanFire = false;
+            player.CanFire(false);
         }
 
         public override void EndScenario()
         {
             base.EndScenario();
-            weapon.CanFire = true;
+            player.CanFire(true);
         }
 
         protected override GameObject SpawnTarget()
