@@ -120,7 +120,7 @@ namespace Scenario
             }
             else
             {
-                var secondsRemaining = (int) _timer;
+                var secondsRemaining = Mathf.CeilToInt(_timer);
                 setHudTimerEvent.Raise(secondsRemaining);
                 _scenario.UpdateScenario();
             }

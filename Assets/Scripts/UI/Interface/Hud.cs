@@ -2,7 +2,7 @@ using Events;
 using TMPro;
 using UnityEngine;
 
-namespace UI
+namespace UI.Interface
 {
     public class Hud : MonoBehaviour
     {
