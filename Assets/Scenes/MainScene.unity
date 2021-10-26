@@ -21779,7 +21779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 0.05
-  cameraTransform: {fileID: 4660888796433046}
+  mainCameraTransform: {fileID: 4660888796433046}
   weapon: {fileID: 1986870748753907}
 --- !u!136 &136351757417321786
 CapsuleCollider:

@@ -140,7 +140,7 @@ namespace Scenario
         
         private void StartScenario()
         {
-            player.GetComponent<PlayerController>().CanFire(true);
+            player.GetComponent<PlayerController>().CanFireWeapon(true);
             _scenarioTimer = scenarioDurationS;
             _scenario.StartScenario();
         }

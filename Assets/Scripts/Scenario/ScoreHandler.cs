@@ -65,9 +65,7 @@ namespace Scenario
 
         public void Reset()
         {
-            _score = 0;
-            _hitShots = 0;
-            _missedShots = 0;
+            _score = _hitShots = _missedShots = 0;
             setHudScoreEvent.Raise(0);
             setHudAccuracyEvent.Raise(0);
         }

@@ -13,13 +13,13 @@ namespace Scenario.Impl
         public override void StartScenario()
         {
             base.StartScenario();
-            player.CanFire(false);
+            player.CanFireWeapon(false);
         }
 
         public override void EndScenario()
         {
             base.EndScenario();
-            player.CanFire(true);
+            player.CanFireWeapon(true);
         }
 
         protected override GameObject SpawnTarget()
