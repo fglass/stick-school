@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Scenario
 {
-    public class ScenarioManager : MonoBehaviour
+    public class ScenarioCoordinator : MonoBehaviour
     {
         private const int CameraResetSpeed = 4;
         
@@ -24,7 +24,7 @@ namespace Scenario
         [SerializeField] private VoidEvent stopScenarioEvent;
         [SerializeField] private VoidEvent restartScenarioEvent;
         
-        private StatsManager _statsManager;
+        private ScoreHandler _scoreHandler;
         private Scenario _scenario;
         private float _countdownTimer;
         private float _scenarioTimer;
@@ -32,7 +32,7 @@ namespace Scenario
 
         public void Awake()
         {
-            _statsManager = GetComponent<StatsManager>();
+            _scoreHandler = GetComponent<ScoreHandler>();
         }
 
         public void OnEnable()
@@ -66,7 +66,7 @@ namespace Scenario
             Time.timeScale = 1f;
 
             toggleHudEvent.Raise(true);
-            _statsManager.Reset();
+            _scoreHandler.Reset();
 
             player.GetComponent<PlayerController>().Reset();
             player.SetActive(true);
@@ -87,22 +87,16 @@ namespace Scenario
 
         private void OnStop()
         {
-            Time.timeScale = 1f;
             player.SetActive(false);
             toggleHudEvent.Raise(false);
             _scenario.EndScenario();
             _playing = false;
+            Time.timeScale = 1f;
         }
         
         private void OnRestart()
         {
             OnPlay(_scenario);
-        }
-
-        private void Finish()
-        {
-            OnStop();
-            _statsManager.DisplayResults(_scenario.Name);
         }
 
         public void Update()
@@ -157,7 +151,7 @@ namespace Scenario
 
             if (_scenarioTimer <= 0)
             {
-                Finish();
+                FinishScenario();
             }
             else
             {
@@ -167,6 +161,12 @@ namespace Scenario
             }
         }
 
+        private void FinishScenario()
+        {
+            OnStop();
+            _scoreHandler.DisplayResults(_scenario.Name);
+        }
+        
         private void CenterCamera()
         {
             if (Quaternion.Angle(cameraTransform.rotation, Quaternion.identity) > 0.01f)

@@ -102,6 +102,7 @@ namespace Player
             var rayOrigin = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
             var rayDirection = mainCamera.transform.forward;
             var intersects = Physics.Raycast(rayOrigin, rayDirection, out var hit, Mathf.Infinity);
+            
             var destination = intersects ? hit.point : rayDirection * 1000;
             var direction = (destination - firePoint).normalized;
             

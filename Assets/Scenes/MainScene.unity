@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 22403726}
   m_Layer: 0
   m_Name: Floor5x5 (25)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 31622221}
   m_Layer: 0
   m_Name: Floor5x5 (5)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 46596595}
   m_Layer: 0
   m_Name: Floor5x5 (26)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -597,7 +597,7 @@ GameObject:
   - component: {fileID: 67305148}
   m_Layer: 0
   m_Name: Floor5x5 (33)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1554,7 +1554,7 @@ GameObject:
   - component: {fileID: 195060550}
   m_Layer: 0
   m_Name: Floor5x5 (32)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2241,6 +2241,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 840036893}
+  - {fileID: 658606121}
   - {fileID: 1417750961}
   - {fileID: 994394280}
   - {fileID: 1553452533}
@@ -2626,7 +2627,7 @@ GameObject:
   - component: {fileID: 339178131}
   m_Layer: 0
   m_Name: Front Wall
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2653,7 +2654,7 @@ Transform:
   - {fileID: 666114361}
   - {fileID: 841385368}
   m_Father: {fileID: 261469969}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &342757138
 GameObject:
@@ -2669,7 +2670,7 @@ GameObject:
   - component: {fileID: 342757139}
   m_Layer: 0
   m_Name: Floor5x5 (17)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2762,7 +2763,7 @@ GameObject:
   - component: {fileID: 357797790}
   m_Layer: 0
   m_Name: Floor5x5 (33)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3737,7 +3738,7 @@ GameObject:
   - component: {fileID: 443521231}
   m_Layer: 0
   m_Name: Floor5x5 (22)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3830,7 +3831,7 @@ GameObject:
   - component: {fileID: 443636465}
   m_Layer: 0
   m_Name: Floor5x5 (31)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3923,7 +3924,7 @@ GameObject:
   - component: {fileID: 447336709}
   m_Layer: 0
   m_Name: Floor5x5 (31)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4116,9 +4117,9 @@ GameObject:
   m_Component:
   - component: {fileID: 453004033}
   - component: {fileID: 453004034}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: InvisibleCeiling
-  m_TagString: Metal
+  m_TagString: Ignore Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4135,7 +4136,7 @@ Transform:
   m_LocalScale: {x: 30, y: 1, z: 30}
   m_Children: []
   m_Father: {fileID: 261469969}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &453004034
 BoxCollider:
@@ -4432,7 +4433,7 @@ GameObject:
   - component: {fileID: 472904541}
   m_Layer: 0
   m_Name: Floor5x5 (15)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4672,7 +4673,7 @@ GameObject:
   - component: {fileID: 513667118}
   m_Layer: 0
   m_Name: Floor5x5 (32)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4839,7 +4840,7 @@ GameObject:
   - component: {fileID: 548761376}
   m_Layer: 0
   m_Name: Floor5x5 (32)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5011,7 +5012,7 @@ GameObject:
   - component: {fileID: 564964013}
   m_Layer: 0
   m_Name: Floor5x5 (30)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5104,7 +5105,7 @@ GameObject:
   - component: {fileID: 597709301}
   m_Layer: 0
   m_Name: Floor5x5 (21)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5444,7 +5445,7 @@ GameObject:
   - component: {fileID: 644697549}
   m_Layer: 0
   m_Name: Floor5x5 (26)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5705,7 +5706,7 @@ GameObject:
   - component: {fileID: 658606121}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5746,8 +5747,8 @@ Transform:
   - {fileID: 443521234}
   - {fileID: 1248443903}
   - {fileID: 1932560702}
-  m_Father: {fileID: 840036893}
-  m_RootOrder: 4
+  m_Father: {fileID: 261469969}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &666114360
 GameObject:
@@ -5763,7 +5764,7 @@ GameObject:
   - component: {fileID: 666114362}
   m_Layer: 0
   m_Name: Floor5x5 (33)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5856,7 +5857,7 @@ GameObject:
   - component: {fileID: 680197743}
   m_Layer: 0
   m_Name: Floor5x5 (29)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6083,7 +6084,7 @@ GameObject:
   - component: {fileID: 681297643}
   m_Layer: 0
   m_Name: Floor5x5 (4)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6250,7 +6251,7 @@ GameObject:
   - component: {fileID: 697007862}
   m_Layer: 0
   m_Name: Floor5x5 (6)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6343,7 +6344,7 @@ GameObject:
   - component: {fileID: 717666540}
   m_Layer: 0
   m_Name: Floor5x5 (27)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6436,7 +6437,7 @@ GameObject:
   - component: {fileID: 734020121}
   m_Layer: 0
   m_Name: Floor5x5 (8)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6585,7 +6586,7 @@ GameObject:
   - component: {fileID: 749772327}
   m_Layer: 0
   m_Name: Floor5x5 (9)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -7117,7 +7118,7 @@ GameObject:
   - component: {fileID: 789266188}
   m_Layer: 0
   m_Name: Floor5x5 (25)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -7210,7 +7211,7 @@ GameObject:
   - component: {fileID: 792834798}
   m_Layer: 0
   m_Name: Floor5x5 (14)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -7335,7 +7336,7 @@ GameObject:
   - component: {fileID: 802440893}
   m_Layer: 0
   m_Name: Floor5x5
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -7505,7 +7506,7 @@ GameObject:
   - component: {fileID: 812065031}
   m_Layer: 0
   m_Name: Floor5x5 (29)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -7672,7 +7673,7 @@ GameObject:
   - component: {fileID: 823243409}
   m_Layer: 0
   m_Name: Floor5x5 (31)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -7765,7 +7766,7 @@ GameObject:
   - component: {fileID: 829498959}
   m_Layer: 0
   m_Name: Floor5x5 (34)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -7875,7 +7876,6 @@ Transform:
   - {fileID: 1803749650}
   - {fileID: 556037904}
   - {fileID: 77099487}
-  - {fileID: 658606121}
   m_Father: {fileID: 261469969}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7893,7 +7893,7 @@ GameObject:
   - component: {fileID: 841385369}
   m_Layer: 0
   m_Name: Floor5x5 (34)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -7986,7 +7986,7 @@ GameObject:
   - component: {fileID: 851625016}
   m_Layer: 0
   m_Name: Floor5x5 (29)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -8079,7 +8079,7 @@ GameObject:
   - component: {fileID: 860418306}
   m_Layer: 0
   m_Name: Floor5x5 (16)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -8306,7 +8306,7 @@ GameObject:
   - component: {fileID: 896431925}
   m_Layer: 0
   m_Name: Floor5x5 (32)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -8399,7 +8399,7 @@ GameObject:
   - component: {fileID: 903923628}
   m_Layer: 0
   m_Name: Floor5x5 (18)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -8725,7 +8725,7 @@ GameObject:
   - component: {fileID: 924680969}
   m_Layer: 0
   m_Name: Floor5x5 (30)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -9352,7 +9352,7 @@ GameObject:
   - component: {fileID: 980429675}
   m_Layer: 0
   m_Name: Floor5x5 (28)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -9482,7 +9482,7 @@ GameObject:
   - component: {fileID: 988685995}
   m_Layer: 0
   m_Name: Floor5x5 (27)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -9572,7 +9572,7 @@ GameObject:
   - component: {fileID: 994394280}
   m_Layer: 0
   m_Name: Right Wall
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -9599,7 +9599,7 @@ Transform:
   - {fileID: 1491532170}
   - {fileID: 1653908644}
   m_Father: {fileID: 261469969}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &998939294
 GameObject:
@@ -9993,7 +9993,7 @@ GameObject:
   - component: {fileID: 1045821228}
   m_Layer: 0
   m_Name: Floor5x5 (3)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -10086,7 +10086,7 @@ GameObject:
   - component: {fileID: 1057426967}
   m_Layer: 0
   m_Name: Floor5x5 (12)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -10662,7 +10662,7 @@ GameObject:
   - component: {fileID: 1099606967}
   m_Layer: 0
   m_Name: Floor5x5 (28)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -10829,7 +10829,7 @@ GameObject:
   - component: {fileID: 1118826131}
   m_Layer: 0
   m_Name: Floor5x5 (31)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -11853,7 +11853,7 @@ GameObject:
   - component: {fileID: 1248443900}
   m_Layer: 0
   m_Name: Floor5x5 (23)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -12080,7 +12080,7 @@ GameObject:
   - component: {fileID: 1261645449}
   m_Layer: 0
   m_Name: Floor5x5 (13)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -12250,7 +12250,7 @@ GameObject:
   - component: {fileID: 1289439939}
   m_Layer: 0
   m_Name: Floor5x5 (2)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -12495,7 +12495,7 @@ GameObject:
   - component: {fileID: 1300478906}
   m_Layer: 0
   m_Name: Floor5x5 (26)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -12800,7 +12800,7 @@ GameObject:
   - component: {fileID: 1395629289}
   m_Layer: 0
   m_Name: Floor5x5 (19)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -12890,7 +12890,7 @@ GameObject:
   - component: {fileID: 1417750961}
   m_Layer: 0
   m_Name: Left Wall
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -12917,7 +12917,7 @@ Transform:
   - {fileID: 357797789}
   - {fileID: 1665863340}
   m_Father: {fileID: 261469969}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1420715491
 GameObject:
@@ -12933,7 +12933,7 @@ GameObject:
   - component: {fileID: 1420715492}
   m_Layer: 0
   m_Name: Floor5x5 (20)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -13744,7 +13744,7 @@ GameObject:
   - component: {fileID: 1491532171}
   m_Layer: 0
   m_Name: Floor5x5 (33)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -13855,7 +13855,7 @@ GameObject:
   - component: {fileID: 1502504946}
   m_Layer: 0
   m_Name: Floor5x5 (1)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -14291,7 +14291,7 @@ GameObject:
   - component: {fileID: 1553452533}
   m_Layer: 0
   m_Name: Back Wall
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -14318,7 +14318,7 @@ Transform:
   - {fileID: 67305147}
   - {fileID: 829498958}
   m_Father: {fileID: 261469969}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1557245881
 GameObject:
@@ -14334,7 +14334,7 @@ GameObject:
   - component: {fileID: 1557245882}
   m_Layer: 0
   m_Name: Floor5x5 (11)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -14628,7 +14628,7 @@ GameObject:
   - component: {fileID: 1569146048}
   m_Layer: 0
   m_Name: Floor5x5 (30)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -15716,7 +15716,7 @@ GameObject:
   - component: {fileID: 1603322649}
   m_Layer: 0
   m_Name: Floor5x5 (27)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -16553,7 +16553,7 @@ GameObject:
   - component: {fileID: 1651925680}
   m_Layer: 0
   m_Name: Floor5x5 (28)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -16646,7 +16646,7 @@ GameObject:
   - component: {fileID: 1653908645}
   m_Layer: 0
   m_Name: Floor5x5 (34)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -16739,7 +16739,7 @@ GameObject:
   - component: {fileID: 1665863341}
   m_Layer: 0
   m_Name: Floor5x5 (34)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -17449,7 +17449,7 @@ GameObject:
   - component: {fileID: 1773153563}
   m_Layer: 0
   m_Name: Floor5x5 (29)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -17542,7 +17542,7 @@ GameObject:
   - component: {fileID: 1774462284}
   m_Layer: 0
   m_Name: Floor5x5 (25)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -17635,7 +17635,7 @@ GameObject:
   - component: {fileID: 1786195031}
   m_Layer: 0
   m_Name: Floor5x5 (25)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -18100,7 +18100,7 @@ GameObject:
   - component: {fileID: 1847317410}
   m_Layer: 0
   m_Name: Floor5x5 (28)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -18512,7 +18512,7 @@ GameObject:
   - component: {fileID: 1932560699}
   m_Layer: 0
   m_Name: Floor5x5 (24)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -19066,7 +19066,7 @@ GameObject:
   - component: {fileID: 2052385737}
   m_Layer: 0
   m_Name: Floor5x5 (30)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -19159,7 +19159,7 @@ GameObject:
   - component: {fileID: 2059246783}
   m_Layer: 0
   m_Name: Floor5x5 (7)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -19580,7 +19580,7 @@ GameObject:
   - component: {fileID: 2108947651}
   m_Layer: 0
   m_Name: Floor5x5 (27)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -19844,7 +19844,7 @@ GameObject:
   - component: {fileID: 2124785685}
   m_Layer: 0
   m_Name: Floor5x5 (10)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -19937,7 +19937,7 @@ GameObject:
   - component: {fileID: 2127768239}
   m_Layer: 0
   m_Name: Floor5x5 (26)
-  m_TagString: Metal
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -20374,7 +20374,7 @@ GameObject:
   - component: {fileID: 136351757417321786}
   - component: {fileID: 114352006042335988}
   m_Layer: 8
-  m_Name: PlayerController
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

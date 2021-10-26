@@ -9,8 +9,9 @@ namespace Player.Projectile
 		
 		private const float DurationS = 5.0f;
 		private const string TargetTag = "Target";
-		private const string MetalTag = "Metal";
-		
+		private const string EnvironmentTag = "Environment";
+		private const string IgnoreProjectileTag = "Ignore Projectile";
+
 		[SerializeField] private VoidEvent targetHitEvent;
 		[SerializeField] private VoidEvent targetMissEvent;
 		[SerializeField] private Transform impactPrefab;
@@ -23,7 +24,6 @@ namespace Player.Projectile
 		public void OnCollisionEnter(Collision collision) 
 		{
 			Destroy(gameObject);
-			
 			var tf = collision.transform;
 			
 			if (tf.CompareTag(TargetTag))
@@ -31,9 +31,13 @@ namespace Player.Projectile
 				tf.gameObject.GetComponent<TargetController>().IsHit = true;
 				targetHitEvent.Raise();
 			}
-			else if (tf.CompareTag(MetalTag)) 
+			else if (tf.CompareTag(EnvironmentTag))
 			{
 				InstantiateImpactPrefab(collision);
+				targetMissEvent.Raise();
+			} 
+			else if (tf.CompareTag(IgnoreProjectileTag))
+			{
 				targetMissEvent.Raise();
 			}
 		}
@@ -46,11 +50,8 @@ namespace Player.Projectile
 
 		private void InstantiateImpactPrefab(Collision collision)
 		{
-			Instantiate(
-				impactPrefab, 
-				transform.position, 
-				Quaternion.LookRotation(collision.contacts[0].normal)
-			);
+			var rotation = Quaternion.LookRotation(collision.contacts[0].normal);
+			Instantiate(impactPrefab, transform.position, rotation);
 		}
 	}
 }

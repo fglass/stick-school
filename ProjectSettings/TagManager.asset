@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Metal
   - Target
+  - Environment
+  - Ignore Projectile
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - 
   - Player
   - Target
-  - Projectile
-  - Ignore Projectile
+  - 
+  - 
   - 
   - 
   - 

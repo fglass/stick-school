@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Scenario
 {
-    public class StatsManager : MonoBehaviour
+    public class ScoreHandler : MonoBehaviour
     {
         [SerializeField] private VoidEvent targetHitEvent;
         [SerializeField] private VoidEvent targetMissEvent;

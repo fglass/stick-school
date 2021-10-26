@@ -7,9 +7,9 @@ namespace Events
     [CreateAssetMenu(menuName = "Events/Custom/DisplayResultsEvent")]
     public class DisplayResultsEvent : ScriptableObject
     {
-        public UnityAction<StatsManager.ResultsDto> OnRaised { get; set; }
+        public UnityAction<ScoreHandler.ResultsDto> OnRaised { get; set; }
 
-        public void Raise(StatsManager.ResultsDto results)
+        public void Raise(ScoreHandler.ResultsDto results)
         {
             OnRaised?.Invoke(results);
         }

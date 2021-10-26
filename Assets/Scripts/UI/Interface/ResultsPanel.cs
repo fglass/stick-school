@@ -29,7 +29,7 @@ namespace UI
             openMainMenuEvent.OnRaised -= Close;
         }
 
-        private void Display(StatsManager.ResultsDto results)
+        private void Display(ScoreHandler.ResultsDto results)
         {
             titleField.text = $"{results.ScenarioName.ToUpper()} SCENARIO";
             scoreField.text = results.Score.ToString();
