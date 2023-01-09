@@ -1,3 +1,5 @@
-## stick-school
+# stick-school
 
-An aim trainer specifically for controllers, built using Unity
+A controller-focused aim trainer, built using Unity
+
+![Demo](Assets/Resources/demo.gif)
